@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+        version="2.0">
+
+    <entity class="com.backend.entity.SubscriptionEntity">
+        <table name="subscription" schema="self_education" catalog=""/>
+        <attributes>
+            <id name="idSubscription">
+                <column name="id_subscription"/>
+            </id>
+            <basic name="idStudent">
+                <column name="id_student"/>
+            </basic>
+            <basic name="idProduct">
+                <column name="id_product"/>
+            </basic>
+            <basic name="status">
+                <column name="status"/>
+            </basic>
+            <many-to-one name="studentByIdStudent" optional="true" target-entity="com.backend.entity.StudentEntity">
+                <join-column name="id_student" referenced-column-name="id_student"/>
+            </many-to-one>
+            <many-to-one name="productByIdProduct" optional="true" target-entity="com.backend.entity.ProductEntity">
+                <join-column name="id_product" referenced-column-name="id_product"/>
+            </many-to-one>
+        </attributes>
+    </entity>
+</entity-mappings>

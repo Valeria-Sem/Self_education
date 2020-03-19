@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+        version="2.0">
+
+    <entity class="com.backend.entity.WalletEntity">
+        <table name="wallet" schema="self_education" catalog=""/>
+        <attributes>
+            <id name="idWallet">
+                <column name="id_wallet"/>
+            </id>
+            <basic name="balance">
+                <column name="balance"/>
+            </basic>
+            <basic name="status">
+                <column name="status"/>
+            </basic>
+            <one-to-many name="studentsByIdWallet" mapped-by="walletByIdWallet"
+                         target-entity="com.backend.entity.StudentEntity"/>
+        </attributes>
+    </entity>
+</entity-mappings>
