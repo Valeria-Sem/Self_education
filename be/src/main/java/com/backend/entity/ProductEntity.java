@@ -8,15 +8,14 @@ import java.util.Objects;
 @Table(name = "product", schema = "self_education", catalog = "")
 public class ProductEntity {
     private int idProduct;
-    private int idTeacher;
+//    private int idTeacher;
     private String name;
     private String description;
     private int price;
-    private int idSubject;
+//    private int idSubject;
     private String img;
     private TeacherEntity teacherByIdTeacher;
     private SubjectEntity subjectByIdSubject;
-    private Collection<SubscriptionEntity> subscriptionsByIdProduct;
 
     @Id
     @Column(name = "id_product")
@@ -28,15 +27,15 @@ public class ProductEntity {
         this.idProduct = idProduct;
     }
 
-    @Basic
-    @Column(name = "id_teacher")
-    public int getIdTeacher() {
-        return idTeacher;
-    }
-
-    public void setIdTeacher(int idTeacher) {
-        this.idTeacher = idTeacher;
-    }
+//    @Basic
+//    @Column(name = "id_teacher")
+//    public int getIdTeacher() {
+//        return idTeacher;
+//    }
+//
+//    public void setIdTeacher(int idTeacher) {
+//        this.idTeacher = idTeacher;
+//    }
 
     @Basic
     @Column(name = "name")
@@ -68,15 +67,15 @@ public class ProductEntity {
         this.price = price;
     }
 
-    @Basic
-    @Column(name = "id_subject")
-    public int getIdSubject() {
-        return idSubject;
-    }
-
-    public void setIdSubject(int idSubject) {
-        this.idSubject = idSubject;
-    }
+//    @Basic
+//    @Column(name = "id_subject")
+//    public int getIdSubject() {
+//        return idSubject;
+//    }
+//
+//    public void setIdSubject(int idSubject) {
+//        this.idSubject = idSubject;
+//    }
 
     @Basic
     @Column(name = "img")
@@ -94,9 +93,9 @@ public class ProductEntity {
         if (o == null || getClass() != o.getClass()) return false;
         ProductEntity that = (ProductEntity) o;
         return idProduct == that.idProduct &&
-                idTeacher == that.idTeacher &&
+//                idTeacher == that.idTeacher &&
                 price == that.price &&
-                idSubject == that.idSubject &&
+//                idSubject == that.idSubject &&
                 Objects.equals(name, that.name) &&
                 Objects.equals(description, that.description) &&
                 Objects.equals(img, that.img);
@@ -104,7 +103,7 @@ public class ProductEntity {
 
     @Override
     public int hashCode() {
-        return Objects.hash(idProduct, idTeacher, name, description, price, idSubject, img);
+        return Objects.hash(idProduct, name, description, price, img);
     }
 
     @ManyToOne
@@ -125,14 +124,5 @@ public class ProductEntity {
 
     public void setSubjectByIdSubject(SubjectEntity subjectByIdSubject) {
         this.subjectByIdSubject = subjectByIdSubject;
-    }
-
-    @OneToMany(mappedBy = "productByIdProduct")
-    public Collection<SubscriptionEntity> getSubscriptionsByIdProduct() {
-        return subscriptionsByIdProduct;
-    }
-
-    public void setSubscriptionsByIdProduct(Collection<SubscriptionEntity> subscriptionsByIdProduct) {
-        this.subscriptionsByIdProduct = subscriptionsByIdProduct;
     }
 }

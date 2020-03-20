@@ -1,5 +1,7 @@
 package com.backend.entity;
 
+import com.backend.entity.enums.UserRole;
+
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
@@ -10,9 +12,7 @@ public class UserEntity {
     private int idUser;
     private String login;
     private String password;
-    private Object role;
-    private Collection<StudentEntity> studentsByIdUser;
-    private Collection<TeacherEntity> teachersByIdUser;
+    private UserRole role;
 
     @Id
     @Column(name = "id_user")
@@ -45,12 +45,13 @@ public class UserEntity {
     }
 
     @Basic
+    @Enumerated(EnumType.STRING)
     @Column(name = "role")
-    public Object getRole() {
+    public UserRole getRole() {
         return role;
     }
 
-    public void setRole(Object role) {
+    public void setRole(UserRole role) {
         this.role = role;
     }
 
@@ -68,23 +69,5 @@ public class UserEntity {
     @Override
     public int hashCode() {
         return Objects.hash(idUser, login, password, role);
-    }
-
-    @OneToMany(mappedBy = "userByIdUser")
-    public Collection<StudentEntity> getStudentsByIdUser() {
-        return studentsByIdUser;
-    }
-
-    public void setStudentsByIdUser(Collection<StudentEntity> studentsByIdUser) {
-        this.studentsByIdUser = studentsByIdUser;
-    }
-
-    @OneToMany(mappedBy = "userByIdUser")
-    public Collection<TeacherEntity> getTeachersByIdUser() {
-        return teachersByIdUser;
-    }
-
-    public void setTeachersByIdUser(Collection<TeacherEntity> teachersByIdUser) {
-        this.teachersByIdUser = teachersByIdUser;
     }
 }

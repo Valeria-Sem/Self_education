@@ -7,8 +7,8 @@ import java.util.Objects;
 @Table(name = "teacher_student", schema = "self_education", catalog = "")
 public class TeacherStudentEntity {
     private int idTeacherStudent;
-    private int idTeacher;
-    private int idStudent;
+//    private int idTeacher;
+//    private int idStudent;
     private TeacherEntity teacherByIdTeacher;
     private StudentEntity studentByIdStudent;
 
@@ -21,40 +21,40 @@ public class TeacherStudentEntity {
     public void setIdTeacherStudent(int idTeacherStudent) {
         this.idTeacherStudent = idTeacherStudent;
     }
-
-    @Basic
-    @Column(name = "id_teacher")
-    public int getIdTeacher() {
-        return idTeacher;
-    }
-
-    public void setIdTeacher(int idTeacher) {
-        this.idTeacher = idTeacher;
-    }
-
-    @Basic
-    @Column(name = "id_student")
-    public int getIdStudent() {
-        return idStudent;
-    }
-
-    public void setIdStudent(int idStudent) {
-        this.idStudent = idStudent;
-    }
+//
+//    @Basic
+//    @Column(name = "id_teacher")
+//    public int getIdTeacher() {
+//        return idTeacher;
+//    }
+//
+//    public void setIdTeacher(int idTeacher) {
+//        this.idTeacher = idTeacher;
+//    }
+//
+//    @Basic
+//    @Column(name = "id_student")
+//    public int getIdStudent() {
+//        return idStudent;
+//    }
+//
+//    public void setIdStudent(int idStudent) {
+//        this.idStudent = idStudent;
+//    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TeacherStudentEntity that = (TeacherStudentEntity) o;
-        return idTeacherStudent == that.idTeacherStudent &&
-                idTeacher == that.idTeacher &&
-                idStudent == that.idStudent;
+        return idTeacherStudent == that.idTeacherStudent;
+//                idTeacher == that.idTeacher &&
+//                idStudent == that.idStudent;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idTeacherStudent, idTeacher, idStudent);
+        return Objects.hash(idTeacherStudent);
     }
 
     @ManyToOne

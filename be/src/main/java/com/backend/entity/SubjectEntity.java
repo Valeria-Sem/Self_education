@@ -9,8 +9,7 @@ import java.util.Objects;
 public class SubjectEntity {
     private int idSubject;
     private String name;
-    private Collection<ProductEntity> productsByIdSubject;
-    private Collection<TeacherEntity> teachersByIdSubject;
+
 
     @Id
     @Column(name = "id_subject")
@@ -46,21 +45,4 @@ public class SubjectEntity {
         return Objects.hash(idSubject, name);
     }
 
-    @OneToMany(mappedBy = "subjectByIdSubject")
-    public Collection<ProductEntity> getProductsByIdSubject() {
-        return productsByIdSubject;
-    }
-
-    public void setProductsByIdSubject(Collection<ProductEntity> productsByIdSubject) {
-        this.productsByIdSubject = productsByIdSubject;
-    }
-
-    @OneToMany(mappedBy = "subjectByIdSubject")
-    public Collection<TeacherEntity> getTeachersByIdSubject() {
-        return teachersByIdSubject;
-    }
-
-    public void setTeachersByIdSubject(Collection<TeacherEntity> teachersByIdSubject) {
-        this.teachersByIdSubject = teachersByIdSubject;
-    }
 }

@@ -1,5 +1,7 @@
 package com.backend.entity;
 
+import com.backend.entity.enums.WalletStatus;
+
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
@@ -9,8 +11,7 @@ import java.util.Objects;
 public class WalletEntity {
     private int idWallet;
     private int balance;
-    private Object status;
-    private Collection<StudentEntity> studentsByIdWallet;
+    private WalletStatus status;
 
     @Id
     @Column(name = "id_wallet")
@@ -33,12 +34,13 @@ public class WalletEntity {
     }
 
     @Basic
+    @Enumerated(EnumType.STRING)
     @Column(name = "status")
-    public Object getStatus() {
+    public WalletStatus getStatus() {
         return status;
     }
 
-    public void setStatus(Object status) {
+    public void setStatus(WalletStatus status) {
         this.status = status;
     }
 
@@ -55,14 +57,5 @@ public class WalletEntity {
     @Override
     public int hashCode() {
         return Objects.hash(idWallet, balance, status);
-    }
-
-    @OneToMany(mappedBy = "walletByIdWallet")
-    public Collection<StudentEntity> getStudentsByIdWallet() {
-        return studentsByIdWallet;
-    }
-
-    public void setStudentsByIdWallet(Collection<StudentEntity> studentsByIdWallet) {
-        this.studentsByIdWallet = studentsByIdWallet;
     }
 }

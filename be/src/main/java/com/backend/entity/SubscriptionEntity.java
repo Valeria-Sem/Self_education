@@ -1,5 +1,7 @@
 package com.backend.entity;
 
+import com.backend.entity.enums.SubStatus;
+
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -7,9 +9,9 @@ import java.util.Objects;
 @Table(name = "subscription", schema = "self_education", catalog = "")
 public class SubscriptionEntity {
     private int idSubscription;
-    private int idStudent;
-    private int idProduct;
-    private Object status;
+//    private int idStudent;
+//    private int idProduct;
+    private SubStatus status;
     private StudentEntity studentByIdStudent;
     private ProductEntity productByIdProduct;
 
@@ -23,33 +25,34 @@ public class SubscriptionEntity {
         this.idSubscription = idSubscription;
     }
 
+//    @Basic
+//    @Column(name = "id_student")
+//    public int getIdStudent() {
+//        return idStudent;
+//    }
+//
+//    public void setIdStudent(int idStudent) {
+//        this.idStudent = idStudent;
+//    }
+//
+//    @Basic
+//    @Column(name = "id_product")
+//    public int getIdProduct() {
+//        return idProduct;
+//    }
+//
+//    public void setIdProduct(int idProduct) {
+//        this.idProduct = idProduct;
+//    }
+
     @Basic
-    @Column(name = "id_student")
-    public int getIdStudent() {
-        return idStudent;
-    }
-
-    public void setIdStudent(int idStudent) {
-        this.idStudent = idStudent;
-    }
-
-    @Basic
-    @Column(name = "id_product")
-    public int getIdProduct() {
-        return idProduct;
-    }
-
-    public void setIdProduct(int idProduct) {
-        this.idProduct = idProduct;
-    }
-
-    @Basic
+    @Enumerated(EnumType.STRING)
     @Column(name = "status")
-    public Object getStatus() {
+    public SubStatus getStatus() {
         return status;
     }
 
-    public void setStatus(Object status) {
+    public void setStatus(SubStatus status) {
         this.status = status;
     }
 
@@ -59,14 +62,14 @@ public class SubscriptionEntity {
         if (o == null || getClass() != o.getClass()) return false;
         SubscriptionEntity that = (SubscriptionEntity) o;
         return idSubscription == that.idSubscription &&
-                idStudent == that.idStudent &&
-                idProduct == that.idProduct &&
+//                idStudent == that.idStudent &&
+//                idProduct == that.idProduct &&
                 Objects.equals(status, that.status);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idSubscription, idStudent, idProduct, status);
+        return Objects.hash(idSubscription, status);
     }
 
     @ManyToOne
