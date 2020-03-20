@@ -4,7 +4,9 @@ import com.backend.entity.UserEntity;
 import com.backend.repository.UserEntityRepository;
 import com.backend.service.UserEntityService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UserEntityServiceImpl implements UserEntityService {
 
     @Autowired
