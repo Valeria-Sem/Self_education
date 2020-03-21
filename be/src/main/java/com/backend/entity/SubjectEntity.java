@@ -10,7 +10,6 @@ public class SubjectEntity {
     private int idSubject;
     private String name;
 
-
     @Id
     @Column(name = "id_subject")
     public int getIdSubject() {
@@ -44,5 +43,4 @@ public class SubjectEntity {
     public int hashCode() {
         return Objects.hash(idSubject, name);
     }
-
 }

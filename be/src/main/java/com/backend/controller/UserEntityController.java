@@ -20,7 +20,7 @@ public class UserEntityController {
     }
     @RequestMapping(value = "/login/{login}/{pass}", method = RequestMethod.GET)
     public ResponseEntity<UserEntity> getUsersByLoginP(@PathVariable(name = "login") String login,
-                                                        @PathVariable(name = "pass") String pass) {
+                                                       @PathVariable(name = "pass") String pass) {
         UserEntity userEntity = userEntityService.getUserIdByLoginAndPassword(login, pass);
         return ResponseEntity.ok(userEntity);
     }

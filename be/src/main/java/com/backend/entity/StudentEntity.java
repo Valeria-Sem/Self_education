@@ -8,15 +8,13 @@ import java.util.Objects;
 @Table(name = "student", schema = "self_education", catalog = "")
 public class StudentEntity {
     private int idStudent;
-  //  private int idUser;
+//    private int idUser;
     private String name;
     private String surname;
     private String group;
-  //  private int idWallet;
+//    private int idWallet;
     private UserEntity userByIdUser;
     private WalletEntity walletByIdWallet;
-//    private Collection<SubscriptionEntity> subscriptionsByIdStudent;
-//    private Collection<TeacherStudentEntity> teacherStudentsByIdStudent;
 
     @Id
     @Column(name = "id_student")
@@ -84,8 +82,8 @@ public class StudentEntity {
         if (o == null || getClass() != o.getClass()) return false;
         StudentEntity that = (StudentEntity) o;
         return idStudent == that.idStudent &&
-               // idUser == that.idUser &&
-               // idWallet == that.idWallet &&
+//                idUser == that.idUser &&
+//                idWallet == that.idWallet &&
                 Objects.equals(name, that.name) &&
                 Objects.equals(surname, that.surname) &&
                 Objects.equals(group, that.group);
@@ -116,21 +114,4 @@ public class StudentEntity {
         this.walletByIdWallet = walletByIdWallet;
     }
 
-//    @OneToMany(mappedBy = "studentByIdStudent")
-//    public Collection<SubscriptionEntity> getSubscriptionsByIdStudent() {
-//        return subscriptionsByIdStudent;
-//    }
-//
-//    public void setSubscriptionsByIdStudent(Collection<SubscriptionEntity> subscriptionsByIdStudent) {
-//        this.subscriptionsByIdStudent = subscriptionsByIdStudent;
-//    }
-//
-//    @OneToMany(mappedBy = "studentByIdStudent")
-//    public Collection<TeacherStudentEntity> getTeacherStudentsByIdStudent() {
-//        return teacherStudentsByIdStudent;
-//    }
-//
-//    public void setTeacherStudentsByIdStudent(Collection<TeacherStudentEntity> teacherStudentsByIdStudent) {
-//        this.teacherStudentsByIdStudent = teacherStudentsByIdStudent;
-//    }
 }

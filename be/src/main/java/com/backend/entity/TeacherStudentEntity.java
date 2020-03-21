@@ -21,7 +21,7 @@ public class TeacherStudentEntity {
     public void setIdTeacherStudent(int idTeacherStudent) {
         this.idTeacherStudent = idTeacherStudent;
     }
-//
+
 //    @Basic
 //    @Column(name = "id_teacher")
 //    public int getIdTeacher() {
@@ -47,7 +47,7 @@ public class TeacherStudentEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TeacherStudentEntity that = (TeacherStudentEntity) o;
-        return idTeacherStudent == that.idTeacherStudent;
+        return idTeacherStudent == that.idTeacherStudent ;
 //                idTeacher == that.idTeacher &&
 //                idStudent == that.idStudent;
     }

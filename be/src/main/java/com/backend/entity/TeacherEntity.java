@@ -15,7 +15,6 @@ public class TeacherEntity {
     private UserEntity userByIdUser;
     private SubjectEntity subjectByIdSubject;
 
-
     @Id
     @Column(name = "id_teacher")
     public int getIdTeacher() {
@@ -83,7 +82,6 @@ public class TeacherEntity {
         return Objects.hash(idTeacher, name, surname);
     }
 
-
     @ManyToOne
     @JoinColumn(name = "id_user", referencedColumnName = "id_user", nullable = false)
     public UserEntity getUserByIdUser() {
@@ -103,4 +101,5 @@ public class TeacherEntity {
     public void setSubjectByIdSubject(SubjectEntity subjectByIdSubject) {
         this.subjectByIdSubject = subjectByIdSubject;
     }
+
 }
