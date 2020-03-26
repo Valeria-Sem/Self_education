@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
-import {Subject} from "../modules/subject";
+import {Course} from "../modules/course";
 
 @Injectable({
   providedIn: 'root'
 })
-export class SubjectService {
+export class CourseService {
 
   constructor(private http : HttpClient) { }
 
-  getSubjects(): Observable<Subject[]>{
-    return this.http.get<Subject[]>('/api/subject')
+  getSubjects(): Observable<Course[]>{
+    return this.http.get<Course[]>('/api/course')
   }
 
 }

@@ -4,15 +4,18 @@ import { BsDropdownModule } from "ngx-bootstrap/dropdown";
 import { TooltipModule } from "ngx-bootstrap/tooltip";
 import { ModalModule } from "ngx-bootstrap/modal";
 import { FormsModule } from "@angular/forms";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AccordionModule } from 'ngx-bootstrap/accordion';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 import { AppComponent } from "./app.component";
 import {HttpClientModule} from "@angular/common/http";
 import {Ng4LoadingSpinnerModule} from "ng4-loading-spinner";
-import {RouterModule, Routes} from "@angular/router";
 import {routing} from "./app.routing";
 import {NavTopComponent} from "./components/nav-top/nav-top.component";
 import {NavSideComponent} from "./components/nav-side/nav-side.component";
 import {HomeComponent} from "./components/home/home.component";
+import {CarouselComponent} from "./components/carousel/carousel.component";
 
 
 // const appRoutes: Routes = [
@@ -27,7 +30,9 @@ import {HomeComponent} from "./components/home/home.component";
     AppComponent,
     NavTopComponent,
     NavSideComponent,
-    HomeComponent
+    HomeComponent,
+    CarouselComponent
+
   ],
   imports: [
     BrowserModule,
@@ -38,7 +43,10 @@ import {HomeComponent} from "./components/home/home.component";
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
-    routing
+    routing,
+    BrowserAnimationsModule,
+    AccordionModule.forRoot(),
+    CarouselModule.forRoot()
  //   RouterModule.forRoot(appRoutes)
   ],
   providers: [],

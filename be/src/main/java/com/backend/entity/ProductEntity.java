@@ -1,21 +1,17 @@
 package com.backend.entity;
 
 import javax.persistence.*;
-import java.util.Collection;
 import java.util.Objects;
 
 @Entity
 @Table(name = "product", schema = "self_education", catalog = "")
 public class ProductEntity {
     private int idProduct;
-//    private int idTeacher;
     private String name;
     private String description;
     private int price;
-//    private int idSubject;
+    private int idCourse;
     private String img;
-    private TeacherEntity teacherByIdTeacher;
-    private SubjectEntity subjectByIdSubject;
 
     @Id
     @Column(name = "id_product")
@@ -26,16 +22,6 @@ public class ProductEntity {
     public void setIdProduct(int idProduct) {
         this.idProduct = idProduct;
     }
-
-//    @Basic
-//    @Column(name = "id_teacher")
-//    public int getIdTeacher() {
-//        return idTeacher;
-//    }
-//
-//    public void setIdTeacher(int idTeacher) {
-//        this.idTeacher = idTeacher;
-//    }
 
     @Basic
     @Column(name = "name")
@@ -67,15 +53,15 @@ public class ProductEntity {
         this.price = price;
     }
 
-//    @Basic
-//    @Column(name = "id_subject")
-//    public int getIdSubject() {
-//        return idSubject;
-//    }
-//
-//    public void setIdSubject(int idSubject) {
-//        this.idSubject = idSubject;
-//    }
+    @Basic
+    @Column(name = "id_course")
+    public int getIdCourse() {
+        return idCourse;
+    }
+
+    public void setIdCourse(int idCourse) {
+        this.idCourse = idCourse;
+    }
 
     @Basic
     @Column(name = "img")
@@ -93,9 +79,8 @@ public class ProductEntity {
         if (o == null || getClass() != o.getClass()) return false;
         ProductEntity that = (ProductEntity) o;
         return idProduct == that.idProduct &&
-//                idTeacher == that.idTeacher &&
                 price == that.price &&
-//                idSubject == that.idSubject &&
+                idCourse == that.idCourse &&
                 Objects.equals(name, that.name) &&
                 Objects.equals(description, that.description) &&
                 Objects.equals(img, that.img);
@@ -103,26 +88,6 @@ public class ProductEntity {
 
     @Override
     public int hashCode() {
-        return Objects.hash(idProduct, name, description, price, img);
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "id_teacher", referencedColumnName = "id_teacher", nullable = false)
-    public TeacherEntity getTeacherByIdTeacher() {
-        return teacherByIdTeacher;
-    }
-
-    public void setTeacherByIdTeacher(TeacherEntity teacherByIdTeacher) {
-        this.teacherByIdTeacher = teacherByIdTeacher;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "id_subject", referencedColumnName = "id_subject", nullable = false)
-    public SubjectEntity getSubjectByIdSubject() {
-        return subjectByIdSubject;
-    }
-
-    public void setSubjectByIdSubject(SubjectEntity subjectByIdSubject) {
-        this.subjectByIdSubject = subjectByIdSubject;
+        return Objects.hash(idProduct, name, description, price, idCourse, img);
     }
 }

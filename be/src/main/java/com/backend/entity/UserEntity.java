@@ -3,7 +3,6 @@ package com.backend.entity;
 import com.backend.entity.enums.UserRole;
 
 import javax.persistence.*;
-import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -70,5 +69,4 @@ public class UserEntity {
     public int hashCode() {
         return Objects.hash(idUser, login, password, role);
     }
-
 }

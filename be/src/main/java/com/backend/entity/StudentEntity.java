@@ -1,20 +1,17 @@
 package com.backend.entity;
 
 import javax.persistence.*;
-import java.util.Collection;
 import java.util.Objects;
 
 @Entity
 @Table(name = "student", schema = "self_education", catalog = "")
 public class StudentEntity {
     private int idStudent;
-//    private int idUser;
+    private int idUser;
     private String name;
     private String surname;
-    private String group;
-//    private int idWallet;
-    private UserEntity userByIdUser;
-    private WalletEntity walletByIdWallet;
+    private int idGroup;
+    private int idWallet;
 
     @Id
     @Column(name = "id_student")
@@ -26,15 +23,15 @@ public class StudentEntity {
         this.idStudent = idStudent;
     }
 
-//    @Basic
-//    @Column(name = "id_user")
-//    public int getIdUser() {
-//        return idUser;
-//    }
-//
-//    public void setIdUser(int idUser) {
-//        this.idUser = idUser;
-//    }
+    @Basic
+    @Column(name = "id_user")
+    public int getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
+    }
 
     @Basic
     @Column(name = "name")
@@ -57,24 +54,24 @@ public class StudentEntity {
     }
 
     @Basic
-    @Column(name = "group")
-    public String getGroup() {
-        return group;
+    @Column(name = "id_group")
+    public int getIdGroup() {
+        return idGroup;
     }
 
-    public void setGroup(String group) {
-        this.group = group;
+    public void setIdGroup(int idGroup) {
+        this.idGroup = idGroup;
     }
 
-//    @Basic
-//    @Column(name = "id_wallet")
-//    public int getIdWallet() {
-//        return idWallet;
-//    }
-//
-//    public void setIdWallet(int idWallet) {
-//        this.idWallet = idWallet;
-//    }
+    @Basic
+    @Column(name = "id_wallet")
+    public int getIdWallet() {
+        return idWallet;
+    }
+
+    public void setIdWallet(int idWallet) {
+        this.idWallet = idWallet;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -82,36 +79,15 @@ public class StudentEntity {
         if (o == null || getClass() != o.getClass()) return false;
         StudentEntity that = (StudentEntity) o;
         return idStudent == that.idStudent &&
-//                idUser == that.idUser &&
-//                idWallet == that.idWallet &&
+                idUser == that.idUser &&
+                idGroup == that.idGroup &&
+                idWallet == that.idWallet &&
                 Objects.equals(name, that.name) &&
-                Objects.equals(surname, that.surname) &&
-                Objects.equals(group, that.group);
+                Objects.equals(surname, that.surname);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idStudent, name, surname, group);
+        return Objects.hash(idStudent, idUser, name, surname, idGroup, idWallet);
     }
-
-    @ManyToOne
-    @JoinColumn(name = "id_user", referencedColumnName = "id_user", nullable = false)
-    public UserEntity getUserByIdUser() {
-        return userByIdUser;
-    }
-
-    public void setUserByIdUser(UserEntity userByIdUser) {
-        this.userByIdUser = userByIdUser;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "id_wallet", referencedColumnName = "id_wallet", nullable = false)
-    public WalletEntity getWalletByIdWallet() {
-        return walletByIdWallet;
-    }
-
-    public void setWalletByIdWallet(WalletEntity walletByIdWallet) {
-        this.walletByIdWallet = walletByIdWallet;
-    }
-
 }

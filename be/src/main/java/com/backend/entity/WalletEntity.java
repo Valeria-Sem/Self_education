@@ -3,7 +3,6 @@ package com.backend.entity;
 import com.backend.entity.enums.WalletStatus;
 
 import javax.persistence.*;
-import java.util.Collection;
 import java.util.Objects;
 
 @Entity

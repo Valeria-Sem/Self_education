@@ -1,12 +1,165 @@
-<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-  <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Self education</a>
-  <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
-  <ul class="navbar-nav px-3">
-    <li class="nav-item text-nowrap">
-      <a class="nav-link" href="#">Sign in</a>
-    </li>
-  </ul>
-</nav>
+<!--<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">-->
+<!--  <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Self education</a>-->
+<!--  <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">-->
+<!--  <ul class="navbar-nav px-3">-->
+<!--    <li class="nav-item text-nowrap">-->
+<!--      <a class="nav-link" href="#">Sign in</a>-->
+<!--    </li>-->
+<!--  </ul>-->
+<!--</nav>-->
 
+<!--<div *ngIf="loaded">-->
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" routerLink="/">Self education</a>
+<!--    <button class="navbar-toggler" tupe="button" data-toggle="collapse"-->
+<!--            data-target="#navbarSupportedContent"-->
+<!--            aria-controls="navbarSupportedContent"-->
+<!--            aria-expanded="false" aria-label="Toggle navigation">-->
+<!--      <span class="navbar-toggler-icon"></span>-->
+<!--    </button>-->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <span dropdown (onShown)="onShown()" (onHidden)="onHidden()" (isOpenChange)="isOpenChange()">
+            <a id="basic-link" dropdownToggle (click)="false" class="nav-link"
+            >Courses</a>
+            <ul id="basic-link-dropdown" *dropdownMenu class="dropdown-menu"
+                role="menu" aria-labelledby="basic-link" (click)="onCoursesClickHandler($event)">
+              <li *ngFor="let choice of course">
+                  <a class="dropdown-item" routerLink="/{{choice.courseName | lowercase}}">{{choice.courseName}}</a>
+              </li>
+            </ul>
+          </span>
+        </li>
+
+        <li class="nav-item ">
+          <a class="nav-link" routerLink="/about">About us</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+
+        <button class="btn btn-outline-primary my-2 my-sn-0">
+          Log in
+        </button>
+        <strong [style.color]="'#ffffff'">
+          <div class="btn-group" dropdown>
+            <button dropdownToggle type="button"
+                    class="btn btn-outline-primary dropdown-toggle"
+                    aria-controls="dropdown-basic">
+              <span class="caret"></span>
+            </button>
+          </div>
+
+<!--            <ul id="dropdown-animated"-->
+<!--                *dropdownMenu class="dropdown-menu"-->
+<!--                role="menu"-->
+<!--                aria-labelledby="button-animated">-->
+<!--              <li role="menuitem"><a class="dropdown-item" routerLink="/profile">Profile</a></li>-->
+<!--              <li role="menuitem"><a class="dropdown-item" routerLink="/sub">Subscription</a></li>-->
+
+<!--            </ul>-->
+<!--          </div>-->
+<!--          <button class="btn btn-outline-primary" (click)="logout()">Log out</button>-->
+        </strong>
+
+<!--        <ng-template #template>-->
+<!--          <div class="modal-content">-->
+<!--            <div class="modal-header">-->
+<!--              <h4 class="modal-title pull-left"-->
+<!--                  style="margin: auto; padding-left: 20px">-->
+<!--                Authorization-->
+<!--              </h4>-->
+<!--&lt;!&ndash;              <button type="button"&ndash;&gt;-->
+<!--&lt;!&ndash;                      class="close pull-right"&ndash;&gt;-->
+<!--&lt;!&ndash;                      aria-label="Close"&ndash;&gt;-->
+<!--&lt;!&ndash;                      (click)="modalRef.hide()">&ndash;&gt;-->
+<!--&lt;!&ndash;                <span aria-hidden="true">&times;</span>&ndash;&gt;-->
+<!--&lt;!&ndash;              </button>&ndash;&gt;-->
+<!--            </div>-->
+<!--            <div class="modal-body">-->
+<!--              <div class="container-fluid">-->
+<!--&lt;!&ndash;                <form [formGroup]="loginForm">&ndash;&gt;-->
+<!--                  <div class="form-froup m-3">-->
+<!--                    <label>Login*</label>-->
+<!--                    <input autofocus-->
+<!--                           name="form-control"-->
+<!--                           placeholder="Login"-->
+<!--                           class="p-2"-->
+<!--                           formControlName="userLogin"-->
+<!--                           #login required minlength="3" maxlength="16">-->
+<!--                  </div>-->
+<!--                  <div class="form-froup m-3">-->
+<!--                    <label>Password*</label>-->
+<!--                    <input type="Password"-->
+<!--                           name="form-control"-->
+<!--                           placeholder="Password"-->
+<!--                           class="p-2"-->
+<!--                           formControlName="userPassword"-->
+<!--                           #password required minlength="6" maxlength="16">-->
+<!--                    <small id="passwordHelp"-->
+<!--                           class="form-text text-muted">-->
+<!--                      Password must be from 6 to 16 characters-->
+<!--                    </small>-->
+<!--                  </div>-->
+<!--                  <a routerLink="/">-->
+<!--&lt;!&ndash;                    <button&ndash;&gt;-->
+<!--&lt;!&ndash;                      [disabled]="!loginForm.valid || !login?.value?.trim().length || !password?.value?.trim().length"&ndash;&gt;-->
+<!--&lt;!&ndash;                      class="btn btn-outline-primary my-2 my-sn-0"&ndash;&gt;-->
+<!--&lt;!&ndash;                      style="margin-right: 10px; margin-left: 80px;"&ndash;&gt;-->
+<!--&lt;!&ndash;                      (click)="getUserInfo(login.value, password.value)">&ndash;&gt;-->
+<!--&lt;!&ndash;                      Login&ndash;&gt;-->
+<!--&lt;!&ndash;                    </button>&ndash;&gt;-->
+<!--                  </a>-->
+<!--&lt;!&ndash;                </form>&ndash;&gt;-->
+<!--                &lt;!&ndash;                //todo style and cursor pointer, and hide modal&ndash;&gt;-->
+<!--&lt;!&ndash;                <span class="link"&ndash;&gt;-->
+<!--&lt;!&ndash;                      style="margin-left: 40px"&ndash;&gt;-->
+<!--&lt;!&ndash;                      (click)="openModal2(templateNested)">&ndash;&gt;-->
+<!--&lt;!&ndash;                  Register a new profile&ndash;&gt;-->
+<!--&lt;!&ndash;                </span>&ndash;&gt;-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </ng-template>-->
+
+<!--        <ng-template #templateNested>-->
+<!--          <div class="modal-content" style="margin: auto;">-->
+<!--            <div class="modal-header">-->
+<!--              <h4 class="modal-title pull-left" style="margin: auto; padding-left: 70px">Registration</h4>-->
+<!--&lt;!&ndash;              <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef2.hide()">&ndash;&gt;-->
+<!--&lt;!&ndash;                <span aria-hidden="true">&times;</span>&ndash;&gt;-->
+<!--&lt;!&ndash;              </button>&ndash;&gt;-->
+<!--            </div>-->
+<!--            <div class="modal-body" style="margin: auto;">-->
+<!--              <div class="container-fluid" style="margin: auto;">-->
+<!--                <form>-->
+<!--                  <div class="form-froup m-3">-->
+<!--                    <p>You are Organisation or Customer ?</p>-->
+<!--                  </div>-->
+<!--&lt;!&ndash;                  <div class="form-froup m-3">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <form [formGroup]="myForm" class="form-inline">&ndash;&gt;-->
+<!--&lt;!&ndash;                      <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="btn-group" btnRadioGroup formControlName="radio">&ndash;&gt;-->
+<!--&lt;!&ndash;                          <label btnRadio="A" class="btn btn-primary"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 tabindex="0" role="button" routerLink="/orgReg" (click)="closeModal2(templateNested)">Organisation</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                          <label btnRadio="B" class="btn btn-primary"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 tabindex="0" role="button" routerLink="/userReg" (click)="closeModal2(templateNested)">Customer</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                      </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </form>&ndash;&gt;-->
+<!--&lt;!&ndash;                  </div>&ndash;&gt;-->
+<!--                </form>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </ng-template>-->
+      </form>
+    </div>
+  </nav>
+<!--</div>-->
 
 
