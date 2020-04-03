@@ -8,6 +8,7 @@ public interface UserEntityService {
     UserEntity findByLogin(String login);
     UserEntity save(UserEntity userEntity);
     UserEntity findByIdUser(Integer idUser);
+    UserEntity getUserIdByLoginAndPassword(String login, String password);
     void delete(int idUser);
 
 }

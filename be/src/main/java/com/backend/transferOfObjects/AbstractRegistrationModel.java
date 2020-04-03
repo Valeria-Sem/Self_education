@@ -9,22 +9,22 @@ public abstract class AbstractRegistrationModel {
     private String password;
     private UserRole role;
 
-    private int idWallet;
-    private int balance;
-    private WalletStatus walletStatus;
+//    private int idWallet;
+//    private int balance;
+//    private WalletStatus walletStatus;
+
 
     public AbstractRegistrationModel() {
     }
 
-    public AbstractRegistrationModel(int idUser, String login, String password,UserRole role,
-                                     int idWallet, int balance, WalletStatus walletStatus) {
+    public AbstractRegistrationModel(int idUser, String login, String password,UserRole role) {
         this.idUser = idUser;
         this.login = login;
         this.password = password;
         this.role = role;
-        this.idWallet = idWallet;
-        this.balance = balance;
-        this.walletStatus = walletStatus;
+//        this.idWallet = idWallet;
+//        this.balance = balance;
+//        this.walletStatus = walletStatus;
 
     }
 
@@ -60,28 +60,28 @@ public abstract class AbstractRegistrationModel {
         this.role = role;
     }
 
-    public int getIdWallet() {
-        return idWallet;
-    }
-
-    public void setIdWallet(int idWallet) {
-        this.idWallet = idWallet;
-    }
-
-    public int getBalance() {
-        return balance;
-    }
-
-    public void setBalance(int balance) {
-        this.balance = balance;
-    }
-
-    public WalletStatus getWalletStatus() {
-        return walletStatus;
-    }
-
-    public void setWalletStatus(WalletStatus walletStatus) {
-        this.walletStatus = walletStatus;
-    }
+//    public int getIdWallet() {
+//        return idWallet;
+//    }
+//
+//    public void setIdWallet(int idWallet) {
+//        this.idWallet = idWallet;
+//    }
+//
+//    public int getBalance() {
+//        return balance;
+//    }
+//
+//    public void setBalance(int balance) {
+//        this.balance = balance;
+//    }
+//
+//    public WalletStatus getWalletStatus() {
+//        return walletStatus;
+//    }
+//
+//    public void setWalletStatus(WalletStatus walletStatus) {
+//        this.walletStatus = walletStatus;
+//    }
 }
 

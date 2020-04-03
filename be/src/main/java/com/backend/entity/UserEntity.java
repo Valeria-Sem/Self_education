@@ -1,10 +1,8 @@
 package com.backend.entity;
 
 import com.backend.entity.enums.UserRole;
-//import lombok.Data;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -14,6 +12,12 @@ public class UserEntity {
     private String login;
     private String password;
     private UserRole role;
+
+//    public UserEntity(){}
+//
+//    public UserEntity(int idUser, String login, String password, UserRole role){
+//
+//    }
 
     @Id
     @Column(name = "id_user")

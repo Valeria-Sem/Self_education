@@ -1,16 +1,12 @@
 package com.backend.service.impl;
 
 import com.backend.entity.UserEntity;
-import com.backend.entity.enums.UserRole;
 import com.backend.repository.UserEntityRepository;
 import com.backend.service.UserEntityService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 @Service
@@ -59,6 +55,19 @@ public class UserEntityServiceImpl implements UserEntityService {
         log.info("IN findByIdUser method - user: {} found by id: {}", result);
 
         return result;
+    }
+
+    @Override
+    public UserEntity getUserIdByLoginAndPassword(String login, String password) {
+        UserEntity user = userEntityRepository.getIdUserByLoginAndPassword(login, password);
+        if (user == null) {
+            throw new Error("Invalid login or password");
+//            log.info("IN getUserIdByLoginAndPassword method - no user found with login: {}", user);
+
+
+        } else {
+            return userEntityRepository.getIdUserByLoginAndPassword(login, password);
+        }
     }
 
     @Override
