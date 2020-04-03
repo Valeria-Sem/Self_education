@@ -1,13 +1,14 @@
 import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
+import {APP_INITIALIZER, NgModule} from "@angular/core";
 import { BsDropdownModule } from "ngx-bootstrap/dropdown";
 import { TooltipModule } from "ngx-bootstrap/tooltip";
 import { ModalModule } from "ngx-bootstrap/modal";
-import { FormsModule } from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { NgAisModule } from 'angular-instantsearch';
+import {initApp} from "./services/app.initializer";
 
 import { AppComponent } from "./app.component";
 import {HttpClientModule} from "@angular/common/http";
@@ -19,6 +20,8 @@ import {HomeComponent} from "./components/home/home.component";
 import {CarouselComponent} from "./components/carousel/carousel.component";
 import {NotFoundComponent} from "./notFound/notFound.component";
 import {AboutComponent} from "./components/about/about.component";
+import {RoleGuard} from "./services/role-guard.service";
+import {UserService} from "./services/user.service";
 
 
 // const appRoutes: Routes = [
@@ -52,9 +55,17 @@ import {AboutComponent} from "./components/about/about.component";
     BrowserAnimationsModule,
     AccordionModule.forRoot(),
     CarouselModule.forRoot(),
-    NgAisModule.forRoot()
+    NgAisModule.forRoot(),
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [RoleGuard,
+    UserService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initApp,
+      deps: [UserService],
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

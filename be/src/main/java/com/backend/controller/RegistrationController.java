@@ -25,8 +25,8 @@ public class RegistrationController {
         return ResponseEntity.ok(information);
     }
 
-    @RequestMapping(value = "/customer",method = RequestMethod.POST)
-    public AbstractRegistrationModel registerCust(@RequestBody StudentRegistrationModel studentRegistrationModel){
+    @RequestMapping(value = "/student",method = RequestMethod.POST)
+    public AbstractRegistrationModel registerStudent(@RequestBody StudentRegistrationModel studentRegistrationModel){
         return registrationService.registerUser(studentRegistrationModel);
     }
 
