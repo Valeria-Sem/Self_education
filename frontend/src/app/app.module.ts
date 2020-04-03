@@ -7,6 +7,7 @@ import { FormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { NgAisModule } from 'angular-instantsearch';
 
 import { AppComponent } from "./app.component";
 import {HttpClientModule} from "@angular/common/http";
@@ -16,6 +17,8 @@ import {NavTopComponent} from "./components/nav-top/nav-top.component";
 import {NavSideComponent} from "./components/nav-side/nav-side.component";
 import {HomeComponent} from "./components/home/home.component";
 import {CarouselComponent} from "./components/carousel/carousel.component";
+import {NotFoundComponent} from "./notFound/notFound.component";
+import {AboutComponent} from "./components/about/about.component";
 
 
 // const appRoutes: Routes = [
@@ -31,7 +34,9 @@ import {CarouselComponent} from "./components/carousel/carousel.component";
     NavTopComponent,
     NavSideComponent,
     HomeComponent,
-    CarouselComponent
+    CarouselComponent,
+    NotFoundComponent,
+    AboutComponent
 
   ],
   imports: [
@@ -46,8 +51,8 @@ import {CarouselComponent} from "./components/carousel/carousel.component";
     routing,
     BrowserAnimationsModule,
     AccordionModule.forRoot(),
-    CarouselModule.forRoot()
- //   RouterModule.forRoot(appRoutes)
+    CarouselModule.forRoot(),
+    NgAisModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

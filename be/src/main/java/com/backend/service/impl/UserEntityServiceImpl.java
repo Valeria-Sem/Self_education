@@ -1,16 +1,32 @@
 package com.backend.service.impl;
 
 import com.backend.entity.UserEntity;
+import com.backend.entity.enums.UserRole;
 import com.backend.repository.UserEntityRepository;
 import com.backend.service.UserEntityService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
+
 @Service
+@Slf4j
 public class UserEntityServiceImpl implements UserEntityService {
 
+    private final UserEntityRepository userEntityRepository;
+//    private final BCryptPasswordEncoder passwordEncoder;
+
     @Autowired
-    private UserEntityRepository userEntityRepository;
+    public UserEntityServiceImpl(UserEntityRepository userEntityRepository
+//                                 BCryptPasswordEncoder passwordEncoder
+    ) {
+        this.userEntityRepository = userEntityRepository;
+//        this.passwordEncoder = passwordEncoder;
+    }
 
     @Override
     public Iterable<UserEntity> getAllUsers() {
@@ -24,28 +40,30 @@ public class UserEntityServiceImpl implements UserEntityService {
 
     @Override
     public UserEntity save(UserEntity userEntity) {
+//        userEntity.setPassword(passwordEncoder.encode(userEntity.getPassword()));
+//        userEntity.setRole(UserRole.USER);
+//        UserEntity registeredUser = userEntityRepository.save(userEntity);
+
+        log.info("IN save method - user: {} successfully registered", userEntity);
+
         return userEntityRepository.save(userEntity);
     }
 
     @Override
-    public UserEntity getUserIdByLoginAndPassword(String login, String password) {
-        UserEntity user = userEntityRepository.getUserIdByLoginAndPassword(login, password);
-        if (user == null) {
-            throw new Error("Invalid login or password");
-//            try {
-//                UsersEntity user = usersEntityRepository.getUserIdByLoginAndPassword(login, password);
-//                throw new Error();
-//            } catch (NotFoundException e){
-//                throw new RuntimeException(e.getMessage(), e);
-//                throw new Error();
-//            }
-        } else {
-            return userEntityRepository.getUserIdByLoginAndPassword(login, password);
+    public UserEntity findByIdUser(Integer idUser) {
+        UserEntity result = userEntityRepository.findByIdUser(idUser);
+
+        if(result == null){
+            log.info("IN findByIdUser method - no user found by id: {}", idUser);
         }
+        log.info("IN findByIdUser method - user: {} found by id: {}", result);
+
+        return result;
     }
 
     @Override
     public void delete(int idUser) {
         userEntityRepository.deleteById(idUser);
+        log.info("IN delete - user with id: {} successfully deleted", idUser);
     }
 }

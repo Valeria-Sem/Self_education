@@ -2,10 +2,12 @@ import {ModuleWithProviders} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 
 import {HomeComponent} from "./components/home/home.component";
+import {NotFoundComponent} from "./notFound/notFound.component";
+import {AboutComponent} from "./components/about/about.component";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent}
-  // , {path: 'about', component: AboutComponent}
+  , {path: 'about', component: AboutComponent}
   // , {path: 'userReg', component: UserRegComponent}
   // , {path: 'orgReg', component: OrganisationRegComponent}
   // , {path: 'films', component: FilmsComponent, canActivate: [RoleGuard], data: {role: Role.CUSTOMER}}
@@ -16,7 +18,7 @@ const appRoutes: Routes = [
   // , {path: 'profile', component: UserComponent}
   // , {path: 'sub', component: SubComponent}
   // , {path: 'constructor', component: ConstructorComponent, canActivate: [RoleGuard], data: {role: Role.ORGANISATION}}
-  // , {path: '**', component: NotFoundComponent}
+  , {path: '**', component: NotFoundComponent}
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);

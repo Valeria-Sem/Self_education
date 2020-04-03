@@ -1,6 +1,6 @@
 package com.backend.entity.enums;
 
-public enum UserRole {
-    STUDENT,
-    TEACHER
+public enum  UserRole {
+    ADMIN,
+    USER
 }
