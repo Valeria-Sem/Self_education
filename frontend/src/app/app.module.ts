@@ -22,6 +22,8 @@ import {NotFoundComponent} from "./notFound/notFound.component";
 import {AboutComponent} from "./components/about/about.component";
 import {RoleGuard} from "./services/role-guard.service";
 import {UserService} from "./services/user.service";
+import {GroupsComponent} from "./components/groups/groups.component";
+import {AdminCoursesComponent} from "./components/admin-courses/admin-courses.component";
 
 
 // const appRoutes: Routes = [
@@ -39,7 +41,9 @@ import {UserService} from "./services/user.service";
     HomeComponent,
     CarouselComponent,
     NotFoundComponent,
-    AboutComponent
+    AboutComponent,
+    GroupsComponent,
+    AdminCoursesComponent
 
   ],
   imports: [

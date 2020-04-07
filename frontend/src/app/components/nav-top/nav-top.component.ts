@@ -7,6 +7,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {User} from "../../modules/user";
 import {UserService} from "../../services/user.service";
 import {Subscription} from "rxjs";
+import {getTemplate} from "codelyzer/util/ngQuery";
 
 
 @Component({
@@ -81,6 +82,11 @@ export class NavTopComponent implements OnInit{
           }
         )
     )
+
+    if(this.user.role == 'ADMIN'){
+      // this.router.navigate(['/']);
+
+    }
   }
 
   onHidden(): void {

@@ -82,8 +82,10 @@
                 *dropdownMenu class="dropdown-menu"
                 role="menu"
                 aria-labelledby="button-animated">
-              <li role="menuitem"><a class="dropdown-item" routerLink="/profile">Profile</a></li>
-              <li role="menuitem"><a class="dropdown-item" routerLink="/sub">Subscription</a></li>
+              <li role="menuitem" [class.text-hide]="(user$ | async).role === 'ADMIN'"><a class="dropdown-item" [class.disabled]="(user$ | async).role === 'ADMIN'" routerLink="/profile">My profile</a></li>
+              <li role="menuitem" [class.text-hide]="(user$ | async).role === 'USER'"><a class="dropdown-item" [class.disabled]="(user$ | async).role === 'USER'" routerLink="/groups">Groups</a></li>
+              <li role="menuitem" [class.text-hide]="(user$ | async).role === 'ADMIN'"><a class="dropdown-item" [class.disabled]="(user$ | async).role === 'ADMIN'" routerLink="/sub">My subscriptions</a></li>
+              <li role="menuitem" [class.text-hide]="(user$ | async).role === 'USER'"><a class="dropdown-item" [class.disabled]="(user$ | async).role === 'USER'" routerLink="/courses">Courses</a></li>
 
             </ul>
           </div>
@@ -140,47 +142,47 @@
                   </a>
                 </form>
 
-                <span class="link"
-                      style="margin-left: 40px"
-                      (click)="openModal2(templateNested)">
-                  Register a new profile
-                </span>
+<!--                <span class="link"-->
+<!--                      style="margin-left: 40px"-->
+<!--                      (click)="openModal2(templateNested)">-->
+<!--                  Register a new profile-->
+<!--                </span>-->
               </div>
             </div>
           </div>
         </ng-template>
 
-        <ng-template #templateNested>
-          <div class="modal-content" style="margin: auto;">
-            <div class="modal-header">
-              <h4 class="modal-title pull-left" style="margin: auto; padding-left: 70px">Registration</h4>
-              <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef2.hide()">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body" style="margin: auto;">
-              <div class="container-fluid" style="margin: auto;">
-                <form>
-                  <div class="form-froup m-3">
-                    <p>You are Organisation or Customer ?</p>
-                  </div>
-                  <div class="form-froup m-3">
-                    <form [formGroup]="myForm" class="form-inline">
-                      <div class="form-group">
-                        <div class="btn-group" btnRadioGroup formControlName="radio">
-                          <label btnRadio="A" class="btn btn-primary"
-                                 tabindex="0" role="button" routerLink="/orgReg" (click)="closeModal2(templateNested)">Organisation</label>
-                          <label btnRadio="B" class="btn btn-primary"
-                                 tabindex="0" role="button" routerLink="/userReg" (click)="closeModal2(templateNested)">Customer</label>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </ng-template>
+<!--        <ng-template #templateNested>-->
+<!--          <div class="modal-content" style="margin: auto;">-->
+<!--            <div class="modal-header">-->
+<!--              <h4 class="modal-title pull-left" style="margin: auto; padding-left: 70px">Registration</h4>-->
+<!--              <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef2.hide()">-->
+<!--                <span aria-hidden="true">&times;</span>-->
+<!--              </button>-->
+<!--            </div>-->
+<!--            <div class="modal-body" style="margin: auto;">-->
+<!--              <div class="container-fluid" style="margin: auto;">-->
+<!--                <form>-->
+<!--                  <div class="form-froup m-3">-->
+<!--                    <p>You are Organisation or Customer ?</p>-->
+<!--                  </div>-->
+<!--                  <div class="form-froup m-3">-->
+<!--                    <form [formGroup]="myForm" class="form-inline">-->
+<!--                      <div class="form-group">-->
+<!--                        <div class="btn-group" btnRadioGroup formControlName="radio">-->
+<!--                          <label btnRadio="A" class="btn btn-primary"-->
+<!--                                 tabindex="0" role="button" routerLink="/orgReg" (click)="closeModal2(templateNested)">Organisation</label>-->
+<!--                          <label btnRadio="B" class="btn btn-primary"-->
+<!--                                 tabindex="0" role="button" routerLink="/userReg" (click)="closeModal2(templateNested)">Customer</label>-->
+<!--                        </div>-->
+<!--                      </div>-->
+<!--                    </form>-->
+<!--                  </div>-->
+<!--                </form>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </ng-template>-->
       </form>
     </div>
   </nav>

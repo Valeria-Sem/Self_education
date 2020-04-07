@@ -4,10 +4,12 @@ import {Routes, RouterModule} from '@angular/router';
 import {HomeComponent} from "./components/home/home.component";
 import {NotFoundComponent} from "./notFound/notFound.component";
 import {AboutComponent} from "./components/about/about.component";
+import {GroupsComponent} from "./components/groups/groups.component";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent}
   , {path: 'about', component: AboutComponent}
+  , {path: 'groups', component: GroupsComponent}
   // , {path: 'userReg', component: UserRegComponent}
   // , {path: 'orgReg', component: OrganisationRegComponent}
   // , {path: 'films', component: FilmsComponent, canActivate: [RoleGuard], data: {role: Role.CUSTOMER}}
