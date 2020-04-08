@@ -12,6 +12,7 @@ export class User {
   idStudent: string;
   name: string;
   surname: string;
+  patronymic: string;
   idGroup: string;
   groupName: string;
 

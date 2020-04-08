@@ -11,11 +11,9 @@
     <div class="row justify-content-center">
       <div class="col col-lg-4 description" *ngFor="let choice of groups">
         <div class="card text-center mt-5 description-container">
-<!--          <img src={{choice.img}} alt="" class="card-img-top">-->
           <div class="card-body">
             <h1 class="card-title pricing-card-title">
-              ${{choice.groupName}}
-              <small class="text-muted">/ mo</small>
+              group {{choice.groupName}}
             </h1>
 <!--            <h4 class="card-title" >{{choice.name}}</h4>-->
 <!--            <p class="card-text">-->
