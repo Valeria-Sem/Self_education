@@ -4,13 +4,14 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "group", schema = "self_education", catalog = "")
+@Table(name = "`group`", schema = "`self_edu`", catalog = "")
 public class GroupEntity {
     private int idGroup;
     private String groupName;
 
     @Id
-    @Column(name = "id_group")
+    @Column(name = "`id_group`")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getIdGroup() {
         return idGroup;
     }
@@ -20,7 +21,7 @@ public class GroupEntity {
     }
 
     @Basic
-    @Column(name = "group_name")
+    @Column(name = "`group_name`")
     public String getGroupName() {
         return groupName;
     }

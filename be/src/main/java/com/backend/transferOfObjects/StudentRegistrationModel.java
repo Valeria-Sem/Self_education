@@ -8,6 +8,10 @@ public class StudentRegistrationModel extends AbstractRegistrationModel {
     private String name;
     private String surname;
 
+
+
+    private String patronymic;
+
     private int idGroup;
 
     private int idWallet;
@@ -18,13 +22,14 @@ public class StudentRegistrationModel extends AbstractRegistrationModel {
     }
 
     public StudentRegistrationModel(int idUser, String login, String password, UserRole role,
-                                    int idStudent, String name, String surname,
+                                    int idStudent, String name, String surname, String patronymic,
                                     int idGroup,
                                     int idWallet, int balance, WalletStatus walletStatus) {
         super(idUser, login, password, role);
         this.idStudent = idStudent;
         this.name = name;
         this.surname = surname;
+        this.patronymic = patronymic;
         this.idGroup = idGroup;
         this.idWallet = idWallet;
         this.balance = balance;
@@ -53,6 +58,14 @@ public class StudentRegistrationModel extends AbstractRegistrationModel {
 
     public void setSurname(String surname) {
         this.surname = surname;
+    }
+
+    public String getPatronymic() {
+        return patronymic;
+    }
+
+    public void setPatronymic(String patronymic) {
+        this.patronymic = patronymic;
     }
 
     public int getIdGroup() {

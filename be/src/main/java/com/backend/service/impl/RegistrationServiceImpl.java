@@ -67,9 +67,10 @@ public class RegistrationServiceImpl implements RegistrationService {
         StudentEntity studentEntity = new StudentEntity();
         studentEntity.setName(info.getName());
         studentEntity.setSurname(info.getSurname());
-        studentEntity.setIdGroup(info.getIdGroup());
-        studentEntity.setUserByIdUser(user);
-        studentEntity.setWalletByIdWallet(wallet);
+        studentEntity.setPatronymic(info.getPatronymic());
+        studentEntity.setGroupId(info.getIdGroup());
+        studentEntity.setUserByUserId(user);
+        studentEntity.setWalletByWalletId(wallet);
         studentEntityService.saveStudent(studentEntity);
     }
 
@@ -83,7 +84,7 @@ public class RegistrationServiceImpl implements RegistrationService {
                     userEntity.getRole());
         } else {
             StudentEntity studentEntity = studentEntityService.getStudentEntityByUserByIdUser(userEntity);
-            WalletEntity walletEntity = studentEntity.getWalletByIdWallet();
+            WalletEntity walletEntity = studentEntity.getWalletByWalletId();
             return new StudentRegistrationModel(userEntity.getIdUser(),
                     userEntity.getLogin(),
                     userEntity.getPassword(),
@@ -91,7 +92,8 @@ public class RegistrationServiceImpl implements RegistrationService {
                     studentEntity.getIdStudent(),
                     studentEntity.getName(),
                     studentEntity.getSurname(),
-                    studentEntity.getIdGroup(),
+                    studentEntity.getPatronymic(),
+                    studentEntity.getGroupId(),
                     walletEntity.getIdWallet(),
                     walletEntity.getBalance(),
                     walletEntity.getStatus());

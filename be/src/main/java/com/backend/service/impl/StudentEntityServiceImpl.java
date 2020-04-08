@@ -46,7 +46,7 @@ public class StudentEntityServiceImpl implements StudentEntityService {
             log.info("Student with login: {} not found", userEntity.getLogin());
            return null;
         } else {
-        return studentEntityRepository.getStudentEntityByUserByIdUser(result); }
+        return studentEntityRepository.getStudentEntityByUserByUserId(result); }
     }
 
     @Override

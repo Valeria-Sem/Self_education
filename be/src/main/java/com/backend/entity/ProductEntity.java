@@ -4,17 +4,18 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "product", schema = "self_education", catalog = "")
+@Table(name = "product", schema = "self_edu", catalog = "")
 public class ProductEntity {
     private int idProduct;
-    private String name;
+    private String productName;
     private String description;
     private int price;
-    private int idCourse;
     private String img;
+    private CourseEntity courseByCourseId;
 
     @Id
     @Column(name = "id_product")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getIdProduct() {
         return idProduct;
     }
@@ -24,13 +25,13 @@ public class ProductEntity {
     }
 
     @Basic
-    @Column(name = "name")
-    public String getName() {
-        return name;
+    @Column(name = "product_name")
+    public String getProductName() {
+        return productName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
     @Basic
@@ -54,16 +55,6 @@ public class ProductEntity {
     }
 
     @Basic
-    @Column(name = "id_course")
-    public int getIdCourse() {
-        return idCourse;
-    }
-
-    public void setIdCourse(int idCourse) {
-        this.idCourse = idCourse;
-    }
-
-    @Basic
     @Column(name = "img")
     public String getImg() {
         return img;
@@ -80,14 +71,23 @@ public class ProductEntity {
         ProductEntity that = (ProductEntity) o;
         return idProduct == that.idProduct &&
                 price == that.price &&
-                idCourse == that.idCourse &&
-                Objects.equals(name, that.name) &&
+                Objects.equals(productName, that.productName) &&
                 Objects.equals(description, that.description) &&
                 Objects.equals(img, that.img);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idProduct, name, description, price, idCourse, img);
+        return Objects.hash(idProduct, productName, description, price, img);
+    }
+
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "course_id", referencedColumnName = "id_course", nullable = false)
+    public CourseEntity getCourseByCourseId() {
+        return courseByCourseId;
+    }
+
+    public void setCourseByCourseId(CourseEntity courseByCourseId) {
+        this.courseByCourseId = courseByCourseId;
     }
 }

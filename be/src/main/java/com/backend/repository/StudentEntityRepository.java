@@ -5,6 +5,6 @@ import com.backend.entity.UserEntity;
 import org.springframework.data.repository.CrudRepository;
 
 public interface StudentEntityRepository extends CrudRepository<StudentEntity, Integer> {
-    StudentEntity getStudentEntityByUserByIdUser(UserEntity userEntity);
+    StudentEntity getStudentEntityByUserByUserId(UserEntity userEntity);
     StudentEntity getStudentByIdStudent(Integer id);
 }

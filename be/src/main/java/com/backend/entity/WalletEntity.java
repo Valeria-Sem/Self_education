@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "wallet", schema = "self_education", catalog = "")
+@Table(name = "wallet", schema = "self_edu", catalog = "")
 public class WalletEntity {
     private int idWallet;
     private int balance;
@@ -14,6 +14,7 @@ public class WalletEntity {
 
     @Id
     @Column(name = "id_wallet")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getIdWallet() {
         return idWallet;
     }

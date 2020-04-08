@@ -6,21 +6,16 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "user", schema = "self_education", catalog = "")
+@Table(name = "user", schema = "self_edu", catalog = "")
 public class UserEntity {
     private int idUser;
     private String login;
     private String password;
     private UserRole role;
 
-//    public UserEntity(){}
-//
-//    public UserEntity(int idUser, String login, String password, UserRole role){
-//
-//    }
-
     @Id
     @Column(name = "id_user")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getIdUser() {
         return idUser;
     }

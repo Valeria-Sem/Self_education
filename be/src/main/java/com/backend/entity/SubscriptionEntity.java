@@ -6,41 +6,21 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "subscription", schema = "self_education", catalog = "")
+@Table(name = "subscription", schema = "self_edu", catalog = "")
 public class SubscriptionEntity {
     private int idSubscription;
-    private int idStudent;
-    private int idProduct;
     private SubStatus status;
+    private StudentEntity studentByStudentId;
 
     @Id
     @Column(name = "id_subscription")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getIdSubscription() {
         return idSubscription;
     }
 
     public void setIdSubscription(int idSubscription) {
         this.idSubscription = idSubscription;
-    }
-
-    @Basic
-    @Column(name = "id_student")
-    public int getIdStudent() {
-        return idStudent;
-    }
-
-    public void setIdStudent(int idStudent) {
-        this.idStudent = idStudent;
-    }
-
-    @Basic
-    @Column(name = "id_product")
-    public int getIdProduct() {
-        return idProduct;
-    }
-
-    public void setIdProduct(int idProduct) {
-        this.idProduct = idProduct;
     }
 
     @Basic
@@ -60,13 +40,21 @@ public class SubscriptionEntity {
         if (o == null || getClass() != o.getClass()) return false;
         SubscriptionEntity that = (SubscriptionEntity) o;
         return idSubscription == that.idSubscription &&
-                idStudent == that.idStudent &&
-                idProduct == that.idProduct &&
                 Objects.equals(status, that.status);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idSubscription, idStudent, idProduct, status);
+        return Objects.hash(idSubscription, status);
+    }
+
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "student_id", referencedColumnName = "id_student", nullable = false)
+    public StudentEntity getStudentByStudentId() {
+        return studentByStudentId;
+    }
+
+    public void setStudentByStudentId(StudentEntity studentByStudentId) {
+        this.studentByStudentId = studentByStudentId;
     }
 }
