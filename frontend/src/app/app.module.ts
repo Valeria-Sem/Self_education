@@ -22,16 +22,10 @@ import {NotFoundComponent} from "./notFound/notFound.component";
 import {AboutComponent} from "./components/about/about.component";
 import {RoleGuard} from "./services/role-guard.service";
 import {UserService} from "./services/user.service";
-import {GroupsComponent} from "./components/groups/groups.component";
-import {AdminCoursesComponent} from "./components/admin-courses/admin-courses.component";
-
-
-// const appRoutes: Routes = [
-//   {path: "", component: HomeComponent},
-//   {path: "home", component: HomeComponent},
-//   {path: "billing-details/:id", component: BillingDetailsViewComponent},
-//   {path: "**", component: NotFoundComponent}
-// ];
+import {GroupsComponent} from "./components/admin/groups/groups.component";
+import {AdminCoursesComponent} from "./components/admin/admin-cours/admin-courses.component";
+import {AlertModule, TabsModule} from "ngx-bootstrap";
+import {StudentPageComponent} from "./components/admin/studentPage/studentPage.component";
 
 @NgModule({
   declarations: [
@@ -43,8 +37,8 @@ import {AdminCoursesComponent} from "./components/admin-courses/admin-courses.co
     NotFoundComponent,
     AboutComponent,
     GroupsComponent,
-    AdminCoursesComponent
-
+    AdminCoursesComponent,
+    StudentPageComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +54,9 @@ import {AdminCoursesComponent} from "./components/admin-courses/admin-courses.co
     AccordionModule.forRoot(),
     CarouselModule.forRoot(),
     NgAisModule.forRoot(),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AlertModule.forRoot(),
+    TabsModule.forRoot()
   ],
   providers: [RoleGuard,
     UserService,

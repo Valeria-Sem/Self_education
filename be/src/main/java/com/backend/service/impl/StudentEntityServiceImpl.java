@@ -14,6 +14,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @Slf4j
 public class StudentEntityServiceImpl implements StudentEntityService {
@@ -55,11 +57,16 @@ public class StudentEntityServiceImpl implements StudentEntityService {
     }
 
     @Override
-    public PageStudentModel getStudentByGroupId(Integer groupId, int pageNum, int pageSize) {
-        Pageable pageable =  PageRequest.of( pageNum, pageSize, Sort.by("name"));
-        Page<StudentEntity> page = studentEntityRepository.findByGroupId(groupId, pageable);
-        return new PageStudentModel((int)page.getTotalElements(), page.getContent());
+    public Iterable<StudentEntity> getStudentByGroupId(Integer groupId) {
+        return studentEntityRepository.findByGroupId(groupId);
     }
+
+//    @Override
+//    public PageStudentModel getStudentByGroupId(Integer groupId, int pageNum, int pageSize) {
+//        Pageable pageable =  PageRequest.of( pageNum, pageSize, Sort.by("name"));
+//        Page<StudentEntity> page = studentEntityRepository.findByGroupId(groupId, pageable);
+//        return new PageStudentModel((int)page.getTotalElements(), page.getContent());
+//    }
 
     @Override
     public void deleteStudent(int idStudent) {

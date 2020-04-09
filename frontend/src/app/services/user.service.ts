@@ -37,4 +37,8 @@ export class UserService {
   saveUser(user: UserInf): Observable<UserInf> {
     return this.http.post<UserInf>('/api/user', user);
   }
+
+  getUsersByIdGroup(idGroup: string): Observable<User> {
+    return this.http.get<User>('/api/student/group/'+ idGroup);
+  }
 }

@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/api/student")
 @Slf4j
@@ -19,12 +21,19 @@ public class StudentEntityController {
         this.studentEntityService = studentEntityService;
     }
 
+//    @RequestMapping(value = "/group/{groupId}", method = RequestMethod.GET)
+//    public ResponseEntity<PageStudentModel> getStudentsByGroupId(@PathVariable(name = "groupId") Integer groupId,
+//                                                                 @RequestParam(name = "offset") int offset,
+//                                                                 @RequestParam(name = "limit") int limit){
+//        PageStudentModel products = studentEntityService.getStudentByGroupId(groupId, offset, limit);
+//        return ResponseEntity.ok(products);
+//
+//    }
+
     @RequestMapping(value = "/group/{groupId}", method = RequestMethod.GET)
-    public ResponseEntity<PageStudentModel> getStudentsByGroupId(@PathVariable(name = "groupId") Integer groupId,
-                                                                 @RequestParam(name = "offset") int offset,
-                                                                 @RequestParam(name = "limit") int limit){
-        PageStudentModel products = studentEntityService.getStudentByGroupId(groupId, offset, limit);
-        return ResponseEntity.ok(products);
+    public Iterable<StudentEntity> getStudentsByGroupId(@PathVariable(name = "groupId") Integer groupId){
+        return studentEntityService.getStudentByGroupId(groupId);
+
 
     }
 }
