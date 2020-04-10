@@ -7,4 +7,5 @@ import java.util.Optional;
 public interface GroupEntityService {
     Iterable<GroupEntity> getAllGroups();
     Optional<GroupEntity> getByIdGroup(int idGroup);
+    GroupEntity saveGroup(GroupEntity group);
 }

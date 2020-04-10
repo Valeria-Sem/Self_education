@@ -18,7 +18,7 @@ import {NavTopComponent} from "./components/nav-top/nav-top.component";
 import {NavSideComponent} from "./components/nav-side/nav-side.component";
 import {HomeComponent} from "./components/home/home.component";
 import {CarouselComponent} from "./components/carousel/carousel.component";
-import {NotFoundComponent} from "./notFound/notFound.component";
+import {NotFoundComponent} from "./components/notFound/notFound.component";
 import {AboutComponent} from "./components/about/about.component";
 import {RoleGuard} from "./services/role-guard.service";
 import {UserService} from "./services/user.service";
@@ -27,6 +27,7 @@ import {AdminCoursesComponent} from "./components/admin/admin-cours/admin-course
 import {AlertModule, TabsModule} from "ngx-bootstrap";
 import {StudentPageComponent} from "./components/admin/studentPage/studentPage.component";
 import {RegistrationComponent} from "./components/admin/studReg/registration.component";
+import {ConstructorComponent} from "./components/admin/groups/constructor/constructor.component";
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {RegistrationComponent} from "./components/admin/studReg/registration.com
     GroupsComponent,
     AdminCoursesComponent,
     StudentPageComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    ConstructorComponent
   ],
   imports: [
     BrowserModule,

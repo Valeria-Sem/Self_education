@@ -2,11 +2,12 @@ import {ModuleWithProviders} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 
 import {HomeComponent} from "./components/home/home.component";
-import {NotFoundComponent} from "./notFound/notFound.component";
+import {NotFoundComponent} from "./components/notFound/notFound.component";
 import {AboutComponent} from "./components/about/about.component";
 import {GroupsComponent} from "./components/admin/groups/groups.component";
 import {StudentPageComponent} from "./components/admin/studentPage/studentPage.component";
 import {RegistrationComponent} from "./components/admin/studReg/registration.component";
+import {ConstructorComponent} from "./components/admin/groups/constructor/constructor.component";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent}
@@ -14,7 +15,7 @@ const appRoutes: Routes = [
   , {path: 'groups', component: GroupsComponent}
   , {path: 'groups/studentPage/:id', component: StudentPageComponent}
   , {path: 'registration', component: RegistrationComponent}
-  // , {path: 'orgReg', component: OrganisationRegComponent}
+  , {path: 'constructor', component: ConstructorComponent}
   // , {path: 'films', component: FilmsComponent, canActivate: [RoleGuard], data: {role: Role.CUSTOMER}}
   // , {path: 'app', component: AppsComponent, canActivate: [RoleGuard], data: {role: Role.CUSTOMER}}
   // , {path: 'games', component: GamesComponent, canActivate: [RoleGuard], data: {role: Role.CUSTOMER}}

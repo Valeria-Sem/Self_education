@@ -35,4 +35,9 @@ public class GroupEntityServiceImpl implements GroupEntityService {
     public Optional<GroupEntity> getByIdGroup(int idGroup) {
         return groupEntityRepository.findById(idGroup);
     }
+
+    @Override
+    public GroupEntity saveGroup(GroupEntity group) {
+        return groupEntityRepository.save(group);
+    }
 }
