@@ -1,0 +1,63 @@
+<div class="container">
+  <form>
+    <h1 class="h3 mb-3 font-weight-normal">Registration</h1>
+
+
+    <label for="inputName" class="sr-only">Name</label>
+    <input id="inputName" class="form-control" placeholder="Name" #nameField="ngModel" required autofocus
+           [(ngModel)]="name" name="name" minlength="3" maxlength="16">
+    <div [hidden]="nameField.valid || nameField.untouched || !nameField?.value?.trim().length" class="alert alert-danger">
+      Missing Name
+    </div>
+
+    <label for="inputSurname" class="sr-only">Surname</label>
+    <input id="inputSurname" class="form-control" placeholder="Surname" #surnameField="ngModel"
+           required [(ngModel)]="surname"
+           name="surname" minlength="3" maxlength="25">
+    <div [hidden]="surnameField.valid || surnameField.untouched || !surnameField?.value?.trim().length" class="alert alert-danger">
+      Missing Surname
+    </div>
+
+    <label for="inputPatronymic" class="sr-only">Patronymic</label>
+    <input id="inputPatronymic" class="form-control" placeholder="Patronymic" #patronymicField="ngModel"
+           required [(ngModel)]="patronymic"
+           name="patronymic" minlength="3" maxlength="25">
+    <div [hidden]="patronymicField.valid || patronymicField.untouched || !patronymicField?.value?.trim().length" class="alert alert-danger">
+      Missing Patronymic
+    </div>
+
+    <form method="post">
+      <p>
+<!--        <label>-->
+          <select size="1"  class="form-control"
+                   #groupField="ngModel" required
+                   [(ngModel)]="idGroup"  name="hero[]">
+            <option value="undefined" disabled selected hidden>Choose group</option>
+            <option [value]="choice.idGroup" *ngFor="let choice of groups" >{{choice.groupName}}</option>
+          </select>
+<!--        </label>-->
+      </p>
+      <div [hidden]="groupField.valid || groupField.untouched" class="alert alert-danger">
+        Missing Group
+      </div>
+    </form>
+
+    <label for="inputLogin" class="sr-only">Login</label>
+    <input type="login" id="inputLogin" class="form-control" placeholder="Login" #loginField="ngModel" required [(ngModel)]="login"
+           name="log" minlength="3" maxlength="16">
+    <div [hidden]="loginField.valid || loginField.untouched || !loginField?.value?.trim().length" class="alert alert-danger">
+      Incorrect Login
+    </div>
+
+    <button
+      [disabled]="!nameField.valid || !surnameField.valid || !patronymicField.valid || !groupField.valid || !loginField.valid"
+      class="btn btn-lg btn-primary btn-block"
+      type="submit"
+      (click)="saveStudent(information)"
+      routerLink="/groups">
+      Save
+    </button>
+    <p class="mt-5 mb-3 text-muted">&copy; 2020-2021</p>
+  </form>
+</div>
+

@@ -6,24 +6,31 @@ export class User {
   login: string;
   password: string;
   role: Role;
+
   idWallet: string;
   balance: number;
   walletStatus: Status;
+
   idStudent: number;
   name: string;
   surname: string;
   patronymic: string;
+
   idGroup: string;
   groupName: string;
 
 
-  constructor(login: string, password: string, role: Role, balance: number, walletStatus: Status,   groupName: string) {
+  constructor(name: string, surname: string, patronymic: string, idGroup: string, login: string, password: string, role: Role,
+              balance: number, walletStatus: Status) {
     this.login = login;
     this.password = password;
     this.role = role;
     this.balance = balance;
     this.walletStatus = walletStatus;
-    this.groupName = groupName;
+    this.idGroup = idGroup;
+    this.name = name;
+    this.surname = surname;
+    this.patronymic = patronymic;
   }
 
 

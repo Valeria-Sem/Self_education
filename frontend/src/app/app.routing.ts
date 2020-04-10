@@ -6,15 +6,14 @@ import {NotFoundComponent} from "./notFound/notFound.component";
 import {AboutComponent} from "./components/about/about.component";
 import {GroupsComponent} from "./components/admin/groups/groups.component";
 import {StudentPageComponent} from "./components/admin/studentPage/studentPage.component";
+import {RegistrationComponent} from "./components/admin/studReg/registration.component";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent}
   , {path: 'about', component: AboutComponent}
   , {path: 'groups', component: GroupsComponent}
-  , {path: 'groups/studentPage/:id',
-    component: StudentPageComponent,
-    }
-  // , {path: 'userReg', component: UserRegComponent}
+  , {path: 'groups/studentPage/:id', component: StudentPageComponent}
+  , {path: 'registration', component: RegistrationComponent}
   // , {path: 'orgReg', component: OrganisationRegComponent}
   // , {path: 'films', component: FilmsComponent, canActivate: [RoleGuard], data: {role: Role.CUSTOMER}}
   // , {path: 'app', component: AppsComponent, canActivate: [RoleGuard], data: {role: Role.CUSTOMER}}

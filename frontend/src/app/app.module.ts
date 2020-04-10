@@ -26,6 +26,7 @@ import {GroupsComponent} from "./components/admin/groups/groups.component";
 import {AdminCoursesComponent} from "./components/admin/admin-cours/admin-courses.component";
 import {AlertModule, TabsModule} from "ngx-bootstrap";
 import {StudentPageComponent} from "./components/admin/studentPage/studentPage.component";
+import {RegistrationComponent} from "./components/admin/studReg/registration.component";
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import {StudentPageComponent} from "./components/admin/studentPage/studentPage.c
     AboutComponent,
     GroupsComponent,
     AdminCoursesComponent,
-    StudentPageComponent
+    StudentPageComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
