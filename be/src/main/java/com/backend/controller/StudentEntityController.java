@@ -1,5 +1,6 @@
 package com.backend.controller;
 
+import com.backend.entity.CourseEntity;
 import com.backend.entity.StudentEntity;
 import com.backend.paginationModel.PageStudentModel;
 import com.backend.service.StudentEntityService;
@@ -33,7 +34,11 @@ public class StudentEntityController {
     @RequestMapping(value = "/group/{groupId}", method = RequestMethod.GET)
     public Iterable<StudentEntity> getStudentsByGroupId(@PathVariable(name = "groupId") Integer groupId){
         return studentEntityService.getStudentByGroupId(groupId);
+    }
 
-
+    @RequestMapping (value = "/{idStudent}", method = RequestMethod.GET)
+    public ResponseEntity<StudentEntity> getStudentById(@PathVariable(name = "idStudent") Integer idStudent) {
+        StudentEntity student = studentEntityService.getStudentByIdStudent(idStudent);
+        return ResponseEntity.ok(student);
     }
 }

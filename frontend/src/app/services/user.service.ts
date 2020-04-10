@@ -12,6 +12,10 @@ export class UserService {
 
   public currentUser$: ReplaySubject<User> = new ReplaySubject(1);
 
+  public currentStudent: User;
+
+  public currentStudent$: ReplaySubject<User> = new ReplaySubject(1);
+
   constructor(private http: HttpClient) {
   }
 
@@ -38,7 +42,11 @@ export class UserService {
     return this.http.post<UserInf>('/api/user', user);
   }
 
-  getUsersByIdGroup(idGroup: string): Observable<User> {
-    return this.http.get<User>('/api/student/group/'+ idGroup);
+  getUsersByIdGroup(idGroup: string): Observable<User[]> {
+    return this.http.get<User[]>('/api/student/group/'+ idGroup);
+  }
+
+  getStudentById(idStudent: string): Observable<User> {
+    return this.http.get<User>('/api/registration/student/'+ idStudent);
   }
 }

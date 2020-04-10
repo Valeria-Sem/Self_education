@@ -9,7 +9,7 @@ export class User {
   idWallet: string;
   balance: number;
   walletStatus: Status;
-  idStudent: string;
+  idStudent: number;
   name: string;
   surname: string;
   patronymic: string;

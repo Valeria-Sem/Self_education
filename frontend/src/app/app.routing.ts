@@ -11,7 +11,9 @@ const appRoutes: Routes = [
   {path: '', component: HomeComponent}
   , {path: 'about', component: AboutComponent}
   , {path: 'groups', component: GroupsComponent}
-  , {path: 'studentPage', component: StudentPageComponent}
+  , {path: 'groups/studentPage/:id',
+    component: StudentPageComponent,
+    }
   // , {path: 'userReg', component: UserRegComponent}
   // , {path: 'orgReg', component: OrganisationRegComponent}
   // , {path: 'films', component: FilmsComponent, canActivate: [RoleGuard], data: {role: Role.CUSTOMER}}

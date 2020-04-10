@@ -1,7 +1,7 @@
 <div class="pricing-header px-3 py-3 pt-md-5 p-md-4 mx-auto text-center">
   <h1 class="display-4"  style="margin-bottom: 35px">Groups</h1>
   <alert type="info">
-    <strong>Pay attention!</strong> Here are all the groups that are assigned to you. You can create a new group or student.
+    <strong>Read this!</strong> Here are all the groups that are assigned to you. You can create a new group or student.
   </alert>
 </div>
 
@@ -9,12 +9,16 @@
   <tabset>
     <tab *ngFor="let choice of groups" heading="group {{choice.groupName}}"
                    (select)="students($event, choice.idGroup)" active>
+
       <h5 class="page-link" *ngFor="let studChoice of users"
           style="margin-top: 20px; text-align: center; color: mediumslateblue"
-      routerLink="/studentPage">
+          routerLink="/groups/studentPage/:{{studChoice.idStudent}}">
         {{studChoice.surname}}
         {{studChoice.name}}
-        {{studChoice.patronymic}}</h5>
+        {{studChoice.patronymic}}
+      </h5>
     </tab>
   </tabset>
 </div>
+
+

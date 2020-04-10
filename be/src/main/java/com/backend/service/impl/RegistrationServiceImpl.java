@@ -101,6 +101,25 @@ public class RegistrationServiceImpl implements RegistrationService {
     }
 
     @Override
+    public AbstractRegistrationModel getUserInfoByIdStudent(int idStudent) {
+        StudentEntity studentEntity = studentEntityService.getStudentByIdStudent(idStudent);
+        WalletEntity walletEntity = studentEntity.getWalletByWalletId();
+        UserEntity userEntity = studentEntity.getUserByUserId();
+        return new StudentRegistrationModel(userEntity.getIdUser(),
+                userEntity.getLogin(),
+                userEntity.getPassword(),
+                userEntity.getRole(),
+                studentEntity.getIdStudent(),
+                studentEntity.getName(),
+                studentEntity.getSurname(),
+                studentEntity.getPatronymic(),
+                studentEntity.getGroupId(),
+                walletEntity.getIdWallet(),
+                walletEntity.getBalance(),
+                walletEntity.getStatus());
+    }
+
+    @Override
     public void deleteUserProfile(int idUser, int idWallet) {
         userEntityService.delete(idUser);
         walletEntityService.deleteWallet(idWallet);

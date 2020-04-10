@@ -25,6 +25,13 @@ public class RegistrationController {
         return ResponseEntity.ok(information);
     }
 
+    @RequestMapping(value = "/student/{idStudent}", method = RequestMethod.GET)
+    public ResponseEntity<AbstractRegistrationModel> getUserInfoByIdStudent(
+            @PathVariable(name = "idStudent") int idStudent) {
+        AbstractRegistrationModel studInfo =  registrationService.getUserInfoByIdStudent(idStudent);
+        return ResponseEntity.ok(studInfo);
+    }
+
     @RequestMapping(value = "/student",method = RequestMethod.POST)
     public AbstractRegistrationModel registerStudent(@RequestBody StudentRegistrationModel studentRegistrationModel){
         return registrationService.registerUser(studentRegistrationModel);

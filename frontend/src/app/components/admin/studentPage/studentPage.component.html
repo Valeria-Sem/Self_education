@@ -1,0 +1,50 @@
+<div class="pricing-header px-3 py-3 pt-md-5 p-md-4 mx-auto text-center">
+  <h1 class="display-4"  style="margin-bottom: 35px">Student</h1>
+  <alert type="warning">
+    <strong>Read this!</strong> On this page you can see the personal
+    data of your student and see the progress in passing the courses.
+  </alert>
+</div>
+
+<div class="container">
+  <tabset>
+    <tab heading="Student profile" id="tab1"   >
+      <div class="container" id="customer">
+        <form>
+          <div class="container-fluid mt-5" style="background-color: lavender">
+            <div class="container p-5">
+              <div class="row justify-content-center">
+                <div class="col col-lg-7" >
+                  <div class="card text-center mt-5">
+                    <div class="card-body" >
+                      <h2 class="card-title pricing-card-title" >
+                        {{user.surname}} {{user.name}} {{user.patronymic}}
+                      </h2>
+                      <hr>
+                      <p class="card-text">login:
+                        {{user.login}}
+                      </p>
+                      <p class="card-text">password:
+                        {{user.password}}
+                      </p>
+                      <hr>
+                      <p class="card-text">balance:
+                        {{user.balance}}
+                      </p>
+                      <p class="card-text">wallet status:
+                        {{user.walletStatus}}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </tab>
+    <tab heading="Student courses">
+      Basic content 1
+    </tab>
+  </tabset>
+</div>

@@ -4,6 +4,8 @@ import {Group} from "../../../modules/group";
 import {GroupService} from "../../../services/group.service";
 import {UserService} from "../../../services/user.service";
 import {User} from "../../../modules/user";
+import {Router} from "@angular/router";
+import {switchMap} from "rxjs/operators";
 
 @Component({
   selector: "app-groups",
@@ -15,7 +17,8 @@ import {User} from "../../../modules/user";
 export class GroupsComponent implements OnInit{
   groups: Group[];
   group: Group;
-  users: User;
+  users: User[];
+  selectedId: string;
 
 
   constructor(private groupService: GroupService,
@@ -23,8 +26,9 @@ export class GroupsComponent implements OnInit{
               // private userService: UserService,
               // private walletService: WalletService,
               private cdr: ChangeDetectorRef,
-              private modalService: BsModalService
-              // private subService: SubService,private organisationService: OrganisationService
+              private modalService: BsModalService,
+              private route: Router
+    // private subService: SubService,private organisationService: OrganisationService
               ) {
   }
 
@@ -34,13 +38,11 @@ export class GroupsComponent implements OnInit{
       this.cdr.detectChanges();
     });
 
-    // this.students('1');
-
   }
 
   public students(event: any, idGroup: string): void {
     this.userService.getUsersByIdGroup(idGroup).subscribe((data) => {
-      this.users = data as User;
+      this.users = data as User[];
       this.cdr.detectChanges();
     });
   }
