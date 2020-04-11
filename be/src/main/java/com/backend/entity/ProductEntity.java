@@ -10,8 +10,9 @@ public class ProductEntity {
     private String productName;
     private String description;
     private int price;
+    private int courseId;
     private String img;
-    private CourseEntity courseByCourseId;
+//    private CourseEntity courseByCourseId;
 
     @Id
     @Column(name = "id_product")
@@ -55,6 +56,16 @@ public class ProductEntity {
     }
 
     @Basic
+    @Column(name = "course_id")
+    public int getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(int courseId) {
+        this.courseId = courseId;
+    }
+
+    @Basic
     @Column(name = "img")
     public String getImg() {
         return img;
@@ -71,6 +82,7 @@ public class ProductEntity {
         ProductEntity that = (ProductEntity) o;
         return idProduct == that.idProduct &&
                 price == that.price &&
+                courseId == that.courseId &&
                 Objects.equals(productName, that.productName) &&
                 Objects.equals(description, that.description) &&
                 Objects.equals(img, that.img);
@@ -81,13 +93,13 @@ public class ProductEntity {
         return Objects.hash(idProduct, productName, description, price, img);
     }
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "course_id", referencedColumnName = "id_course", nullable = false)
-    public CourseEntity getCourseByCourseId() {
-        return courseByCourseId;
-    }
-
-    public void setCourseByCourseId(CourseEntity courseByCourseId) {
-        this.courseByCourseId = courseByCourseId;
-    }
+//    @ManyToOne(cascade = CascadeType.PERSIST)
+//    @JoinColumn(name = "course_id", referencedColumnName = "id_course", nullable = false)
+//    public CourseEntity getCourseByCourseId() {
+//        return courseByCourseId;
+//    }
+//
+//    public void setCourseByCourseId(CourseEntity courseByCourseId) {
+//        this.courseByCourseId = courseByCourseId;
+//    }
 }

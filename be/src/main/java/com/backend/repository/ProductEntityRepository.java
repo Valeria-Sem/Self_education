@@ -5,6 +5,6 @@ import com.backend.entity.ProductEntity;
 import org.springframework.data.repository.CrudRepository;
 
 public interface ProductEntityRepository extends CrudRepository<ProductEntity, Integer> {
-    ProductEntity getProductEntitiesByCourseByCourseId(CourseEntity courseEntity);
+    ProductEntity getProductEntitiesByCourseId(int courseId);
     ProductEntity getProductByIdProduct(int idProduct);
 }

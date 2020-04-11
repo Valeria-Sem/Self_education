@@ -28,6 +28,13 @@ import {AlertModule, TabsModule} from "ngx-bootstrap";
 import {StudentPageComponent} from "./components/admin/studentPage/studentPage.component";
 import {RegistrationComponent} from "./components/admin/studReg/registration.component";
 import {ConstructorComponent} from "./components/admin/groups/constructor/constructor.component";
+import {PlusComponent} from "./components/courses/C++/c.component";
+import {SharpComponent} from "./components/courses/C#/sharp.component";
+import {JavaComponent} from "./components/courses/Java/java.component";
+import {PythonComponent} from "./components/courses/Python/python.component";
+import {JSComponent} from "./components/courses/JS/js.component";
+import {PHPComponent} from "./components/courses/PHP/php.component";
+import {StudentComponent} from "./components/student/student.component";
 
 @NgModule({
   declarations: [
@@ -42,7 +49,14 @@ import {ConstructorComponent} from "./components/admin/groups/constructor/constr
     AdminCoursesComponent,
     StudentPageComponent,
     RegistrationComponent,
-    ConstructorComponent
+    ConstructorComponent,
+    PlusComponent,
+    SharpComponent,
+    JavaComponent,
+    PythonComponent,
+    JSComponent,
+    PHPComponent,
+    StudentComponent
   ],
   imports: [
     BrowserModule,

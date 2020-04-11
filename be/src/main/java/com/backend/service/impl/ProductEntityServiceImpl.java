@@ -36,15 +36,14 @@ public class ProductEntityServiceImpl implements ProductEntityService {
     }
 
     @Override
-    public ProductEntity getProductByCourse(CourseEntity courseEntity) {
-        CourseEntity result = courseEntityRepository.getCourseEntityByIdCourse(courseEntity.getIdCourse());
-
-        if(result == null){
-            log.info("Not found course with id: {}", courseEntity.getIdCourse());
-            return null;
-        } else {
-        return productEntityRepository.getProductEntitiesByCourseByCourseId(result);
-        }
+    public ProductEntity getProductByCourseId(int courseId) {
+//        CourseEntity result = courseEntityRepository.getCourseEntityByIdCourse(courseId);
+//        if(result == null){
+//            log.info("Not found course with id: {}", courseId);
+//            return null;
+//        } else {
+        return productEntityRepository.getProductEntitiesByCourseId(courseId);
+//        }
     }
 
 

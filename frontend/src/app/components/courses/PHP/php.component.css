@@ -1,0 +1,28 @@
+.card-body {
+  padding-bottom: 50px;
+}
+
+.description-container {
+  height: 100%;
+}
+
+.description {
+  margin-bottom: 30px;
+}
+
+.pagin {
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  margin-right: 150px;
+  margin-top: 50px;
+  width: 150px;
+  height: 75px;
+  font-size: 30px;
+}
+
+.w-75{
+  margin-top: 30px;
+}
