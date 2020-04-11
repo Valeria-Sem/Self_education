@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "`subscription`", schema = "`self_edu`", catalog = "")
+@Table(name = "`subscription`", schema = "`self_edu`")
 public class SubscriptionEntity {
     private int idSubscription;
     private SubStatus status;

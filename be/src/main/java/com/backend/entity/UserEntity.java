@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "`user`", schema = "`self_edu`", catalog = "")
+@Table(name = "`user`", schema = "`self_edu`")
 public class UserEntity {
     private int idUser;
     private String login;
