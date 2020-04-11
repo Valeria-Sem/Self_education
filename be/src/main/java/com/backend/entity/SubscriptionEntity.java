@@ -6,14 +6,14 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "subscription", schema = "self_edu", catalog = "")
+@Table(name = "`subscription`", schema = "`self_edu`", catalog = "")
 public class SubscriptionEntity {
     private int idSubscription;
     private SubStatus status;
     private StudentEntity studentByStudentId;
 
     @Id
-    @Column(name = "id_subscription")
+    @Column(name = "`id_subscription`")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getIdSubscription() {
         return idSubscription;
@@ -25,7 +25,7 @@ public class SubscriptionEntity {
 
     @Basic
     @Enumerated(EnumType.STRING)
-    @Column(name = "status")
+    @Column(name = "`status`")
     public SubStatus getStatus() {
         return status;
     }

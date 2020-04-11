@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "student", schema = "self_edu", catalog = "")
+@Table(name = "`student`", schema = "`self_edu`", catalog = "")
 public class StudentEntity {
     private int idStudent;
     private String name;
@@ -15,7 +15,7 @@ public class StudentEntity {
     private WalletEntity walletByWalletId;
 
     @Id
-    @Column(name = "id_student")
+    @Column(name = "`id_student`")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getIdStudent() {
         return idStudent;
@@ -27,7 +27,7 @@ public class StudentEntity {
 
 
     @Basic
-    @Column(name = "name")
+    @Column(name = "`name`")
     public String getName() {
         return name;
     }
@@ -37,7 +37,7 @@ public class StudentEntity {
     }
 
     @Basic
-    @Column(name = "surname")
+    @Column(name = "`surname`")
     public String getSurname() {
         return surname;
     }
@@ -47,7 +47,7 @@ public class StudentEntity {
     }
 
     @Basic
-    @Column(name = "patronymic")
+    @Column(name = "`patronymic`")
     public String getPatronymic() {
         return patronymic;
     }
@@ -57,7 +57,7 @@ public class StudentEntity {
     }
 
     @Basic
-    @Column(name = "group_id")
+    @Column(name = "`group_id`")
     public int getGroupId() {
         return groupId;
     }

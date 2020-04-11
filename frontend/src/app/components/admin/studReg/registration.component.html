@@ -53,11 +53,29 @@
       [disabled]="!nameField.valid || !surnameField.valid || !patronymicField.valid || !groupField.valid || !loginField.valid"
       class="btn btn-lg btn-primary btn-block"
       type="submit"
-      (click)="saveStudent(information)"
-      routerLink="/groups">
+      (click)="saveStudent(information);
+      openModal(template)">
       Save
     </button>
-    <p class="mt-5 mb-3 text-muted">&copy; 2020-2021</p>
+
+    <ng-template #template>
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Successful!</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Student saved successfully!</p>
+        <p> Do you want to stay on this page and create another new student?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" style="margin-right: 165px" (click)="bsModalRef.hide()" routerLink="/groups">No</button>
+        <button type="button" class="btn btn-primary" (click)="bsModalRef.hide()">Yes</button>
+      </div>
+    </ng-template>
+
+    <p class="mt-5 mb-3 text-muted" style="margin-left: 80px">&copy; 2020-2021</p>
   </form>
 </div>
 

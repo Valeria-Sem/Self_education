@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "product", schema = "self_edu", catalog = "")
+@Table(name = "`product`", schema = "`self_edu`", catalog = "")
 public class ProductEntity {
     private int idProduct;
     private String productName;
@@ -15,7 +15,7 @@ public class ProductEntity {
 //    private CourseEntity courseByCourseId;
 
     @Id
-    @Column(name = "id_product")
+    @Column(name = "`id_product`")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getIdProduct() {
         return idProduct;
@@ -26,7 +26,7 @@ public class ProductEntity {
     }
 
     @Basic
-    @Column(name = "product_name")
+    @Column(name = "`product_name`")
     public String getProductName() {
         return productName;
     }
@@ -36,7 +36,7 @@ public class ProductEntity {
     }
 
     @Basic
-    @Column(name = "description")
+    @Column(name = "`description`")
     public String getDescription() {
         return description;
     }
@@ -46,7 +46,7 @@ public class ProductEntity {
     }
 
     @Basic
-    @Column(name = "price")
+    @Column(name = "`price`")
     public int getPrice() {
         return price;
     }
@@ -56,7 +56,7 @@ public class ProductEntity {
     }
 
     @Basic
-    @Column(name = "course_id")
+    @Column(name = "`course_id`")
     public int getCourseId() {
         return courseId;
     }
@@ -66,7 +66,7 @@ public class ProductEntity {
     }
 
     @Basic
-    @Column(name = "img")
+    @Column(name = "`img`")
     public String getImg() {
         return img;
     }

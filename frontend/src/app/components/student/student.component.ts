@@ -9,6 +9,7 @@ import {tap} from "rxjs/operators";
 import {Router} from "@angular/router";
 import {Group} from "../../modules/group";
 import {GroupService} from "../../services/group.service";
+import {UserInf} from "../../modules/userInf";
 
 @Component({
   selector: "app-student",
@@ -18,10 +19,13 @@ import {GroupService} from "../../services/group.service";
 export class StudentComponent implements OnInit {
   @ViewChild('childModal', {read: false}) childModal: ModalDirective;
   public wallet: Wallet;
+  public student: UserInf;
   public user: User = this.userService.currentUser;
   // public user$: Observable<User> = this.userService.currentUser$
   //   .pipe(tap(currentUser => this.user = currentUser));
   public newBalance: number;
+  public newPassword: string;
+  public password: string;
   public walletStatus: Status = Status.ACTIVE;
   public balance: number;
   modalRef: BsModalRef;
@@ -73,12 +77,18 @@ export class StudentComponent implements OnInit {
     }
   }
 
-  public clickBalance(template: TemplateRef<any>){
-    if (+this.user.balance >= +this.normalBalance){
-      this.childModal.show();
-    } else {
-      this.openModal(template)
+  public changePassword (): void {
+      this.student = new UserInf(this.user.idUser, this.user.login, this.newPassword , this.user.role);
+    this.userService.saveUser(this.student).subscribe( () =>{
+      this.userService.currentUser.password = this.newPassword;
+      localStorage.setItem("user", JSON.stringify(this.userService.currentUser));
+    });
+    this.userService.currentUser.password = this.newPassword;
+      this.modalRef.hide();
     }
+
+  public clickPassword(template: TemplateRef<any>){
+      this.openModal(template)
   }
 
   public deleteAcc(){

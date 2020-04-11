@@ -6,14 +6,14 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "wallet", schema = "self_edu", catalog = "")
+@Table(name = "`wallet`", schema = "`self_edu`", catalog = "")
 public class WalletEntity {
     private int idWallet;
     private int balance;
     private WalletStatus status;
 
     @Id
-    @Column(name = "id_wallet")
+    @Column(name = "`id_wallet`")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getIdWallet() {
         return idWallet;
@@ -24,7 +24,7 @@ public class WalletEntity {
     }
 
     @Basic
-    @Column(name = "balance")
+    @Column(name = "`balance`")
     public int getBalance() {
         return balance;
     }
@@ -35,7 +35,7 @@ public class WalletEntity {
 
     @Basic
     @Enumerated(EnumType.STRING)
-    @Column(name = "status")
+    @Column(name = "`status`")
     public WalletStatus getStatus() {
         return status;
     }

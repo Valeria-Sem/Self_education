@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "user", schema = "self_edu", catalog = "")
+@Table(name = "`user`", schema = "`self_edu`", catalog = "")
 public class UserEntity {
     private int idUser;
     private String login;
@@ -14,7 +14,7 @@ public class UserEntity {
     private UserRole role;
 
     @Id
-    @Column(name = "id_user")
+    @Column(name = "`id_user`")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getIdUser() {
         return idUser;
@@ -25,7 +25,7 @@ public class UserEntity {
     }
 
     @Basic
-    @Column(name = "login")
+    @Column(name = "`login`")
     public String getLogin() {
         return login;
     }
@@ -35,7 +35,7 @@ public class UserEntity {
     }
 
     @Basic
-    @Column(name = "password")
+    @Column(name = "`password`")
     public String getPassword() {
         return password;
     }
@@ -46,7 +46,7 @@ public class UserEntity {
 
     @Basic
     @Enumerated(EnumType.STRING)
-    @Column(name = "role")
+    @Column(name = "`role`")
     public UserRole getRole() {
         return role;
     }
