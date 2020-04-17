@@ -15,6 +15,7 @@ import {PythonComponent} from "./components/courses/Python/python.component";
 import {JSComponent} from "./components/courses/JS/js.component";
 import {PHPComponent} from "./components/courses/PHP/php.component";
 import {StudentComponent} from "./components/student/student.component";
+import {SubPageComponent} from "./components/student/subs/sub.page.component";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent}
@@ -30,6 +31,7 @@ const appRoutes: Routes = [
   , {path: 'javascript', component: JSComponent}
   , {path: 'php', component: PHPComponent}
   , {path: 'profile', component: StudentComponent}
+  , {path: 'sub', component: SubPageComponent}
   // , {path: 'app', component: AppsComponent, canActivate: [RoleGuard], data: {role: Role.CUSTOMER}}
   // , {path: 'games', component: GamesComponent, canActivate: [RoleGuard], data: {role: Role.CUSTOMER}}
   // , {path: 'music', component: MusicComponent, canActivate: [RoleGuard], data: {role: Role.CUSTOMER}}

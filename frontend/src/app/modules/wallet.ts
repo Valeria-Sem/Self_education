@@ -13,7 +13,7 @@ export class Wallet {
 }
 
 export enum Status {
-  ACTIVE = "ACTIVE",
-  FROZEN = "FROZEN"
+  ACTIVE,
+  FROZEN
 }
 

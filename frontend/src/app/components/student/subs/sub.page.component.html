@@ -1,0 +1,37 @@
+<div id="customer">
+  <div class="pricing-header px-3 py-3 pt-md-5 p-md-4 mx-auto text-center">
+    <h1 class="display-4">Your courses</h1>
+  </div>
+
+  <div class="container-fluid mt-5" style="background-color: lavender">
+    <div class="container p-5">
+      <div class="row justify-content-center">
+        <div class="col col-lg-4 description" *ngFor="let choice of studProd">
+          <div class="card text-center mt-5 description-container">
+            <img src={{choice.img}} alt="" class="card-img-top">
+            <div class="card-body" >
+              <h1 class="card-title pricing-card-title" >
+                {{choice.price}} <img src="assets\img\coin.png" alt="" width="50" height="50">
+              </h1>
+              <h4 class="card-title">{{choice.name}}</h4>
+              <p class="card-text">
+                Status: {{choice.subscriptionStatus}}
+              </p>
+
+              <div class="subButton">
+                <div class="row">
+                  <div class="col">
+                    <button class="btn btn-outline-primary" routerLink="/course/cSharp" action="java script:document.location.reload()">Open</button>
+                  </div>
+                  <div class="col">
+                    <button class="btn btn-outline-primary" (click)="unsubscribe(choice.idSubscription)" action="java script:document.location.reload()">Unsubscribe</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

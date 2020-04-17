@@ -35,6 +35,7 @@ import {PythonComponent} from "./components/courses/Python/python.component";
 import {JSComponent} from "./components/courses/JS/js.component";
 import {PHPComponent} from "./components/courses/PHP/php.component";
 import {StudentComponent} from "./components/student/student.component";
+import {SubPageComponent} from "./components/student/subs/sub.page.component";
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import {StudentComponent} from "./components/student/student.component";
     PythonComponent,
     JSComponent,
     PHPComponent,
-    StudentComponent
+    StudentComponent,
+    SubPageComponent
   ],
   imports: [
     BrowserModule,
