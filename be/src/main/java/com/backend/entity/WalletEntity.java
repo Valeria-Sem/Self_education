@@ -10,7 +10,7 @@ import java.util.Objects;
 public class WalletEntity {
     private int idWallet;
     private int balance;
-    private WalletStatus status;
+    private WalletStatus walletStatus;
 
     @Id
     @Column(name = "`id_wallet`")
@@ -35,13 +35,13 @@ public class WalletEntity {
 
     @Basic
     @Enumerated(EnumType.STRING)
-    @Column(name = "`status`")
-    public WalletStatus getStatus() {
-        return status;
+    @Column(name = "`wallet_status`")
+    public WalletStatus getWalletStatus() {
+        return walletStatus;
     }
 
-    public void setStatus(WalletStatus status) {
-        this.status = status;
+    public void setWalletStatus(WalletStatus walletStatus) {
+        this.walletStatus = walletStatus;
     }
 
     @Override
@@ -51,11 +51,11 @@ public class WalletEntity {
         WalletEntity that = (WalletEntity) o;
         return idWallet == that.idWallet &&
                 balance == that.balance &&
-                Objects.equals(status, that.status);
+                Objects.equals(walletStatus, that.walletStatus);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idWallet, balance, status);
+        return Objects.hash(idWallet, balance, walletStatus);
     }
 }

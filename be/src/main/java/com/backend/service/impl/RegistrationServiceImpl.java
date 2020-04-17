@@ -58,7 +58,7 @@ public class RegistrationServiceImpl implements RegistrationService {
     private WalletEntity saveNewWallet(StudentRegistrationModel walletInfo){
         WalletEntity walletEntity = new WalletEntity();
         walletEntity.setBalance(walletInfo.getBalance());
-        walletEntity.setStatus(walletInfo.getWalletStatus());
+        walletEntity.setWalletStatus(walletInfo.getWalletStatus());
         walletEntityService.saveWallet(walletEntity);
         return walletEntity;
     }
@@ -96,7 +96,7 @@ public class RegistrationServiceImpl implements RegistrationService {
                     studentEntity.getGroupId(),
                     walletEntity.getIdWallet(),
                     walletEntity.getBalance(),
-                    walletEntity.getStatus());
+                    walletEntity.getWalletStatus());
         }
     }
 
@@ -116,7 +116,7 @@ public class RegistrationServiceImpl implements RegistrationService {
                 studentEntity.getGroupId(),
                 walletEntity.getIdWallet(),
                 walletEntity.getBalance(),
-                walletEntity.getStatus());
+                walletEntity.getWalletStatus());
     }
 
     @Override

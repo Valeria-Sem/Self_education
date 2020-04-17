@@ -11,6 +11,7 @@ public class SubscriptionEntity {
     private int idSubscription;
     private SubStatus status;
     private StudentEntity studentByStudentId;
+    private ProductEntity productByProductId;
 
     @Id
     @Column(name = "`id_subscription`")
@@ -56,5 +57,15 @@ public class SubscriptionEntity {
 
     public void setStudentByStudentId(StudentEntity studentByStudentId) {
         this.studentByStudentId = studentByStudentId;
+    }
+
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "product_id", referencedColumnName = "id_product", nullable = false)
+    public ProductEntity getProductByProductId() {
+        return productByProductId;
+    }
+
+    public void setProductByProductId(ProductEntity productByProductId) {
+        this.productByProductId = productByProductId;
     }
 }
