@@ -33,6 +33,7 @@ export class SharpComponent implements OnInit {
   studProd: StudProd[];
   subscription: Subscription;
   public status: SubStatus = 0;
+  isVisibleButton: boolean = true;
 
   constructor(private productService: ProductService,
               private userService: UserService,
@@ -48,8 +49,9 @@ export class SharpComponent implements OnInit {
       this.studProd = data;
       this.studProd.forEach((subscription) => {
         if (this.product.productName == subscription.name) {
-          let element: HTMLElement = document.getElementById(subscription.name);
-          element.classList.add('disabled');
+          // let element: HTMLElement = document.getElementById(subscription.name);
+          // element.classList.add('disabled');
+          this.isVisibleButton = false;
         }
       })
     });

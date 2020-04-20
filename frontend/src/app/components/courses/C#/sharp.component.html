@@ -5,8 +5,10 @@
     </div>
     <div class="col">
       <h1 class="display-4" style="margin-top: 110px; margin-left: -150px">{{product.productName}}</h1>
-      <button class="btn btn-outline-primary" id="{{product.productName}}"
+      <div *ngIf="isVisibleButton">
+      <button class="btn" id="{{product.productName}}"
               (click)="payAndSub(template)">Subscribe</button>
+      </div>
     </div>
   </div>
 </div>

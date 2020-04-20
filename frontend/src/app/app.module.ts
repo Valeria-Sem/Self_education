@@ -36,6 +36,8 @@ import {JSComponent} from "./components/courses/JS/js.component";
 import {PHPComponent} from "./components/courses/PHP/php.component";
 import {StudentComponent} from "./components/student/student.component";
 import {SubPageComponent} from "./components/student/subs/sub.page.component";
+import {LecturesComponent} from "./components/lectures&tests/lectures/lectures.component";
+import {CourseMainPageComponent} from "./components/lectures&tests/course.main.page.component";
 
 @NgModule({
   declarations: [
@@ -58,7 +60,9 @@ import {SubPageComponent} from "./components/student/subs/sub.page.component";
     JSComponent,
     PHPComponent,
     StudentComponent,
-    SubPageComponent
+    SubPageComponent,
+    LecturesComponent,
+    CourseMainPageComponent
   ],
   imports: [
     BrowserModule,
