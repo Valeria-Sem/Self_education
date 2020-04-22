@@ -10,3 +10,12 @@
   background-color: aquamarine;
 }
 
+.iframe{
+  width: 100%;
+  height: 400px;
+}
+
+/*.modal-body{*/
+/*!*width: 100% !important;*!*/
+/*}*/
+

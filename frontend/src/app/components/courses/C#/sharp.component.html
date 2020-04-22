@@ -7,7 +7,11 @@
       <h1 class="display-4" style="margin-top: 110px; margin-left: -150px">{{product.productName}}</h1>
       <div *ngIf="isVisibleButton">
       <button class="btn" id="{{product.productName}}"
-              (click)="payAndSub(template)">Subscribe</button>
+              (click)="payAndSub(template)" action="type script:document.location.reload()">Subscribe</button>
+      </div>
+      <div *ngIf="!isVisibleButton">
+        <p class="lead" style="margin-right: 150px; margin-top: 30px; color: red" action="type script:document.location.reload()">You are subscribed to this course.
+          Details can be found on the tab "My subscriptions"</p>
       </div>
     </div>
   </div>
@@ -40,6 +44,9 @@
       <p>You have subscribed to the product "{{product.productName}}"</p>
       <p>Your account has been charged: {{product.price}}
         <img src="assets\img\coin.png" alt="" width="50" height="50"></p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn-outline-success" style="margin-left: 250px" (click)="modalRef.hide()">Ok!</button>
     </div>
   </ng-template>
 

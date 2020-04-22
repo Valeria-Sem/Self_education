@@ -1,4 +1,4 @@
-<div class="container" id="sharp" *ngIf="isSharp">
+<div class="container" id="plus" *ngIf="isPlus">
   <form>
     <div class="container-fluid mt-5" style="background-color: lavender">
       <div class="container p-5">
@@ -7,13 +7,13 @@
             <div class="card text-center mt-5">
               <div class="card-body" >
                 <h1 class="card-title pricing-card-title" style="margin-bottom: 50px; margin-top: 20px">
-                  С# Tutorial
+                  С++ Tutorial
                 </h1>
                 <hr>
                 <div>
-                <img class="btn " src="assets\img\base.png" alt="">
+                  <img class="btn " src="assets\img\base.png" alt="">
                 </div>
-                <h5>Base concept</h5>
+                <h5>Basic concepts</h5>
                 <div class="row justify-content-center">
                   <div class="col">
                     <div>
@@ -50,6 +50,336 @@
                   <img class="btn " src="assets\img\U.png" alt="">
                 </div>
                 <h5>Generics</h5>
+                <hr>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="container" id="sharp" *ngIf="isSharp">
+  <form>
+    <div class="container-fluid mt-5" style="background-color: lavender">
+      <div class="container p-5">
+        <div class="row justify-content-center">
+          <div class="col col-lg-10" >
+            <div class="card text-center mt-5">
+              <div class="card-body" >
+                <h1 class="card-title pricing-card-title" style="margin-bottom: 50px; margin-top: 20px">
+                  С# Tutorial
+                </h1>
+                <hr>
+                <div>
+                <img type="button" class="btn " src="assets\img\base.png" alt="" (click)="openModal(template)">
+                </div>
+                <h5>Basic concepts</h5>
+                <div class="row justify-content-center">
+                  <div class="col">
+                    <div>
+                      <img class="btn" src="assets\img\infinity.png" alt="">
+                    </div>
+                    <h5>Conditionals & Loops</h5>
+                  </div>
+                  <div class="col">
+                    <div>
+                      <img class="btn" src="assets\img\sh.png" alt="">
+                    </div>
+                    <h5>Methods</h5>
+                  </div>
+                </div>
+                <div>
+                  <img class="btn " src="assets\img\inheritance.png" alt="">
+                </div>
+                <h5>Classes & Objects</h5>
+                <div class="row justify-content-center">
+                  <div class="col">
+                    <div>
+                      <img class="btn" src="assets\img\shapes.png" alt="">
+                    </div>
+                    <h5>Arrays & Strings</h5>
+                  </div>
+                  <div class="col">
+                    <div>
+                      <img class="btn" src="assets\img\more2.png" alt="">
+                    </div>
+                    <h5>More on Classes</h5>
+                  </div>
+                </div>
+                <div>
+                  <img class="btn " src="assets\img\U.png" alt="">
+                </div>
+                <h5>Generics</h5>
+                <hr>
+              </div>
+              <ng-template #template>
+                <div class="modal-header">
+                  <h4 class="modal-title pull-left">Modal</h4>
+                  <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body" >
+                  <iframe class="iframe" src="assets\pdf\sharp\Basic_Consepts_sharp.pdf" title={iframeTitle} ></iframe>
+                  <div>
+                    <button class="btn btn-info" style="width: 100px; height: 50px">Cancel</button>
+                    <button class="btn btn-info"
+                            style="width: 100px;
+                             height: 50px;
+                             margin-left: 566px;
+                            ">Testing</button>
+                  </div>
+                </div>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="container" id="java" *ngIf="isJava">
+  <form>
+    <div class="container-fluid mt-5" style="background-color: lavender">
+      <div class="container p-5">
+        <div class="row justify-content-center">
+          <div class="col col-lg-10" >
+            <div class="card text-center mt-5">
+              <div class="card-body" >
+                <h1 class="card-title pricing-card-title" style="margin-bottom: 50px; margin-top: 20px">
+                  Java Tutorial
+                </h1>
+                <hr>
+                <div>
+                  <img class="btn " src="assets\img\base.png" alt="">
+                </div>
+                <h5>Basic concepts</h5>
+                <div class="row justify-content-center">
+                  <div class="col">
+                    <div>
+                      <img class="btn" src="assets\img\infinity.png" alt="">
+                    </div>
+                    <h5>Conditionals & Loops</h5>
+                  </div>
+                  <div class="col">
+                    <div>
+                      <img class="btn" src="assets\img\sh.png" alt="">
+                    </div>
+                    <h5>Methods</h5>
+                  </div>
+                </div>
+                <div>
+                  <img class="btn " src="assets\img\inheritance.png" alt="">
+                </div>
+                <h5>Classes & Objects</h5>
+                <div class="row justify-content-center">
+                  <div class="col">
+                    <div>
+                      <img class="btn" src="assets\img\shapes.png" alt="">
+                    </div>
+                    <h5>Arrays & Strings</h5>
+                  </div>
+                  <div class="col">
+                    <div>
+                      <img class="btn" src="assets\img\more2.png" alt="">
+                    </div>
+                    <h5>More on Classes</h5>
+                  </div>
+                </div>
+                <div>
+                  <img class="btn " src="assets\img\U.png" alt="">
+                </div>
+                <h5>Generics</h5>
+                <hr>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="container" id="python" *ngIf="isPython">
+  <form>
+    <div class="container-fluid mt-5" style="background-color: lavender">
+      <div class="container p-5">
+        <div class="row justify-content-center">
+          <div class="col col-lg-10" >
+            <div class="card text-center mt-5">
+              <div class="card-body" >
+                <h1 class="card-title pricing-card-title" style="margin-bottom: 50px; margin-top: 20px">
+                  Python Tutorial
+                </h1>
+                <hr>
+                <div>
+                  <img class="btn " src="assets\img\base.png" alt="">
+                </div>
+                <h5>Basic concepts</h5>
+                <div class="row justify-content-center">
+                  <div class="col">
+                    <div>
+                      <img class="btn" src="assets\img\infinity.png" alt="">
+                    </div>
+                    <h5>Conditionals & Loops</h5>
+                  </div>
+                  <div class="col">
+                    <div>
+                      <img class="btn" src="assets\img\sh.png" alt="">
+                    </div>
+                    <h5>Methods</h5>
+                  </div>
+                </div>
+                <div>
+                  <img class="btn " src="assets\img\inheritance.png" alt="">
+                </div>
+                <h5>Classes & Objects</h5>
+                <div class="row justify-content-center">
+                  <div class="col">
+                    <div>
+                      <img class="btn" src="assets\img\shapes.png" alt="">
+                    </div>
+                    <h5>Arrays & Strings</h5>
+                  </div>
+                  <div class="col">
+                    <div>
+                      <img class="btn" src="assets\img\more2.png" alt="">
+                    </div>
+                    <h5>More on Classes</h5>
+                  </div>
+                </div>
+                <div>
+                  <img class="btn " src="assets\img\U.png" alt="">
+                </div>
+                <h5>Generics</h5>
+                <hr>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="container" id="js" *ngIf="isJS">
+  <form>
+    <div class="container-fluid mt-5" style="background-color: lavender">
+      <div class="container p-5">
+        <div class="row justify-content-center">
+          <div class="col col-lg-10" >
+            <div class="card text-center mt-5">
+              <div class="card-body" >
+                <h1 class="card-title pricing-card-title" style="margin-bottom: 50px; margin-top: 20px">
+                  JavaScript Tutorial
+                </h1>
+                <hr>
+                <div>
+                  <img class="btn " src="assets\img\base.png" alt="">
+                </div>
+                <h5>Basic concepts</h5>
+                <div class="row justify-content-center">
+                  <div class="col">
+                    <div>
+                      <img class="btn" src="assets\img\infinity.png" alt="">
+                    </div>
+                    <h5>Conditionals & Loops</h5>
+                  </div>
+                  <div class="col">
+                    <div>
+                      <img class="btn" src="assets\img\sh.png" alt="">
+                    </div>
+                    <h5>Methods</h5>
+                  </div>
+                </div>
+                <div>
+                  <img class="btn " src="assets\img\inheritance.png" alt="">
+                </div>
+                <h5>Classes & Objects</h5>
+                <div class="row justify-content-center">
+                  <div class="col">
+                    <div>
+                      <img class="btn" src="assets\img\shapes.png" alt="">
+                    </div>
+                    <h5>Arrays & Strings</h5>
+                  </div>
+                  <div class="col">
+                    <div>
+                      <img class="btn" src="assets\img\more2.png" alt="">
+                    </div>
+                    <h5>More on Classes</h5>
+                  </div>
+                </div>
+                <div>
+                  <img class="btn " src="assets\img\U.png" alt="">
+                </div>
+                <h5>Generics</h5>
+                <hr>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="container" id="php" *ngIf="isPHP">
+  <form>
+    <div class="container-fluid mt-5" style="background-color: lavender">
+      <div class="container p-5">
+        <div class="row justify-content-center">
+          <div class="col col-lg-10" >
+            <div class="card text-center mt-5">
+              <div class="card-body" >
+                <h1 class="card-title pricing-card-title" style="margin-bottom: 50px; margin-top: 20px">
+                  PHP Tutorial
+                </h1>
+                <hr>
+                <div>
+                  <img class="btn " src="assets\img\base.png" alt="">
+                </div>
+                <h5>Basic concepts</h5>
+                <div class="row justify-content-center">
+                  <div class="col">
+                    <div>
+                      <img class="btn" src="assets\img\infinity.png" alt="">
+                    </div>
+                    <h5>Conditionals & Loops</h5>
+                  </div>
+                  <div class="col">
+                    <div>
+                      <img class="btn" src="assets\img\sh.png" alt="">
+                    </div>
+                    <h5>Methods</h5>
+                  </div>
+                </div>
+                <div>
+                  <img class="btn " src="assets\img\inheritance.png" alt="">
+                </div>
+                <h5>Classes & Objects</h5>
+                <div class="row justify-content-center">
+                  <div class="col">
+                    <div>
+                      <img class="btn" src="assets\img\shapes.png" alt="">
+                    </div>
+                    <h5>Arrays & Strings</h5>
+                  </div>
+                  <div class="col">
+                    <div>
+                      <img class="btn" src="assets\img\more2.png" alt="">
+                    </div>
+                    <h5>More on Classes</h5>
+                  </div>
+                </div>
+                <div>
+                  <img class="btn " src="assets\img\U.png" alt="">
+                </div>
+                <h5>Generics</h5>
+                <hr>
               </div>
             </div>
           </div>

@@ -36,7 +36,7 @@ public class StudProdConverter {
     @GetMapping
     @RequestMapping(value = "/student/{idStudent}")
     public ResponseEntity<List<StudentProductModel>> convertSubToProductByIdStudent(@PathVariable String idStudent) {
-        Integer studentId = Integer.valueOf(idStudent);
+        int studentId = Integer.parseInt(idStudent);
         List<SubscriptionEntity> subs = subscriptionEntityService.getStudentSub(studentId);
         Iterable<ProductEntity> products = productEntityService.getAllProducts();
         List<StudentProductModel> convertSubscription = fillConvertModel(subs, products);
@@ -50,6 +50,7 @@ public class StudProdConverter {
             studProd.setIdSubscription(subsItem.getIdSubscription());
             for(ProductEntity prodItem: products) {
                 if (subsItem.getProductByProductId() == prodItem){
+                    studProd.setProductId(prodItem.getIdProduct());
                     studProd.setName(prodItem.getProductName());
                     studProd.setDescription(prodItem.getDescription());
                     studProd.setPrice(prodItem.getPrice());

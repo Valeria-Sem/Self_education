@@ -1,11 +1,6 @@
 import {ChangeDetectorRef, OnInit, Component, TemplateRef, ViewChild} from "@angular/core";
-// import {Product} from "../../../modules/product";
-// import {ProductService} from "../../../services/product.service";
 import {Status, Wallet} from "../../../modules/wallet";
-// import {WalletService} from "../../../services/wallet.service";
 import {BsModalRef, BsModalService, ModalDirective} from "ngx-bootstrap";
-// import {Subscription, SubStatus} from "../../../modules/subscription";
-// import {SubService} from "../../../services/subscription.service";
 import {User} from "../../../modules/user";
 import {UserService} from "../../../services/user.service";
 import {Product} from "../../../modules/product";
@@ -33,6 +28,7 @@ export class SharpComponent implements OnInit {
   studProd: StudProd[];
   subscription: Subscription;
   public status: SubStatus = 0;
+  bsModalRef: BsModalRef;
   isVisibleButton: boolean = true;
 
   constructor(private productService: ProductService,
@@ -84,6 +80,7 @@ export class SharpComponent implements OnInit {
       this.subscription = new Subscription( this.user.idStudent, this.product.idProduct, this.status);
       this.subService.subscribeStudent(this.subscription, this.user.idStudent, this.product.idProduct).subscribe();
       this.getStudentSubs();
+      this.isVisibleButton = false;
     }
   }
 }

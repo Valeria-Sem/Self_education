@@ -4,6 +4,7 @@ import com.backend.entity.enums.SubStatus;
 
 public class StudentProductModel {
     private int idSubscription;
+    private int productId;
     private String name;
     private String description;
     private int price;
@@ -13,10 +14,11 @@ public class StudentProductModel {
     public StudentProductModel(){
     }
 
-    public StudentProductModel(  int idSubscription, String name,
+    public StudentProductModel(  int idSubscription, int productId, String name,
                                   String description, int price,
                                   String img, SubStatus subscriptionStatus){
         this.idSubscription = idSubscription;
+        this.productId = productId;
         this.name = name;
         this.description = description;
         this.price = price;
@@ -31,6 +33,14 @@ public class StudentProductModel {
 
     public void setIdSubscription(int idSubscription) {
         this.idSubscription = idSubscription;
+    }
+
+    public int getProductId() {
+        return productId;
+    }
+
+    public void setProductId(int productId) {
+        this.productId = productId;
     }
 
     public String getName() {

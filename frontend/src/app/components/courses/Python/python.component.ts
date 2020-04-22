@@ -11,6 +11,11 @@ import {UserService} from "../../../services/user.service";
 import {Product} from "../../../modules/product";
 import {ProductService} from "../../../services/product.service";
 import {Group} from "../../../modules/group";
+import {SubService} from "../../../services/subscription.service";
+import {StudProd} from "../../../modules/StudProd";
+import {Page} from "../../../modules/page";
+import {Subscription, SubStatus} from "../../../modules/subscription";
+import {WalletService} from "../../../services/wallet.service";
 
 
 @Component({
@@ -19,73 +24,68 @@ import {Group} from "../../../modules/group";
   styleUrls: ['./python.component.css']
 })
 export class PythonComponent implements OnInit {
-  // @ViewChild('childModal', {read: false}) childModal: ModalDirective;
-
+  @ViewChild('childModal', {read: false}) childModal: ModalDirective;
   public wallet: Wallet;
   public user: User = this.userService.currentUser;
-  public walletStatus: Status = Status.ACTIVE;
   public balance: number;
   product: Product;
   modalRef: BsModalRef;
-  modalRef2: BsModalRef;
+  studProd: StudProd[];
+  subscription: Subscription;
+  public status: SubStatus = 0;
+  bsModalRef: BsModalRef;
+  isVisibleButton: boolean = true;
 
   constructor(private productService: ProductService,
               private userService: UserService,
-              // private walletService: WalletService,
+              private walletService: WalletService,
               private cdr: ChangeDetectorRef,
-              private modalService: BsModalService)
-  // private subService: SubService)
+              private modalService: BsModalService,
+              private subService: SubService)
   {
+  }
+
+  public getStudentSubs(){
+    this.subService.getSub(this.user.idStudent).subscribe((data) => {
+      this.studProd = data;
+      this.studProd.forEach((subscription) => {
+        if (this.product.productName == subscription.name) {
+          // let element: HTMLElement = document.getElementById(subscription.name);
+          // element.classList.add('disabled');
+          this.isVisibleButton = false;
+        }
+      })
+    });
   }
 
   ngOnInit(): void {
     this.productService.getProductByCourseId('4').subscribe((data) => {
       this.product = data as Product;
       this.cdr.detectChanges();
+      this.getStudentSubs();
     });
   }
 
-  // hideChildModal(): void {
-  //   this.childModal.hide();
-  // }
+  hideChildModal(): void {
+    this.childModal.hide();
+  }
 
+  public payAndSub (template: TemplateRef<any>): void {
+    if (this.user.balance < this.product.price) {
+      this.childModal.show();
+    } else {
+      this.modalRef = this.modalService.show(template, Object.assign({}, {class: 'gray modal-sm'}));
+      this.balance = (+this.user.balance) - (+this.product.price);
+      this.wallet = new Wallet(this.user.idWallet, this.balance, this.user.walletStatus);
+      this.walletService.payment(this.wallet).subscribe(() => {
+        this.userService.currentUser.balance = this.balance;
+        localStorage.setItem("user", JSON.stringify(this.userService.currentUser));
+      });
 
-  // public getCustomerSubs(){
-  //   this.subService.getSub(this.user.idCustomer).subscribe((dataProd) => {
-  //     this.custProd = dataProd;
-  //
-  //     this.products.productEntities.forEach((product) => {
-  //
-  //       this.custProd.forEach((subscription) => {
-  //         if (product.name == subscription.name) {
-  //           let element: HTMLElement = document.getElementById(subscription.name);
-  //           element.classList.add('disabled');
-  //         }
-  //       })
-  //     })
-  //   });
-  // }
-
-
-  // public payAndSub (monthPrise, template: TemplateRef<any>, idProd, idOrg): void {
-  //   if (this.user.balance < monthPrise) {
-  //     this.childModal.show();
-  //   } else {
-  //     this.modalRef = this.modalService.show(template, Object.assign({}, {class: 'gray modal-sm'}));
-  //     this.balance = (+this.user.balance) - (+monthPrise);
-  //     this.wallet = new Wallet(this.user.idWallet, this.balance, this.walletStatus);
-  //     this.walletService.payment(this.wallet).subscribe(() => {
-  //       this.userService.currentUser.balance = this.balance;
-  //       localStorage.setItem("user", JSON.stringify(this.userService.currentUser));
-  //     });
-  //
-  //     this.dateOfSub = new Date();
-  //     this.subscription = new Subscription(idProd, this.user.idCustomer, this.subscriptionStatus, this.dateOfSub);
-  //     this.subService.subscribeCustomer(this.subscription, this.user.idCustomer, idProd).subscribe();
-  //
-  //     this.walletService.balanceReplenishmentByOrg(idOrg, monthPrise).subscribe( () =>{
-  //       this.getCustomerSubs();
-  //     });
-  //   }
-  // }
+      this.subscription = new Subscription( this.user.idStudent, this.product.idProduct, this.status);
+      this.subService.subscribeStudent(this.subscription, this.user.idStudent, this.product.idProduct).subscribe();
+      this.getStudentSubs();
+      this.isVisibleButton = false;
+    }
+  }
 }

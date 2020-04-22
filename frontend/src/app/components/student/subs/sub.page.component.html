@@ -21,7 +21,7 @@
               <div class="subButton">
                 <div class="row">
                   <div class="col">
-                    <button class="btn btn-outline-primary" routerLink="/course/cSharp" action="java script:document.location.reload()">Open</button>
+                    <button class="btn btn-outline-primary" routerLink="/course/:{{choice.productId}}" action="java script:document.location.reload()">Open</button>
                   </div>
                   <div class="col">
                     <button class="btn btn-outline-primary" (click)="unsubscribe(choice.idSubscription)" action="java script:document.location.reload()">Unsubscribe</button>

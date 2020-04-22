@@ -3,7 +3,7 @@ import {SubStatus} from "./subscription";
 export class StudProd {
   idSubscription: string;
   idStudent: string;
-  idProduct: string;
+  productId: string;
   name: string;
   description: string;
   price: number;
@@ -13,10 +13,10 @@ export class StudProd {
 
   constructor(idSubscription: string,
               idStudent: string, name: string,
-              idProduct: string, description: string,
+              productId: string, description: string,
               price: number, img: string, subscriptionStatus: SubStatus) {
     this.idSubscription = idSubscription;
-    this.idProduct = idProduct;
+    this.productId = productId;
     this.idStudent = idStudent;
     this.name = name;
     this.description = description;
