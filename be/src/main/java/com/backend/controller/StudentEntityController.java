@@ -1,15 +1,11 @@
 package com.backend.controller;
 
-import com.backend.entity.CourseEntity;
 import com.backend.entity.StudentEntity;
-import com.backend.paginationModel.PageStudentModel;
 import com.backend.service.StudentEntityService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/student")

@@ -3,7 +3,6 @@ package com.backend.service.impl;
 import com.backend.entity.ProductEntity;
 import com.backend.entity.StudentEntity;
 import com.backend.entity.SubscriptionEntity;
-import com.backend.repository.StudentEntityRepository;
 import com.backend.repository.SubscriptionEntityRepository;
 import com.backend.service.ProductEntityService;
 import com.backend.service.StudentEntityService;

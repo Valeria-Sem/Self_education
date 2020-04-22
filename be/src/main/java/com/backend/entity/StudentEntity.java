@@ -25,7 +25,6 @@ public class StudentEntity {
         this.idStudent = idStudent;
     }
 
-
     @Basic
     @Column(name = "`name`")
     public String getName() {
@@ -66,7 +65,6 @@ public class StudentEntity {
         this.groupId = groupId;
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -85,7 +83,7 @@ public class StudentEntity {
     }
 
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "user_id", referencedColumnName = "id_user", nullable = false)
+    @JoinColumn(name = "`user_id`", referencedColumnName = "`id_user`", nullable = false)
     public UserEntity getUserByUserId() {
         return userByUserId;
     }
@@ -95,7 +93,7 @@ public class StudentEntity {
     }
 
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "wallet_id", referencedColumnName = "id_wallet", nullable = false)
+    @JoinColumn(name = "`wallet_id`", referencedColumnName = "`id_wallet`", nullable = false)
     public WalletEntity getWalletByWalletId() {
         return walletByWalletId;
     }

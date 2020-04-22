@@ -2,7 +2,6 @@ package com.backend.service.impl;
 
 import com.backend.entity.CourseEntity;
 import com.backend.entity.ProductEntity;
-import com.backend.entity.UserEntity;
 import com.backend.repository.CourseEntityRepository;
 import com.backend.repository.ProductEntityRepository;
 import com.backend.service.ProductEntityService;

@@ -1,7 +1,6 @@
 package com.backend.controller;
 
 import com.backend.entity.ProductEntity;
-import com.backend.entity.StudentEntity;
 import com.backend.service.ProductEntityService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

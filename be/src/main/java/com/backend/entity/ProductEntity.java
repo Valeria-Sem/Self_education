@@ -12,7 +12,6 @@ public class ProductEntity {
     private int price;
     private int courseId;
     private String img;
-//    private CourseEntity courseByCourseId;
 
     @Id
     @Column(name = "`id_product`")
@@ -90,16 +89,6 @@ public class ProductEntity {
 
     @Override
     public int hashCode() {
-        return Objects.hash(idProduct, productName, description, price, img);
+        return Objects.hash(idProduct, productName, description, price, courseId, img);
     }
-
-//    @ManyToOne(cascade = CascadeType.PERSIST)
-//    @JoinColumn(name = "course_id", referencedColumnName = "id_course", nullable = false)
-//    public CourseEntity getCourseByCourseId() {
-//        return courseByCourseId;
-//    }
-//
-//    public void setCourseByCourseId(CourseEntity courseByCourseId) {
-//        this.courseByCourseId = courseByCourseId;
-//    }
 }

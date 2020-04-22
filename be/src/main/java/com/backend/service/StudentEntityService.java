@@ -2,9 +2,6 @@ package com.backend.service;
 
 import com.backend.entity.StudentEntity;
 import com.backend.entity.UserEntity;
-import com.backend.paginationModel.PageStudentModel;
-
-import java.util.Optional;
 
 public interface StudentEntityService {
     StudentEntity saveStudent(StudentEntity student);

@@ -3,7 +3,6 @@ package com.backend.service.impl;
 import com.backend.entity.GroupEntity;
 import com.backend.repository.GroupEntityRepository;
 import com.backend.service.GroupEntityService;
-import javassist.NotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

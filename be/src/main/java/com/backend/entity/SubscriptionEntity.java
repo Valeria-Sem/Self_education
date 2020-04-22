@@ -50,7 +50,7 @@ public class SubscriptionEntity {
     }
 
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "student_id", referencedColumnName = "id_student", nullable = false)
+    @JoinColumn(name = "`student_id`", referencedColumnName = "`id_student`", nullable = false)
     public StudentEntity getStudentByStudentId() {
         return studentByStudentId;
     }
@@ -60,7 +60,7 @@ public class SubscriptionEntity {
     }
 
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "product_id", referencedColumnName = "id_product", nullable = false)
+    @JoinColumn(name = "`product_id`", referencedColumnName = "`id_product`", nullable = false)
     public ProductEntity getProductByProductId() {
         return productByProductId;
     }

@@ -2,19 +2,12 @@ package com.backend.service.impl;
 
 import com.backend.entity.StudentEntity;
 import com.backend.entity.UserEntity;
-import com.backend.paginationModel.PageStudentModel;
 import com.backend.repository.StudentEntityRepository;
 import com.backend.service.StudentEntityService;
 import com.backend.service.UserEntityService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 @Slf4j
