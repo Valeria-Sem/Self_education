@@ -1,19 +1,21 @@
 package com.backend.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "`question`", schema = "`self_edu`")
+@Table(name = "question", schema = "self_edu")
 public class QuestionEntity {
     private int idQuestion;
     private int testId;
     private String text;
-    private TestEntity testByTestId;
+    private List<AnswerEntity> answers = new ArrayList<>();
 
     @Id
-    @Column(name = "`id_question`")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_question")
     public int getIdQuestion() {
         return idQuestion;
     }
@@ -23,7 +25,7 @@ public class QuestionEntity {
     }
 
     @Basic
-    @Column(name = "`test_id`")
+    @Column(name = "test_id")
     public int getTestId() {
         return testId;
     }
@@ -33,7 +35,7 @@ public class QuestionEntity {
     }
 
     @Basic
-    @Column(name = "`text`")
+    @Column(name = "text")
     public String getText() {
         return text;
     }
@@ -57,13 +59,13 @@ public class QuestionEntity {
         return Objects.hash(idQuestion, testId, text);
     }
 
-    @ManyToOne (cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "`test_id`", referencedColumnName = "`id_test`", nullable = false)
-    public TestEntity getTestByTestId() {
-        return testByTestId;
+    @OneToMany(fetch=FetchType.EAGER)
+    @JoinColumn(name = "question_id")
+    public List<AnswerEntity> getAnswers() {
+        return answers;
     }
 
-    public void setTestByTestId(TestEntity testByTestId) {
-        this.testByTestId = testByTestId;
+    public void setAnswers(List<AnswerEntity> answers) {
+        this.answers = answers;
     }
 }

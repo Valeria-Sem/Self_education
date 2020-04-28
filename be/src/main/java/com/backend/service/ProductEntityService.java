@@ -1,6 +1,5 @@
 package com.backend.service;
 
-import com.backend.entity.CourseEntity;
 import com.backend.entity.ProductEntity;
 
 public interface ProductEntityService {

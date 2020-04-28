@@ -16,7 +16,8 @@ import {JSComponent} from "./components/courses/JS/js.component";
 import {PHPComponent} from "./components/courses/PHP/php.component";
 import {StudentComponent} from "./components/student/student.component";
 import {SubPageComponent} from "./components/student/subs/sub.page.component";
-import {CourseMainPageComponent} from "./components/lectures&tests/course.main.page.component";
+import {LecturesComponent} from "./components/lectures&tests/lectures/lectures.component";
+import {TestComponent} from "./components/lectures&tests/tests/test.component";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent}
@@ -33,7 +34,8 @@ const appRoutes: Routes = [
   , {path: 'php', component: PHPComponent}
   , {path: 'profile', component: StudentComponent}
   , {path: 'sub', component: SubPageComponent}
-  , {path: 'course/:id', component: CourseMainPageComponent}
+  , {path: 'course/:id', component: LecturesComponent}
+  , {path: 'test/:id', component: TestComponent}
   // , {path: 'app', component: AppsComponent, canActivate: [RoleGuard], data: {role: Role.CUSTOMER}}
   // , {path: 'games', component: GamesComponent, canActivate: [RoleGuard], data: {role: Role.CUSTOMER}}
   // , {path: 'music', component: MusicComponent, canActivate: [RoleGuard], data: {role: Role.CUSTOMER}}

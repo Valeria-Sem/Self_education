@@ -1,0 +1,38 @@
+.subButton {
+  position: absolute;
+  bottom: 14px;
+  left: 0;
+  text-align: center;
+  width: 100%;
+}
+
+.card-img-top{
+  margin-top: 20px;
+  margin-left: 110px;
+  height: 100px;
+  width: 100px;
+}
+
+.btn {
+  height: 40px;
+  width: 120px;
+  font-size: 18px;
+}
+
+.card-body {
+  padding-bottom: 50px;
+}
+
+.description-container {
+  height: 100%;
+}
+
+.description {
+  margin-bottom: 30px;
+}
+
+.iframe{
+  width: 100%;
+  height: 400px;
+}
+

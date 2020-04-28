@@ -37,7 +37,9 @@ import {PHPComponent} from "./components/courses/PHP/php.component";
 import {StudentComponent} from "./components/student/student.component";
 import {SubPageComponent} from "./components/student/subs/sub.page.component";
 import {LecturesComponent} from "./components/lectures&tests/lectures/lectures.component";
-import {CourseMainPageComponent} from "./components/lectures&tests/course.main.page.component";
+import {SafePipe} from "./components/lectures&tests/lectures/SafePipe";
+import {TestComponent} from "./components/lectures&tests/tests/test.component";
+import {MapToIterable} from "./components/lectures&tests/tests/MapToIterable";
 
 @NgModule({
   declarations: [
@@ -61,8 +63,10 @@ import {CourseMainPageComponent} from "./components/lectures&tests/course.main.p
     PHPComponent,
     StudentComponent,
     SubPageComponent,
+    TestComponent,
     LecturesComponent,
-    CourseMainPageComponent
+    SafePipe,
+    MapToIterable
   ],
   imports: [
     BrowserModule,
@@ -90,6 +94,7 @@ import {CourseMainPageComponent} from "./components/lectures&tests/course.main.p
       deps: [UserService],
       multi: true
     }],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

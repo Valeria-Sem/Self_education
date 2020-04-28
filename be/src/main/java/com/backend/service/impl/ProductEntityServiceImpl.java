@@ -1,8 +1,6 @@
 package com.backend.service.impl;
 
-import com.backend.entity.CourseEntity;
 import com.backend.entity.ProductEntity;
-import com.backend.repository.CourseEntityRepository;
 import com.backend.repository.ProductEntityRepository;
 import com.backend.service.ProductEntityService;
 import lombok.extern.slf4j.Slf4j;
@@ -14,14 +12,11 @@ import org.springframework.stereotype.Service;
 public class ProductEntityServiceImpl implements ProductEntityService {
 
     private final ProductEntityRepository productEntityRepository;
-    private final CourseEntityRepository courseEntityRepository;
 
 
     @Autowired
-    public ProductEntityServiceImpl(ProductEntityRepository productEntityRepository,
-                                    CourseEntityRepository courseEntityRepository){
+    public ProductEntityServiceImpl(ProductEntityRepository productEntityRepository){
         this.productEntityRepository = productEntityRepository;
-        this.courseEntityRepository = courseEntityRepository;
     }
 
     @Override

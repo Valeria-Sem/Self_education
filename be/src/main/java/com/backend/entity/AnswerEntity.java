@@ -4,16 +4,15 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "`answer`", schema = "`self_edu`")
+@Table(name = "answer", schema = "self_edu")
 public class AnswerEntity {
     private int idAnswer;
+    private int questionId;
     private String answerText;
     private byte isRight;
-    private QuestionEntity questionByQuestionId;
 
     @Id
-    @Column(name = "`id_answer`")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_answer")
     public int getIdAnswer() {
         return idAnswer;
     }
@@ -23,7 +22,17 @@ public class AnswerEntity {
     }
 
     @Basic
-    @Column(name = "`answer_text`")
+    @Column(name = "question_id")
+    public int getQuestionId() {
+        return questionId;
+    }
+
+    public void setQuestionId(int questionId) {
+        this.questionId = questionId;
+    }
+
+    @Basic
+    @Column(name = "answer_text")
     public String getAnswerText() {
         return answerText;
     }
@@ -33,7 +42,7 @@ public class AnswerEntity {
     }
 
     @Basic
-    @Column(name = "`is_right`")
+    @Column(name = "is_right")
     public byte getIsRight() {
         return isRight;
     }
@@ -48,22 +57,13 @@ public class AnswerEntity {
         if (o == null || getClass() != o.getClass()) return false;
         AnswerEntity that = (AnswerEntity) o;
         return idAnswer == that.idAnswer &&
+                questionId == that.questionId &&
                 isRight == that.isRight &&
                 Objects.equals(answerText, that.answerText);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idAnswer, answerText, isRight);
-    }
-
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "`question_id`", referencedColumnName = "`id_question`", nullable = false)
-    public QuestionEntity getQuestionByQuestionId() {
-        return questionByQuestionId;
-    }
-
-    public void setQuestionByQuestionId(QuestionEntity questionByQuestionId) {
-        this.questionByQuestionId = questionByQuestionId;
+        return Objects.hash(idAnswer, questionId, answerText, isRight);
     }
 }

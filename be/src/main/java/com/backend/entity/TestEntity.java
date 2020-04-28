@@ -1,19 +1,22 @@
 package com.backend.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "`test`", schema = "`self_edu`")
+@Table(name = "test", schema = "self_edu")
 public class TestEntity {
     private int idTest;
+    private int lecId;
     private String testName;
     private Integer questionNumber;
-    private LecturesEntity lecturesByLecId;
+    private List<QuestionEntity> questions = new ArrayList<>();
 
     @Id
-    @Column(name = "`id_test`")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_test")
     public int getIdTest() {
         return idTest;
     }
@@ -23,7 +26,17 @@ public class TestEntity {
     }
 
     @Basic
-    @Column(name = "`test_name`")
+    @Column(name = "lec_id")
+    public int getLecId() {
+        return lecId;
+    }
+
+    public void setLecId(int lecId) {
+        this.lecId = lecId;
+    }
+
+    @Basic
+    @Column(name = "test_name")
     public String getTestName() {
         return testName;
     }
@@ -33,7 +46,7 @@ public class TestEntity {
     }
 
     @Basic
-    @Column(name = "`question_number`")
+    @Column(name = "question_number")
     public Integer getQuestionNumber() {
         return questionNumber;
     }
@@ -48,22 +61,23 @@ public class TestEntity {
         if (o == null || getClass() != o.getClass()) return false;
         TestEntity that = (TestEntity) o;
         return idTest == that.idTest &&
+                lecId == that.lecId &&
                 Objects.equals(testName, that.testName) &&
                 Objects.equals(questionNumber, that.questionNumber);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idTest, testName, questionNumber);
+        return Objects.hash(idTest, lecId, testName, questionNumber);
     }
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "`lec_id`", referencedColumnName = "`id_lectures`", nullable = false)
-    public LecturesEntity getLecturesByLecId() {
-        return lecturesByLecId;
+    @OneToMany(fetch=FetchType.EAGER)
+    @JoinColumn(name = "test_id")
+    public List<QuestionEntity> getQuestions() {
+        return questions;
     }
 
-    public void setLecturesByLecId(LecturesEntity lecturesByLecId) {
-        this.lecturesByLecId = lecturesByLecId;
+    public void setQuestions(List<QuestionEntity> questions) {
+        this.questions = questions;
     }
 }

@@ -13,7 +13,6 @@ public class PassedTestEntity {
 
     @Id
     @Column(name = "id_passed_test")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getIdPassedTest() {
         return idPassedTest;
     }

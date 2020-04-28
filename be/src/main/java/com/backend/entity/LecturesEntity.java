@@ -11,7 +11,6 @@ public class LecturesEntity {
     private String lectureName;
     private String img;
     private String pdfFile;
-    private ProductEntity productByProductId;
 
     @Id
     @Column(name = "`id_lectures`")
@@ -79,15 +78,5 @@ public class LecturesEntity {
     @Override
     public int hashCode() {
         return Objects.hash(idLectures, productId, lectureName, img, pdfFile);
-    }
-
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "`product_id`", referencedColumnName = "`id_product`", nullable = false)
-    public ProductEntity getProductByProductId() {
-        return productByProductId;
-    }
-
-    public void setProductByProductId(ProductEntity productByProductId) {
-        this.productByProductId = productByProductId;
     }
 }

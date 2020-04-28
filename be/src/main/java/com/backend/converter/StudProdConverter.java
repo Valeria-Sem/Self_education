@@ -3,7 +3,6 @@ package com.backend.converter;
 import com.backend.entity.ProductEntity;
 import com.backend.entity.SubscriptionEntity;
 import com.backend.service.ProductEntityService;
-import com.backend.service.StudentEntityService;
 import com.backend.service.SubscriptionEntityService;
 import com.backend.transferOfObjects.StudentProductModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,15 +19,12 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/studentSub")
 public class StudProdConverter {
-    private StudentEntityService studentEntityService;
-    private SubscriptionEntityService subscriptionEntityService;
-    private ProductEntityService productEntityService;
+    private final SubscriptionEntityService subscriptionEntityService;
+    private final ProductEntityService productEntityService;
 
     @Autowired
-    public StudProdConverter(StudentEntityService studentEntityService,
-                             SubscriptionEntityService subscriptionEntityService,
+    public StudProdConverter(SubscriptionEntityService subscriptionEntityService,
                              ProductEntityService productEntityService) {
-        this.studentEntityService = studentEntityService;
         this.subscriptionEntityService = subscriptionEntityService;
         this.productEntityService = productEntityService;
     }
