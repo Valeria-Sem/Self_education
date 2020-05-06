@@ -1,9 +1,10 @@
-import {ChangeDetectorRef, Component, OnInit} from "@angular/core";
+import {ChangeDetectorRef, Component, OnInit, TemplateRef} from "@angular/core";
 import {Test} from "../../../modules/test";
 import {ActivatedRoute, Router} from "@angular/router";
 import {TestService} from "../../../services/test.service";
 import {Question} from "../../../modules/question";
 import {QuestionService} from "../../../services/question.service";
+import {BsModalRef, BsModalService} from "ngx-bootstrap";
 
 @Component({
   selector: "app-test",
@@ -15,6 +16,8 @@ export class TestComponent implements OnInit{
   test: Test;
   questions : Question[];
   private userAnswers: Map<number, number> = new Map<number, number>();
+  modalRef: BsModalRef;
+
 
 
   constructor(private testService: TestService,
@@ -22,6 +25,7 @@ export class TestComponent implements OnInit{
               private cdr: ChangeDetectorRef,
               private router: Router,
               private route: ActivatedRoute,
+              private modalService: BsModalService
   ) {
   }
 
@@ -43,5 +47,9 @@ export class TestComponent implements OnInit{
 
   public onChange(questionId: number, answerId: number): void {
     this.userAnswers.set(questionId, answerId);
+  }
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template, Object.assign({}, {class: 'gray modal-lg'}));
   }
 }
