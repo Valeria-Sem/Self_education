@@ -10,17 +10,19 @@
              *ngFor="let item of questions;  let index = index">
           <h5>{{item.text}}</h5>
           <hr>
-          <div class="card-body" *ngFor="let choice of item.answers">
+          <div [ngClass]="rightAnswers && ((rightAnswers?.isRight[index]) ? '_green' : '_red')">
+          <div class="card-body text-left border-dark" *ngFor="let choice of item.answers">
             <label for="radioButton">
             <input type="radio"  id="radioButton"
                    name="{{item.idQuestion}}" value="{{choice.answerText}}"
+                   [disabled]="rightAnswers"
                    (change)="onChange(item.idQuestion, choice.idAnswer)">
             {{choice.answerText}}</label>
 <!--          </div>-->
 <!--        </div>-->
 <!--      </div>-->
 <!--    </div>-->
-<!--  </div>-->
+  </div>
 <!--</div>-->
 
 
@@ -49,8 +51,10 @@
 </div>
 
 <div class="pricing-footer px-3 py-3 pt-md-5 p-md-4 mx-auto text-center">
-  <a>
-    <button class="btn btn-outline-success" (click)="openModal(template)">
+  <a *ngIf="questions">
+    <button class="btn btn-outline-success"
+            [disabled]="userAnswers.size < questions.length || rightAnswers"
+            (click)="finishPassing(); openModal(template)">
       Finish
     </button>
   </a>
@@ -63,10 +67,19 @@
       </button>
     </div>
     <div class="modal-body" >
-      <p class="lead">You passed the 9 mark test!
-        The result will be saved.</p>
+      <p class="lead"
+         *ngIf="rightAnswers?.mark">
+        You answered {{rightAnswers.mark}} questions correctly
+        out of {{test.questionNumber}}.
+      Save the result ?</p>
       <div>
-        <button class="btn btn-info" (click)="modalRef.hide()">Ok</button>
+        <button class="btn btn-outline-success"
+                style="width: 70px!important; height: 40px !important;
+                        font-size: 16px" (click)="modalRef.hide()">Yes!</button>
+
+        <button class="btn btn-outline-danger"
+                style="width: 70px!important; height: 40px !important;
+                        font-size: 16px; margin-left: 85px !important" (click)="modalRef.hide()">No!</button>
       </div>
     </div>
   </ng-template>

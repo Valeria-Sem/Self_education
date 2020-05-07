@@ -20,7 +20,7 @@ export class UserService {
   }
 
   getUserInfo(login: string, password: string): Observable<User> {
-    return this.http.get<User>('/api/registration/login/' + login + '/password/' + password).pipe(
+    return this.http.get<User>('/api/login/' + login + '/password/' + password + '/login').pipe(
       tap(user => {
         this.currentUser$.next(user);
         this.currentUser = user;

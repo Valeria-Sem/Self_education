@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/registration")
+@RequestMapping
 public class RegistrationController {
     private RegistrationService registrationService;
 
@@ -17,7 +17,7 @@ public class RegistrationController {
         this.registrationService = registrationService;
     }
 
-    @RequestMapping(value = "/login/{login}/password/{password}", method = RequestMethod.GET)
+    @RequestMapping(value = "/api/login/{login}/password/{password}/login", method = RequestMethod.GET)
     public ResponseEntity<AbstractRegistrationModel> getUserInfo(
             @PathVariable(name = "login") String login,
             @PathVariable(name = "password") String password) {
@@ -25,19 +25,19 @@ public class RegistrationController {
         return ResponseEntity.ok(information);
     }
 
-    @RequestMapping(value = "/student/{idStudent}", method = RequestMethod.GET)
+    @RequestMapping(value = "/api/registration/student/{idStudent}", method = RequestMethod.GET)
     public ResponseEntity<AbstractRegistrationModel> getUserInfoByIdStudent(
             @PathVariable(name = "idStudent") int idStudent) {
         AbstractRegistrationModel studInfo =  registrationService.getUserInfoByIdStudent(idStudent);
         return ResponseEntity.ok(studInfo);
     }
 
-    @RequestMapping(value = "/student",method = RequestMethod.POST)
+    @RequestMapping(value = "/api/registration/student",method = RequestMethod.POST)
     public AbstractRegistrationModel registerStudent(@RequestBody StudentRegistrationModel studentRegistrationModel){
         return registrationService.registerUser(studentRegistrationModel);
     }
 
-    @RequestMapping(value = "/user/delete/{idUser}/{idWallet}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/api/registration/user/delete/{idUser}/{idWallet}", method = RequestMethod.DELETE)
     public void deleteUser(@PathVariable(name = "idUser") Integer idUser,
                            @PathVariable(name = "idWallet") Integer idWallet) {
         registrationService.deleteUserProfile(idUser, idWallet);

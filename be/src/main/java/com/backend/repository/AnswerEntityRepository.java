@@ -9,5 +9,5 @@ public interface AnswerEntityRepository extends CrudRepository<AnswerEntity, Int
 //    List<AnswerEntity> getAnswerEntitiesByQuestionByQuestionId (QuestionEntity question);
 //    List<AnswerEntity> getAll ();
 //    List<AnswerEntity> getIdAnswerByQuestionByQuestionId (QuestionEntity question);
-//    AnswerEntity findByQuestionIdAndIsRight (int questionId, byte isRight);
+    AnswerEntity findByQuestionIdAndIsRight (int questionId, byte isRight);
 }

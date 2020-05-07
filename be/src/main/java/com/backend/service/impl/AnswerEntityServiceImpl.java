@@ -10,13 +10,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class AnswerEntityServiceImpl implements AnswerEntityService {
     private final AnswerEntityRepository answerEntityRepository;
-    private final QuestionEntityService questionEntityService;
 
     @Autowired
-    public AnswerEntityServiceImpl(AnswerEntityRepository answerEntityRepository,
-                                   QuestionEntityService questionEntityService){
+    public AnswerEntityServiceImpl(AnswerEntityRepository answerEntityRepository){
         this.answerEntityRepository = answerEntityRepository;
-        this.questionEntityService = questionEntityService;
     }
 
 //    @Override
@@ -27,7 +24,7 @@ public class AnswerEntityServiceImpl implements AnswerEntityService {
 
     @Override
     public AnswerEntity findByQuestionIdAndIsRight(int questionId, byte isRight) {
-        return null;
+        return answerEntityRepository.findByQuestionIdAndIsRight(questionId, isRight);
     }
 
     @Override
