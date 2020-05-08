@@ -8,5 +8,6 @@ public interface SubscriptionEntityService {
     SubscriptionEntity subscribeStudent(SubscriptionEntity subscriptionEntity, int idStudent, int idProduct);
     void deleteSub(Integer idSubscription);
     List<SubscriptionEntity> getStudentSub(int idStudent);
+    List<SubscriptionEntity> getProductSub(int idProduct);
     List<SubscriptionEntity> getAllSubs();
 }

@@ -2,13 +2,13 @@
   <h1 class="display-4"  style="margin-bottom: 35px">Student</h1>
   <alert type="warning">
     <strong>Read this!</strong> On this page you can see the personal
-    data of your student and see the progress in passing the courses.
+    data of your student and see the student’s courses.
   </alert>
 </div>
 
 <div class="container">
   <tabset>
-    <tab heading="Student profile" id="tab1"   >
+    <tab heading="Student profile" id="tab1" >
       <div class="container" id="customer">
         <form>
           <div class="container-fluid mt-5" style="background-color: lavender">
@@ -35,6 +35,7 @@
                       <p class="card-text">wallet status:
                         {{user.walletStatus}}
                       </p>
+                      <button (click)="newContent()"> click hear </button>
                     </div>
                   </div>
                 </div>
@@ -44,8 +45,28 @@
         </form>
       </div>
     </tab>
-    <tab heading="Student courses">
-      Basic content 1
+    <tab heading="Student courses" id="tab2">
+      <div class="container-fluid mt-5" style="background-color: lavender">
+        <div class="container p-5">
+          <div class="row justify-content-center">
+            <div class="col col-lg-4 description" *ngFor="let choice of studProd">
+              <div class="card text-center mt-5 description-container">
+                <img src="{{choice.img}}" alt="" class="card-img-top">
+                <div class="card-body" >
+                  <h1 class="card-title pricing-card-title" >
+                    {{choice.price}} <img src="assets\img\coin.png" alt="" width="50" height="50">
+                  </h1>
+                  <h4 class="card-title">{{choice.name}}</h4>
+                  <p class="card-text">
+                    Status: {{choice.subscriptionStatus}}
+                  </p>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </tab>
   </tabset>
 </div>

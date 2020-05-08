@@ -4,6 +4,10 @@ import {SubService} from "../../../services/subscription.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Lectures} from "../../../modules/lectures";
 import {LecturesService} from "../../../services/lectures.service";
+import {PassedTest} from "../../../modules/passedTest";
+import {PassedTestService} from "../../../services/passedTest.service";
+import {User} from "../../../modules/user";
+import {UserService} from "../../../services/user.service";
 
 @Component({
   selector: "app-lectures",
@@ -15,13 +19,17 @@ export class LecturesComponent implements OnInit{
   id: string;
   lectures: Lectures[];
   modalRef: BsModalRef;
+  passedTest: PassedTest;
+  public user: User = this.userService.currentUser;
 
   constructor(private lecturesService: LecturesService,
               private subService: SubService,
               private cdr: ChangeDetectorRef,
               private router: Router,
+              private userService: UserService,
               private route: ActivatedRoute,
-              private modalService: BsModalService
+              private modalService: BsModalService,
+              private passedTestService: PassedTestService
   ) {
   }
 
@@ -40,6 +48,12 @@ export class LecturesComponent implements OnInit{
     this.modalRef = this.modalService.show(template, Object.assign({}, {class: 'gray modal-lg'}));
   }
 
+  getResult(idLec: string): void{
+
+    if(this.user.idStudent === this.passedTest.studentId && idLec === this.passedTest.idTest){
+
+    }
+  }
 }
 
 

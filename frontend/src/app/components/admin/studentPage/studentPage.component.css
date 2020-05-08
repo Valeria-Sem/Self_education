@@ -8,3 +8,10 @@
 .h3 {
   text-align: center;
 }
+
+.card-img-top{
+  margin-top: 20px;
+  margin-left: 100px;
+  height: 100px;
+  width: 100px;
+}

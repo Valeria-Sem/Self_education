@@ -66,6 +66,12 @@ public class SubscriptionEntityServiceImpl implements SubscriptionEntityService 
     }
 
     @Override
+    public List<SubscriptionEntity> getProductSub(int idProduct) {
+        ProductEntity product = productEntityService.getProductByIdProduct(idProduct);
+        return subscriptionEntityRepository.getSubscriptionEntitiesByProductByProductId(product);
+    }
+
+    @Override
     public List<SubscriptionEntity> getAllSubs() {
         return subscriptionEntityRepository.findAll();
     }

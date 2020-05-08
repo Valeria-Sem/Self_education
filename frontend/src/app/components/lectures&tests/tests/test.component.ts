@@ -8,6 +8,10 @@ import {BsModalRef, BsModalService} from "ngx-bootstrap";
 import {Subscription} from "rxjs";
 import {RightAnswers} from "../../../modules/rightAnswers";
 import {AnswerService} from "../../../services/answer.service";
+import {PassedTestService} from "../../../services/passedTest.service";
+import {User} from "../../../modules/user";
+import {UserService} from "../../../services/user.service";
+import {PassedTest} from "../../../modules/passedTest";
 
 @Component({
   selector: "app-test",
@@ -24,6 +28,8 @@ export class TestComponent implements OnInit{
   private request = {};
   private subscriptions: Subscription[] = [];
   private rightAnswers: RightAnswers = null;
+  public user: User = this.userService.currentUser;
+  passedTest: PassedTest;
 
 
   constructor(private testService: TestService,
@@ -32,7 +38,9 @@ export class TestComponent implements OnInit{
               private answerService: AnswerService,
               private router: Router,
               private route: ActivatedRoute,
-              private modalService: BsModalService
+              private userService: UserService,
+              private modalService: BsModalService,
+              private passedTestService: PassedTestService,
   ) {
   }
 
@@ -66,12 +74,6 @@ export class TestComponent implements OnInit{
     })
   }
 
-  checkAns(isRightAns: number){
-    if(isRightAns == 1){
-      this.counter++;
-    }
-  }
-
   public finishPassing(): void {
     this.changeFormat();
     this.subscriptions.push(this.answerService.getRightAnswer(this.request).subscribe((rightAnswersModel) => {
@@ -79,7 +81,8 @@ export class TestComponent implements OnInit{
     }));
   }
 
-  public saveResult(): void{
-
+  public saveResult(mark: number, test: string): void{
+    this.passedTest = new PassedTest( this.user.idStudent, test, mark);
+    this.passedTestService.saveResult(this.passedTest).subscribe();
   }
 }
