@@ -66,7 +66,7 @@ import {MapToIterable} from "./components/lectures&tests/tests/MapToIterable";
     TestComponent,
     LecturesComponent,
     SafePipe,
-    MapToIterable
+    MapToIterable,
   ],
   imports: [
     BrowserModule,
