@@ -7,14 +7,5 @@
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306/self_edu</jdbc-url>
     </data-source>
-    <data-source source="LOCAL" name="heroku" uuid="a0af4df6-4dad-44b6-9deb-1579c136e93f">
-      <driver-ref>postgresql</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://ec2-54-247-78-30.eu-west-1.compute.amazonaws.com:5432/postgres</jdbc-url>
-      <driver-properties>
-        <property name="ssl" value="true" />
-      </driver-properties>
-    </data-source>
   </component>
 </project>
