@@ -17,10 +17,10 @@ public class RegistrationController {
         this.registrationService = registrationService;
     }
 
-    @RequestMapping(value = "/api/login/{login}/password/{password}/login", method = RequestMethod.GET)
+    @RequestMapping(value = "/api/login", method = RequestMethod.GET)
     public ResponseEntity<AbstractRegistrationModel> getUserInfo(
-            @PathVariable(name = "login") String login,
-            @PathVariable(name = "password") String password) {
+            @RequestParam(name = "login") String login,
+            @RequestParam(name = "password") String password) {
         AbstractRegistrationModel information =  registrationService.getUserInfo(login, password);
         return ResponseEntity.ok(information);
     }

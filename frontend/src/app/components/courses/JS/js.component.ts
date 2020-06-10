@@ -31,7 +31,8 @@ export class JSComponent implements OnInit {
   product: Product;
   modalRef: BsModalRef;
   studProd: StudProd[];
-  subscription: Subscription;
+  user$ = this.userService.currentUser$;
+  subscription: StudProd;
   public status: SubStatus = 0;
   bsModalRef: BsModalRef;
   isVisibleButton: boolean = true;
@@ -82,7 +83,7 @@ export class JSComponent implements OnInit {
         localStorage.setItem("user", JSON.stringify(this.userService.currentUser));
       });
 
-      this.subscription = new Subscription( this.user.idStudent, this.product.idProduct, this.status);
+      this.subscription = new StudProd( this.user.idStudent.toString(), this.product.idProduct, this.status);
       this.subService.subscribeStudent(this.subscription, this.user.idStudent, this.product.idProduct).subscribe();
       this.getStudentSubs();
       this.isVisibleButton = false;

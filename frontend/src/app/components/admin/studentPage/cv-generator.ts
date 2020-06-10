@@ -1,7 +1,4 @@
 import { AlignmentType, Document, HeadingLevel, Packer, Paragraph, TabStopPosition, TabStopType, TextRun } from "docx";
-const PHONE_NUMBER = "07534563401";
-const PROFILE_URL = "https://www.linkedin.com/in/dolan1";
-const EMAIL = "docx@docx.com";
 
 export class DocumentCreator {
   // tslint:disable-next-line: typedef
@@ -11,10 +8,10 @@ export class DocumentCreator {
     document.addSection({
       children: [
         new Paragraph({
-          text: "Dolan Miu",
+          text: "List of students",
           heading: HeadingLevel.TITLE,
         }),
-        this.createContactInfo(PHONE_NUMBER, PROFILE_URL, EMAIL),
+        // this.createContactInfo(PHONE_NUMBER, EMAIL),
         this.createHeading("Education"),
         ...educations
           .map((education) => {
@@ -76,12 +73,11 @@ export class DocumentCreator {
     return document;
   }
 
-  public createContactInfo(phoneNumber: string, profileUrl: string, email: string): Paragraph {
+  public createContactInfo(phoneNumber: string, email: string): Paragraph {
     return new Paragraph({
       alignment: AlignmentType.CENTER,
       children: [
-        new TextRun(`Mobile: ${phoneNumber} | LinkedIn: ${profileUrl} | Email: ${email}`),
-        new TextRun("Address: 58 Elm Avenue, Kent ME4 6ER, UK").break(),
+        new TextRun(`Mobile: ${phoneNumber} | Email: ${email}`),
       ],
     });
   }

@@ -18,24 +18,30 @@ import {StudentComponent} from "./components/student/student.component";
 import {SubPageComponent} from "./components/student/subs/sub.page.component";
 import {LecturesComponent} from "./components/lectures&tests/lectures/lectures.component";
 import {TestComponent} from "./components/lectures&tests/tests/test.component";
+import {AdminCoursesComponent} from "./components/admin/admin-cours/admin-courses.component";
+import {RoleGuard} from "./services/role-guard.service";
+import {Role} from "./modules/user";
+import {AboutProgramComponent} from "./components/about/aboutProgramm/aboutProgram";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent}
   , {path: 'about', component: AboutComponent}
-  , {path: 'groups', component: GroupsComponent}
-  , {path: 'groups/studentPage/:id', component: StudentPageComponent}
-  , {path: 'registration', component: RegistrationComponent}
-  , {path: 'constructor', component: ConstructorComponent}
+  , {path: 'aboutProg', component: AboutProgramComponent}
+  , {path: 'groups', component: GroupsComponent, canActivate: [RoleGuard], data: {role: Role.ADMIN}}
+  , {path: 'groups/studentPage/:id', component: StudentPageComponent, canActivate: [RoleGuard], data: {role: Role.ADMIN}}
+  , {path: 'registration', component: RegistrationComponent, canActivate: [RoleGuard], data: {role: Role.ADMIN}}
+  , {path: 'constructor', component: ConstructorComponent, canActivate: [RoleGuard], data: {role: Role.ADMIN}}
   , {path: 'c++', component: PlusComponent}
   , {path: 'c#', component: SharpComponent}
   , {path: 'java', component: JavaComponent}
   , {path: 'python', component: PythonComponent}
   , {path: 'javascript', component: JSComponent}
   , {path: 'php', component: PHPComponent}
-  , {path: 'profile', component: StudentComponent}
-  , {path: 'sub', component: SubPageComponent}
-  , {path: 'course/:id', component: LecturesComponent}
-  , {path: 'test/:id', component: TestComponent}
+  , {path: 'profile', component: StudentComponent, canActivate: [RoleGuard], data: {role: Role.USER}}
+  , {path: 'sub', component: SubPageComponent, canActivate: [RoleGuard], data: {role: Role.USER}}
+  , {path: 'course/:id', component: LecturesComponent, canActivate: [RoleGuard], data: {role: Role.USER}}
+  , {path: 'test/:id', component: TestComponent, canActivate: [RoleGuard], data: {role: Role.USER}}
+  , {path: 'courses', component: AdminCoursesComponent, canActivate: [RoleGuard], data: {role: Role.ADMIN}}
   // , {path: 'app', component: AppsComponent, canActivate: [RoleGuard], data: {role: Role.CUSTOMER}}
   // , {path: 'games', component: GamesComponent, canActivate: [RoleGuard], data: {role: Role.CUSTOMER}}
   // , {path: 'music', component: MusicComponent, canActivate: [RoleGuard], data: {role: Role.CUSTOMER}}

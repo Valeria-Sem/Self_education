@@ -8,5 +8,6 @@ import java.util.Optional;
 
 @Repository
 public interface PassedTestEntityRepository extends CrudRepository<PassedTestEntity, Integer> {
-    Optional<PassedTestEntity> findByStudentIdAndIdTest (int studId, int testId);
+//    Optional<PassedTestEntity> findByStudentIdAndIdTest (int studId, int testId);
+    PassedTestEntity findByStudentIdAndIdTest (int studId, int testId);
 }

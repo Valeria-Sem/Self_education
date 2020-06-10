@@ -12,6 +12,9 @@ import {PassedTestService} from "../../../services/passedTest.service";
 import {User} from "../../../modules/user";
 import {UserService} from "../../../services/user.service";
 import {PassedTest} from "../../../modules/passedTest";
+import {Testing} from "../../../modules/testing";
+import {Wallet} from "../../../modules/wallet";
+import {WalletService} from "../../../services/wallet.service";
 
 @Component({
   selector: "app-test",
@@ -30,6 +33,10 @@ export class TestComponent implements OnInit{
   private rightAnswers: RightAnswers = null;
   public user: User = this.userService.currentUser;
   passedTest: PassedTest;
+  testing: Testing;
+  newBalance: number;
+  balance: number;
+  wallet: Wallet;
 
 
   constructor(private testService: TestService,
@@ -41,6 +48,7 @@ export class TestComponent implements OnInit{
               private userService: UserService,
               private modalService: BsModalService,
               private passedTestService: PassedTestService,
+              private walletService: WalletService
   ) {
   }
 
@@ -56,6 +64,11 @@ export class TestComponent implements OnInit{
 
     this.questionService.getQuestionsByTestId(this.id.substr(1, 2)).subscribe((data) => {
       this.questions = data as Question[];
+      this.cdr.detectChanges();
+    });
+
+    this.passedTestService.findResult(this.user.idStudent, this.id.substr(1, 2)).subscribe((data) => {
+      this.testing = data as Testing;
       this.cdr.detectChanges();
     });
   }
@@ -82,7 +95,22 @@ export class TestComponent implements OnInit{
   }
 
   public saveResult(mark: number, test: string): void{
-    this.passedTest = new PassedTest( this.user.idStudent, test, mark);
-    this.passedTestService.saveResult(this.passedTest).subscribe();
+    this.balance = this.user.balance - this.testing.mark;
+    this.newBalance = this.balance + mark;
+
+    this.wallet = new Wallet(this.user.idWallet, this.newBalance, this.user.walletStatus);
+    this.walletService.balanceReplenishment(this.wallet).subscribe( () =>{
+      this.userService.currentUser.balance = this.newBalance;
+      localStorage.setItem("user", JSON.stringify(this.userService.currentUser));
+    });
+
+    if(this.testing.isExist === true){
+      this.testing = new Testing(this.testing.idPassedTest, this.user.idStudent, test, mark);
+      this.passedTestService.reSaveResult(this.testing).subscribe();
+    } else {
+      this.passedTest = new PassedTest(this.user.idStudent, test, mark);
+      this.passedTestService.saveResult(this.passedTest).subscribe();
+    }
   }
+
 }

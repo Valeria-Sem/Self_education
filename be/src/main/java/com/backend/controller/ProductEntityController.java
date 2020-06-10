@@ -1,6 +1,7 @@
 package com.backend.controller;
 
 import com.backend.entity.ProductEntity;
+import com.backend.entity.UserEntity;
 import com.backend.service.ProductEntityService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,5 +26,10 @@ public class ProductEntityController {
     public ResponseEntity<ProductEntity> getStudentsByGroupId(@PathVariable(name = "courseId") Integer courseId){
         ProductEntity product = productEntityService.getProductByCourseId(courseId);
         return ResponseEntity.ok(product);
+    }
+
+    @RequestMapping(value = "", method = RequestMethod.GET)
+    public Iterable<ProductEntity> getAllUsers(){
+        return productEntityService.getAllProducts();
     }
 }

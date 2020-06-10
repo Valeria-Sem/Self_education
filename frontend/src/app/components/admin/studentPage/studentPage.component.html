@@ -16,7 +16,7 @@
               <div class="row justify-content-center">
                 <div class="col col-lg-7" >
                   <div class="card text-center mt-5">
-                    <div class="card-body" >
+                    <div class="card-body" id="Id" >
                       <h2 class="card-title pricing-card-title" >
                         {{user.surname}} {{user.name}} {{user.patronymic}}
                       </h2>
@@ -35,7 +35,7 @@
                       <p class="card-text">wallet status:
                         {{user.walletStatus}}
                       </p>
-                      <button (click)="download()"> click hear </button>
+                      <button class="btn btn-outline-primary" (click)="deleteProfile()"> Delete profile </button>
                     </div>
                   </div>
                 </div>
@@ -45,14 +45,14 @@
         </form>
       </div>
     </tab>
-    <tab heading="Student courses" id="tab2">
+    <tab heading="Student courses" id="tab">
       <div class="container-fluid mt-5" style="background-color: lavender">
         <div class="container p-5">
           <div class="row justify-content-center">
             <div class="col col-lg-4 description" *ngFor="let choice of studProd">
               <div class="card text-center mt-5 description-container">
                 <img src="{{choice.img}}" alt="" class="card-img-top">
-                <div class="card-body" >
+                <div class="card-body" id="Id2">
                   <h1 class="card-title pricing-card-title" >
                     {{choice.price}} <img src="assets\img\coin.png" alt="" width="50" height="50">
                   </h1>

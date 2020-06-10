@@ -34,4 +34,9 @@ public class GroupEntityController {
     public GroupEntity saveGroup(@RequestBody GroupEntity groupEntity){
         return groupEntityService.saveGroup(groupEntity);
     }
+
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
+    public void deleteGroup(@PathVariable(name = "id") Integer id){
+         groupEntityService.delete(id);
+    }
 }

@@ -39,4 +39,9 @@ public class GroupEntityServiceImpl implements GroupEntityService {
     public GroupEntity saveGroup(GroupEntity group) {
         return groupEntityRepository.save(group);
     }
+
+    @Override
+    public void delete(int id) {
+        groupEntityRepository.deleteById(id);
+    }
 }

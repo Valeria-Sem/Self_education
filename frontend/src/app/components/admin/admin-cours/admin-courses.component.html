@@ -1,10 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<div class="pricing-header px-3 py-3 pt-md-5 p-md-4 mx-auto text-center">
+  <h1 class="display-4"  style="margin-bottom: 35px">Reports</h1>
+  <alert type="info">
+    <h3>Read this!</h3>
+    <p>By clicking on the tabs you can see the list of students subscribed to the selected course,
+      or download this report to your computer in .docx format</p>
+  </alert>
+</div>
 
-</body>
-</html>
+<div class="container">
+  <tabset>
+    <tab id="tabId" *ngFor="let choice of products; let i = index" heading="{{choice.productName}}"
+         (select)="students($event, choice.idProduct)" active>
+      <button class="btn btn-outline-danger" (click)="Export2Doc('tabId',  choice.productName + ' report')">
+        Click hear to download the report</button>
+      <h1 hidden style="margin-left: 100px; font-size: 20px" >
+        List of students
+      </h1>
+      <h4 class="page-link" *ngFor="let studChoice of users"
+          style="margin-top: 20px; text-align: center; color: mediumslateblue"
+          routerLink="/groups/studentPage/:{{studChoice.studentId}}">
+        {{studChoice.surname}}
+        {{studChoice.name}}
+        {{studChoice.patronymic}}
+      </h4>
+    </tab>
+  </tabset>
+</div>
+
+
+

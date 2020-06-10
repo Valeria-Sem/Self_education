@@ -31,7 +31,7 @@
 <!--        <label>-->
           <select size="1"  class="form-control"
                    #groupField="ngModel" required
-                   [(ngModel)]="idGroup"  name="hero[]">
+                   [(ngModel)]="idGroup"  name="hero">
             <option value="undefined" disabled selected hidden>Choose group</option>
             <option [value]="choice.idGroup" *ngFor="let choice of groups" >{{choice.groupName}}</option>
           </select>
@@ -41,6 +41,10 @@
         Missing Group
       </div>
     </form>
+
+    <h2 *ngIf="unauthorizedError" style="color: red; text-align: center; cursor: default">
+      {{unauthorizedError}}
+    </h2>
 
     <label for="inputLogin" class="sr-only">Login</label>
     <input type="login" id="inputLogin" class="form-control" placeholder="Login" #loginField="ngModel" required [(ngModel)]="login"
@@ -53,8 +57,7 @@
       [disabled]="!nameField.valid || !surnameField.valid || !patronymicField.valid || !groupField.valid || !loginField.valid"
       class="btn btn-lg btn-primary btn-block"
       type="submit"
-      (click)="saveStudent(information);
-      openModal(template)">
+      (click)="saveStudent(information, template)">
       Save
     </button>
 
@@ -74,6 +77,7 @@
         <button type="button" class="btn btn-primary" (click)="bsModalRef.hide()">Yes</button>
       </div>
     </ng-template>
+
 
     <p class="mt-5 mb-3 text-muted" style="margin-left: 80px">&copy; 2020-2021</p>
   </form>

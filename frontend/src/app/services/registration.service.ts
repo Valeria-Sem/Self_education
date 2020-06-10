@@ -9,6 +9,8 @@ import {User} from "../modules/user";
 })
 export class RegistrationService {
 
+  public userForRegister: User = null;
+
   constructor(private http: HttpClient) {
   }
 

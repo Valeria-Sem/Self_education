@@ -22,11 +22,12 @@ export class SharpComponent implements OnInit {
   @ViewChild('childModal', {read: false}) childModal: ModalDirective;
   public wallet: Wallet;
   public user: User = this.userService.currentUser;
+  user$ = this.userService.currentUser$;
   public balance: number;
   product: Product;
   modalRef: BsModalRef;
   studProd: StudProd[];
-  subscription: Subscription;
+  subscription: StudProd;
   public status: SubStatus = 0;
   bsModalRef: BsModalRef;
   isVisibleButton: boolean = true;
@@ -57,8 +58,8 @@ export class SharpComponent implements OnInit {
     this.productService.getProductByCourseId('2').subscribe((data) => {
       this.product = data as Product;
       this.cdr.detectChanges();
-      this.getStudentSubs();
     });
+    this.getStudentSubs();
   }
 
   hideChildModal(): void {
@@ -77,7 +78,7 @@ export class SharpComponent implements OnInit {
         localStorage.setItem("user", JSON.stringify(this.userService.currentUser));
       });
 
-      this.subscription = new Subscription( this.user.idStudent, this.product.idProduct, this.status);
+      this.subscription = new StudProd( this.user.idStudent.toString(), this.product.idProduct, this.status);
       this.subService.subscribeStudent(this.subscription, this.user.idStudent, this.product.idProduct).subscribe();
       this.getStudentSubs();
       this.isVisibleButton = false;

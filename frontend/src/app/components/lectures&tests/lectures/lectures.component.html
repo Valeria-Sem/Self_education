@@ -21,7 +21,7 @@
 
 
               <div class="subButton" >
-                <a class="btn btn-warning" (click)="openModal(template)">Open</a>
+                <a class="btn btn-warning" (click)="getResult(choice.idLectures, template)">Open</a>
               </div>
 
               <ng-template #template>
@@ -35,34 +35,42 @@
                   <iframe class="iframe" [src]="choice.pdfFile | safe" title={iframeTitle} ></iframe>
                   <div>
                     <button class="btn btn-info" style="width: 100px; height: 50px" (click)="modalRef.hide()">Cancel</button>
+                    <a *ngIf="isVisible">
                     <button class="btn btn-info"
                             style="width: 100px;
                              height: 50px;
                              margin-left: 566px" routerLink="/test/:{{choice.idLectures}}"
                             (click)="modalRef.hide()">Testing</button>
+                    </a>
                   </div>
                 </div>
               </ng-template>
 
-<!--              <div bsModal #childModal="bs-modal" class="modal fade" tabindex="-1"-->
-<!--                   role="dialog" aria-labelledby="dialog-child-name">-->
-<!--                <div class="modal-dialog modal-sm">-->
-<!--                  <div class="modal-content">-->
-<!--                    <div class="modal-header">-->
-<!--                      <h4 id="dialog-child-name" class="modal-title pull-left">Error</h4>-->
-<!--&lt;!&ndash;                      <button type="button" class="close pull-right" aria-label="Close" (click)="hideChildModal()">&ndash;&gt;-->
-<!--&lt;!&ndash;                        <span aria-hidden="true">&times;</span>&ndash;&gt;-->
-<!--&lt;!&ndash;                      </button>&ndash;&gt;-->
-<!--                    </div>-->
-<!--                    <div class="modal-body">-->
-<!--                      You are short of money. Top up your balance!-->
-<!--                    </div>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--              </div>-->
+              <div bsModal #childModal="bs-modal" class="modal fade" tabindex="-1"
+                   role="dialog" aria-labelledby="dialog-child-name">
+                <div class="modal-dialog modal-sm">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 id="dialog-child-name" class="modal-title pull-left">Error</h4>
+                      <hr>
+                      <button type="button" class="close pull-right" aria-label="Close" (click)="hideChildModal()">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      To study this lecture, you need to study the last lecture and pass the test!
+                    </div>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+<!--  <div class="pricing-footer px-3 py-3 pt-md-5 p-md-4 mx-auto text-center">-->
+<!--    <button class="btn btn-outline-primary finishButton" (click)="finishEducation()">Finish this course</button>-->
+<!--  </div>-->

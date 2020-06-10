@@ -25,6 +25,10 @@
   /*color: purple;*/
 }
 
+.btn-hide{
+  visibility: hidden;
+}
+
 /*.btn:hover{*/
 /*  color: white;*/
 /*  background: purple;*/

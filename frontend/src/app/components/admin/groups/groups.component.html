@@ -13,6 +13,8 @@
   <tabset>
     <tab *ngFor="let choice of groups" heading="group {{choice.groupName}}"
                    (select)="students($event, choice.idGroup)" active>
+      <button class="btn btn-outline-danger deleteButton" (click)="delete(choice.idGroup)">
+        Delete group</button>
       <h5 class="page-link" *ngFor="let studChoice of users"
           style="margin-top: 20px; text-align: center; color: mediumslateblue"
           routerLink="/groups/studentPage/:{{studChoice.idStudent}}">

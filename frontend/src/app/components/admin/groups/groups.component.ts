@@ -55,4 +55,13 @@ export class GroupsComponent implements OnInit{
   //   });
   // }
 
+  delete(idGroup: string): void{
+    this.groupService.deleteGroup(idGroup).subscribe(() =>{
+      this.groupService.getGroups().subscribe((data) => {
+        this.groups = data as Group[];
+        this.cdr.detectChanges();
+      });
+    });
+  }
+
 }

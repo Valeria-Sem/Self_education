@@ -78,12 +78,59 @@ export class StudentPageComponent implements OnInit{
       education,
       skills,
       achievements
+      // this.user.name
     ]);
 
     Packer.toBlob(doc).then(blob => {
       console.log(blob);
       saveAs(blob, this.user.name + ".docx");
       console.log("Document created successfully");
+    });
+  }
+
+  Export2Doc(element, element2, filename = ''){
+    let preHtml = "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'>" +
+      "<title>Export HTML To Docx</title></head><body>";
+    let postHtml = "</body></html>";
+    let html = preHtml+document.getElementById(element).innerHTML+postHtml;
+    let html2 = preHtml+document.getElementById(element2).innerHTML+postHtml;
+
+    let blob = new Blob(['\ufeff', html, html2 ], {
+      type: 'application/msword'
+    });
+
+    // Specify link url
+    let url = 'data:application/vnd.ms-word;charset=utf-8,' + encodeURIComponent(html) + encodeURIComponent(html2);
+
+    // Specify file name
+    filename = filename?filename+'.doc':'document.doc';
+
+    // Create download link element
+    let downloadLink = document.createElement("a");
+
+    document.body.appendChild(downloadLink);
+
+    if(navigator.msSaveOrOpenBlob ){
+      navigator.msSaveOrOpenBlob(blob, filename);
+    }else{
+      // Create a link to the file
+      downloadLink.href = url;
+
+      // Setting the file name
+      downloadLink.download = filename;
+
+      //triggering the function
+      downloadLink.click();
+    }
+
+    document.body.removeChild(downloadLink);
+  }
+
+  deleteProfile(){
+    this.userService.deleteUser(+this.user.idUser, this.user.idWallet).subscribe(() => {
+      this.userService.setUser(null);
+      localStorage.removeItem("user");
+      this.router.navigate(['/groups']);
     });
   }
 }

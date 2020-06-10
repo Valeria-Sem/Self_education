@@ -8,4 +8,5 @@ public interface GroupEntityService {
     Iterable<GroupEntity> getAllGroups();
     Optional<GroupEntity> getByIdGroup(int idGroup);
     GroupEntity saveGroup(GroupEntity group);
+    void delete(int id);
 }

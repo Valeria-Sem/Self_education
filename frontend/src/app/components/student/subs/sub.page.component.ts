@@ -15,6 +15,7 @@ import {ProductService} from "../../../services/product.service";
 import {WalletService} from "../../../services/wallet.service";
 import {SubService} from "../../../services/subscription.service";
 import {UserService} from "../../../services/user.service";
+import {Router} from "@angular/router";
 // import {SubService} from "../../services/subscription.service";
 // import {UserService} from "../../services/user.service";
 // import {CustProd} from "../../modules/CustProd";
@@ -46,7 +47,8 @@ export class SubPageComponent {
               private walletService: WalletService,
               private cdr: ChangeDetectorRef,
               private subService: SubService,
-              private userService: UserService) {}
+              private userService: UserService,
+              private router: Router) {}
 
 
   // pageChanged(event: any): void {
@@ -76,5 +78,6 @@ export class SubPageComponent {
       })
     });
   }
+
 
 }

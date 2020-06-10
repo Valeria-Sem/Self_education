@@ -8,6 +8,7 @@ import {User} from "../../modules/user";
 import {UserService} from "../../services/user.service";
 import {Subscription} from "rxjs";
 import {getTemplate} from "codelyzer/util/ngQuery";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 
 @Component({
@@ -23,9 +24,15 @@ export class NavTopComponent implements OnInit{
   modalRef2: BsModalRef;
   myForm: FormGroup;
   private subscriptions: Subscription[] = [];
+  users : User[];
   loginForm: FormGroup;
   public user: User = this.userService.currentUser;
   user$ = this.userService.currentUser$;
+  public notNull: boolean = true;
+  public isCollapsedLog: boolean = true;
+  public searchQuery: string;
+  public logUser: User;
+  unauthorizedError: string = null;
   // products: Product[];
   public login: string;
   public password: string;
@@ -39,6 +46,7 @@ export class NavTopComponent implements OnInit{
               private cdr: ChangeDetectorRef,
               private formBuilder: FormBuilder,
               private userService: UserService,
+              private toggleService: BrowserAnimationsModule,
               private router: Router) {
   // private productService: ProductService
   }
@@ -74,19 +82,35 @@ export class NavTopComponent implements OnInit{
   }
 
   public getUserInfo(login, password): void {
+    this.isCollapsedLog = true;
     // console.log(this.loginForm);
     this.subscriptions.push(
       this.userService.getUserInfo(login, password)
         .subscribe(() => {
+          if (this.userService.currentUser.errors == null) {
+            this.router.navigate(['/']);
             this.modalRef.hide();
           }
-        )
-    )
+        }, error => {
+          if (error.status == 500 || error.status == 400) {
+            this.unauthorizedError = 'Invalid login or password';
+            // this.login.value = '';
+            // this.password.nativeElement.value = '';
+          }
+          // this.logUser = account as User;
+          // if(this.logUser == null) {
+          //   this.isCollapsedLog = false;
+          // }
+          // else {
+          //   localStorage.setItem("currentUser", JSON.stringify(this.logUser));
+          //   this.router.navigate(['/home'], {});
+          // }
+          }))
 
-    if(this.user.role == 'ADMIN'){
-      // this.router.navigate(['/']);
-
-    }
+    // if(this.user.role == 'ADMIN'){
+    //   // this.router.navigate(['/']);
+    //
+    // }
   }
 
   onHidden(): void {
@@ -110,5 +134,22 @@ export class NavTopComponent implements OnInit{
     this.userService.setUser(null);
     localStorage.removeItem("user");
     this.router.navigate(['/']);
+  }
+
+  private loadStudents(template: TemplateRef<any>) : void {
+    this.subscriptions.push(this.userService.getStudentsBySearch(this.searchQuery).subscribe(accounts => {
+      this.users = accounts as User[];
+      this.notNull = this.users.length != 0;
+      this.modalRef = this.modalService.show(template);
+    }))
+  }
+
+  public loadSearchResults(template: TemplateRef<any>) : void {
+      this.loadStudents(template);
+  }
+
+  public showUserPage(user: User) : void {
+    this.modalRef.hide();
+    this.router.navigate(['/groups/studentPage/:' + user.idStudent], {});
   }
 }

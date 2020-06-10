@@ -20,8 +20,14 @@ public class PassedTestEntityController {
         return passedTestEntityService.save(passedTest);
     }
 
+//    @RequestMapping(value = "/findResult/{studId}/{testId}", method = RequestMethod.GET)
+//    public Optional<PassedTestEntity> findResult(@PathVariable(name = "studId") int studId,
+//                                                 @PathVariable(name = "testId") int testId){
+//        return passedTestEntityService.findByStudentIdAndIdTest(studId, testId);
+//    }
+
     @RequestMapping(value = "/findResult/{studId}/{testId}", method = RequestMethod.GET)
-    public Optional<PassedTestEntity> findResult(@PathVariable(name = "studId") int studId,
+    public PassedTestEntity findResult(@PathVariable(name = "studId") int studId,
                                                  @PathVariable(name = "testId") int testId){
         return passedTestEntityService.findByStudentIdAndIdTest(studId, testId);
     }

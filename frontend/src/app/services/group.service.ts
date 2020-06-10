@@ -23,4 +23,8 @@ export class GroupService {
   saveGroup(information: Group): Observable<Group> {
     return this.http.post<Group>('/api/group/save', information);
   }
+
+  deleteGroup(id: String): Observable<void> {
+    return this.http.delete<void>('api/group/delete/' + id);
+  }
 }

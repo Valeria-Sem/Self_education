@@ -1,0 +1,14 @@
+
+.aboutSubscription{
+  text-align: center;
+}
+.aboutSubscriptionText{
+  margin-left: 200px;
+}
+
+.img{
+  height: 400px;
+  width: 400px;
+  margin-left: 200px !important;
+  margin-top: -50px;
+}

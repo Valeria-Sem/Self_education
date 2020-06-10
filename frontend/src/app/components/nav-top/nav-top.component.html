@@ -1,13 +1,3 @@
-<!--<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">-->
-<!--  <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Self education</a>-->
-<!--  <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">-->
-<!--  <ul class="navbar-nav px-3">-->
-<!--    <li class="nav-item text-nowrap">-->
-<!--      <a class="nav-link" href="#">Sign in</a>-->
-<!--    </li>-->
-<!--  </ul>-->
-<!--</nav>-->
-
 <div *ngIf="loaded">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" xmlns:cursor="http://www.w3.org/1999/xhtml">
     <a class="navbar-brand col-sm-3 col-md-2 mr-0" routerLink="/">Self education</a>
@@ -39,31 +29,23 @@
         <li class="nav-item ">
           <a class="nav-link" routerLink="/about">Features</a>
         </li>
+
+        <li class="nav-item ">
+          <a class="nav-link" routerLink="/aboutProg">About project</a>
+        </li>
       </ul>
 
       <form class="form-inline my-2 my-lg-0">
-<!--        <input type="search" class="form-control mr-sm-2"-->
-<!--               placeholder="Search" aria-label="Search" >-->
-<!--        <input type="submit" value="Найти">-->
-
-<!--        <button class="btn btn-outline-primary my-2 my-sm-0">Search</button>-->
-<!--        apiKey: 'any',-->
-<!--        appId: 'any',-->
-<!--        <ais-instantsearch class="mr-sm-2">-->
-<!--          <ais-search-box></ais-search-box>-->
-<!--          <ais-hits>-->
-<!--            <ng-template let-hits="hits">-->
-<!--              <div *ngFor="let hit of hits">-->
-<!--                Hit {{hit.objectID}}:-->
-<!--                <ais-highlight attribute="name" [hit]="hit">-->
-<!--                </ais-highlight>-->
-<!--              </div>-->
-<!--            </ng-template>-->
-<!--          </ais-hits>-->
-<!--        </ais-instantsearch>-->
+        <input name="searchQuery" type="search" [(ngModel)]="searchQuery" class="form-control mr-sm-2 border-dark"
+               placeholder="Search by students" aria-label="Search"
+               [class.hide]="!(user$ | async) || (user$ | async).role === 'USER'">
+        <button class="btn btn-outline-primary myBtn"
+                style="margin-right: 20px"
+                [class.hide]="!(user$ | async)  || (user$ | async).role === 'USER'"
+                (click)="loadSearchResults(templateNested)">Search</button>
 
         <button *ngIf="!(user$ | async)"
-                class="btn btn-outline-primary my-2 my-sn-0"
+                class="btn btn-outline-primary my-2 my-sn-0 myBtn"
                 (click)="openModal(template)">
           Log in
         </button>
@@ -71,7 +53,7 @@
                 *ngIf="user$| async as user">
           <div class="btn-group" dropdown>
             <button dropdownToggle type="button"
-                    class="btn btn-outline-primary dropdown-toggle"
+                    class="btn btn-outline-primary dropdown-toggle myBtn"
                     aria-controls="dropdown-basic"
             style="margin-right: 10px">
               {{user.login}}
@@ -83,14 +65,25 @@
                 *dropdownMenu class="dropdown-menu"
                 role="menu"
                 aria-labelledby="button-animated">
-              <li role="menuitem" [class.text-hide]="(user$ | async).role === 'ADMIN'"><a class="dropdown-item" [class.disabled]="(user$ | async).role === 'ADMIN'" routerLink="/profile">My profile</a></li>
-              <li role="menuitem" [class.text-hide]="(user$ | async).role === 'USER'"><a class="dropdown-item" [class.disabled]="(user$ | async).role === 'USER'" routerLink="/groups">Groups</a></li>
-              <li role="menuitem" [class.text-hide]="(user$ | async).role === 'ADMIN'"><a class="dropdown-item" [class.disabled]="(user$ | async).role === 'ADMIN'" routerLink="/sub">My subscriptions</a></li>
-              <li role="menuitem" [class.text-hide]="(user$ | async).role === 'USER'"><a class="dropdown-item" [class.disabled]="(user$ | async).role === 'USER'" routerLink="/courses">Courses</a></li>
-
+              <li role="menuitem" [class.text-hide]="(user$ | async).role === 'ADMIN'">
+                <a class="dropdown-item" [class.disabled]="(user$ | async).role === 'ADMIN'" routerLink="/profile">
+                  My profile</a>
+              </li>
+              <li role="menuitem" [class.text-hide]="(user$ | async).role === 'USER'">
+                <a class="dropdown-item" [class.disabled]="(user$ | async).role === 'USER'" routerLink="/groups">
+                  Groups</a>
+              </li>
+              <li role="menuitem" [class.text-hide]="(user$ | async).role === 'ADMIN'">
+                <a class="dropdown-item" [class.disabled]="(user$ | async).role === 'ADMIN'" routerLink="/sub">
+                  My subscriptions</a>
+              </li>
+              <li role="menuitem" [class.text-hide]="(user$ | async).role === 'USER'">
+                <a class="dropdown-item" [class.disabled]="(user$ | async).role === 'USER'" routerLink="/courses">
+                  Reports</a>
+              </li>
             </ul>
           </div>
-          <button class="btn btn-outline-primary" (click)="logout()">Log out</button>
+          <button class="btn btn-outline-primary myBtn" (click)="logout()">Log out</button>
         </strong>
 
         <ng-template #template>
@@ -113,7 +106,7 @@
                   <div class="form-froup m-3">
                     <label>Login*</label>
                     <input autofocus
-                           name="form-control"
+                           name="login"
                            placeholder="Login"
                            class="p-2"
                            formControlName="userLogin"
@@ -122,7 +115,7 @@
                   <div class="form-froup m-3">
                     <label>Password*</label>
                     <input type="Password"
-                           name="form-control"
+                           name="password"
                            placeholder="Password"
                            class="p-2"
                            formControlName="userPassword"
@@ -140,50 +133,49 @@
                       (click)="getUserInfo(login.value, password.value)">
                       Login
                     </button>
+                    <hr>
+                    <h6 *ngIf="unauthorizedError" style="color: red; text-align: center; cursor: default">
+                    {{unauthorizedError}}
+                  </h6>
                   </a>
                 </form>
-
-<!--                <span class="link"-->
-<!--                      style="margin-left: 40px"-->
-<!--                      (click)="openModal2(templateNested)">-->
-<!--                  Register a new profile-->
-<!--                </span>-->
               </div>
             </div>
           </div>
         </ng-template>
 
-<!--        <ng-template #templateNested>-->
-<!--          <div class="modal-content" style="margin: auto;">-->
-<!--            <div class="modal-header">-->
-<!--              <h4 class="modal-title pull-left" style="margin: auto; padding-left: 70px">Registration</h4>-->
-<!--              <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef2.hide()">-->
-<!--                <span aria-hidden="true">&times;</span>-->
-<!--              </button>-->
-<!--            </div>-->
-<!--            <div class="modal-body" style="margin: auto;">-->
-<!--              <div class="container-fluid" style="margin: auto;">-->
-<!--                <form>-->
-<!--                  <div class="form-froup m-3">-->
-<!--                    <p>You are Organisation or Customer ?</p>-->
-<!--                  </div>-->
-<!--                  <div class="form-froup m-3">-->
-<!--                    <form [formGroup]="myForm" class="form-inline">-->
-<!--                      <div class="form-group">-->
-<!--                        <div class="btn-group" btnRadioGroup formControlName="radio">-->
-<!--                          <label btnRadio="A" class="btn btn-primary"-->
-<!--                                 tabindex="0" role="button" routerLink="/orgReg" (click)="closeModal2(templateNested)">Organisation</label>-->
-<!--                          <label btnRadio="B" class="btn btn-primary"-->
-<!--                                 tabindex="0" role="button" routerLink="/userReg" (click)="closeModal2(templateNested)">Customer</label>-->
-<!--                        </div>-->
-<!--                      </div>-->
-<!--                    </form>-->
-<!--                  </div>-->
-<!--                </form>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </ng-template>-->
+        <ng-template #templateNested>
+          <div class="modal-header">
+            <h4 class="modal-title pull-left" style="text-align: center"> Search result</h4>
+            <button type="button"
+                    class="close pull-right"
+                    aria-label="Close"
+                    (click)="modalRef.hide()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <table class="table">
+              <div *ngIf="notNull; else noCoincidence">
+                <div *ngIf="!notNull; else userSearch">
+                </div>
+                </div>
+                <ng-template #userSearch>
+                    <h6 class="page-link" *ngFor="let result of users"
+                        style="margin-top: 20px; text-align: center; color: mediumslateblue"
+                       (click)="showUserPage(result)">
+                      {{result.surname}}
+                      {{result.name}}
+                      {{result.patronymic}}
+                    </h6>
+                </ng-template>
+              <ng-template #noCoincidence>
+                <input class="form-control-plaintext" value="No result!">
+              </ng-template>
+              <hr class="mb-2">
+            </table>
+          </div>
+        </ng-template>
       </form>
     </div>
   </nav>

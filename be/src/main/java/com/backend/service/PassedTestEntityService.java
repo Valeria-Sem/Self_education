@@ -6,5 +6,6 @@ import java.util.Optional;
 
 public interface PassedTestEntityService {
     PassedTestEntity save(PassedTestEntity passedTest);
-    Optional<PassedTestEntity> findByStudentIdAndIdTest (int studId, int testId);
+//    Optional<PassedTestEntity> findByStudentIdAndIdTest (int studId, int testId);
+    PassedTestEntity findByStudentIdAndIdTest (int studId, int testId);
 }

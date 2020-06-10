@@ -75,4 +75,9 @@ public class UserEntityServiceImpl implements UserEntityService {
         userEntityRepository.deleteById(idUser);
         log.info("IN delete - user with id: {} successfully deleted", idUser);
     }
+
+    @Override
+    public Boolean isLoginExist(String login) {
+        return userEntityRepository.existsUserByLogin(login);
+    }
 }

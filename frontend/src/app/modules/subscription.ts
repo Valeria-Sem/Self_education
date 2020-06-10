@@ -1,12 +1,13 @@
 export class Subscription {
   idSubscription: string;
   idStudent: number;
-  idProduct: string;
   status: SubStatus;
+  idProduct: string;
 
-  constructor(idStudent: number,
-              idProduct: string,
-              status: SubStatus) {
+  constructor(idSubscription: string,idStudent: number,
+              status: SubStatus,
+              idProduct: string) {
+    this.idSubscription = idSubscription;
     this.idProduct = idProduct;
     this.idStudent = idStudent;
     this.status = status;

@@ -1,5 +1,11 @@
 <div class="pricing-header px-3 py-3 pt-md-5 p-md-4 mx-auto text-center">
-  <h1 class="display-4" >{{test.testName}}</h1>
+  <h1 class="display-4" style="margin-bottom: 35px !important;" >{{test.testName}}</h1>
+  <alert type="warning">
+    <h3>Read this!</h3>
+    <p>
+      After testing, the number of correct answers will be converted to points and after the end of the
+      entire course credited to your account.</p>
+  </alert>
   </div>
 
 <div class="container-fluid mt-5 " style="background-color: lavender;" >
@@ -12,37 +18,13 @@
           <hr>
           <div [ngClass]="rightAnswers && ((rightAnswers?.isRight[index]) ? '_green' : '_red')">
           <div class="card-body text-left border-dark" *ngFor="let choice of item.answers">
-            <label for="radioButton">
-            <input type="radio"  id="radioButton"
-                   name="{{item.idQuestion}}" value="{{choice.answerText}}"
-                   [disabled]="rightAnswers"
-                   (change)="onChange(item.idQuestion, choice.idAnswer)">
-            {{choice.answerText}}</label>
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-  </div>
-<!--</div>-->
-
-
-
-            <!--              <div bsModal #childModal="bs-modal" class="modal fade" tabindex="-1"-->
-            <!--                   role="dialog" aria-labelledby="dialog-child-name">-->
-            <!--                <div class="modal-dialog modal-sm">-->
-            <!--                  <div class="modal-content">-->
-            <!--                    <div class="modal-header">-->
-            <!--                      <h4 id="dialog-child-name" class="modal-title pull-left">Error</h4>-->
-            <!--&lt;!&ndash;                      <button type="button" class="close pull-right" aria-label="Close" (click)="hideChildModal()">&ndash;&gt;-->
-            <!--&lt;!&ndash;                        <span aria-hidden="true">&times;</span>&ndash;&gt;-->
-            <!--&lt;!&ndash;                      </button>&ndash;&gt;-->
-            <!--                    </div>-->
-            <!--                    <div class="modal-body">-->
-            <!--                      You are short of money. Top up your balance!-->
-            <!--                    </div>-->
-            <!--                  </div>-->
-            <!--                </div>-->
-            <!--              </div>-->
+              <label for="radioButton">
+              <input type="radio"  id="radioButton"
+                     name="{{item.idQuestion}}" value="{{choice.answerText}}"
+                     [disabled]="rightAnswers"
+                     (change)="onChange(item.idQuestion, choice.idAnswer)">
+              {{choice.answerText}}</label>
+          </div>
           </div>
         </div>
       </div>

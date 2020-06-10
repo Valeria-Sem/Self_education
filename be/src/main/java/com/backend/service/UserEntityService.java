@@ -10,5 +10,6 @@ public interface UserEntityService {
     UserEntity findByIdUser(Integer idUser);
     UserEntity getUserIdByLoginAndPassword(String login, String password);
     void delete(int idUser);
+    Boolean isLoginExist(String login);
 
 }

@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SubscriptionEntityServiceImpl implements SubscriptionEntityService {
@@ -74,5 +75,18 @@ public class SubscriptionEntityServiceImpl implements SubscriptionEntityService 
     @Override
     public List<SubscriptionEntity> getAllSubs() {
         return subscriptionEntityRepository.findAll();
+    }
+
+    @Override
+    public Optional<SubscriptionEntity> getSubByIdStudAndIdProd(int idStudent, int idProduct) {
+        StudentEntity student = studentEntityService.getStudentByIdStudent(idStudent);
+        ProductEntity product = productEntityService.getProductByIdProduct(idProduct);
+        return subscriptionEntityRepository.getSubscriptionEntitiesByStudentByStudentIdAndProductByProductId(
+                student,product);
+    }
+
+    @Override
+    public SubscriptionEntity save(SubscriptionEntity subscriptionEntity) {
+        return subscriptionEntityRepository.save(subscriptionEntity);
     }
 }

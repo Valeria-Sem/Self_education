@@ -22,8 +22,13 @@ public class PassedTestEntityServiceImpl implements PassedTestEntityService {
         return passedTestEntityRepository.save(passedTest);
     }
 
+//    @Override
+//    public Optional<PassedTestEntity> findByStudentIdAndIdTest(int studId, int testId) {
+//        return passedTestEntityRepository.findByStudentIdAndIdTest(studId, testId);
+//    }
+
     @Override
-    public Optional<PassedTestEntity> findByStudentIdAndIdTest(int studId, int testId) {
+    public PassedTestEntity findByStudentIdAndIdTest(int studId, int testId) {
         return passedTestEntityRepository.findByStudentIdAndIdTest(studId, testId);
     }
 }

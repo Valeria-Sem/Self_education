@@ -36,3 +36,10 @@
   height: 400px;
 }
 
+.finishButton{
+  /*margin-top: 30px;*/
+  height: 100px;
+  width: 500px;
+  font-size: 50px;
+}
+

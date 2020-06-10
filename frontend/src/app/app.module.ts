@@ -24,7 +24,7 @@ import {RoleGuard} from "./services/role-guard.service";
 import {UserService} from "./services/user.service";
 import {GroupsComponent} from "./components/admin/groups/groups.component";
 import {AdminCoursesComponent} from "./components/admin/admin-cours/admin-courses.component";
-import {AlertModule, TabsModule} from "ngx-bootstrap";
+import {AlertModule, CollapseModule, TabsModule} from "ngx-bootstrap";
 import {StudentPageComponent} from "./components/admin/studentPage/studentPage.component";
 import {RegistrationComponent} from "./components/admin/studReg/registration.component";
 import {ConstructorComponent} from "./components/admin/groups/constructor/constructor.component";
@@ -40,6 +40,7 @@ import {LecturesComponent} from "./components/lectures&tests/lectures/lectures.c
 import {SafePipe} from "./components/lectures&tests/lectures/SafePipe";
 import {TestComponent} from "./components/lectures&tests/tests/test.component";
 import {MapToIterable} from "./components/lectures&tests/tests/MapToIterable";
+import {AboutProgramComponent} from "./components/about/aboutProgramm/aboutProgram";
 
 @NgModule({
   declarations: [
@@ -67,25 +68,27 @@ import {MapToIterable} from "./components/lectures&tests/tests/MapToIterable";
     LecturesComponent,
     SafePipe,
     MapToIterable,
+    AboutProgramComponent
   ],
-  imports: [
-    BrowserModule,
-    FormsModule,
+    imports: [
+        BrowserModule,
+        FormsModule,
 //    LayoutModule,
-    HttpClientModule,
-    Ng4LoadingSpinnerModule.forRoot(),
-    BsDropdownModule.forRoot(),
-    TooltipModule.forRoot(),
-    ModalModule.forRoot(),
-    routing,
-    BrowserAnimationsModule,
-    AccordionModule.forRoot(),
-    CarouselModule.forRoot(),
-    NgAisModule.forRoot(),
-    ReactiveFormsModule,
-    AlertModule.forRoot(),
-    TabsModule.forRoot()
-  ],
+        HttpClientModule,
+        Ng4LoadingSpinnerModule.forRoot(),
+        BsDropdownModule.forRoot(),
+        TooltipModule.forRoot(),
+        ModalModule.forRoot(),
+        routing,
+        BrowserAnimationsModule,
+        AccordionModule.forRoot(),
+        CarouselModule.forRoot(),
+        NgAisModule.forRoot(),
+        ReactiveFormsModule,
+        AlertModule.forRoot(),
+        TabsModule.forRoot(),
+        CollapseModule
+    ],
   providers: [RoleGuard,
     UserService,
     {

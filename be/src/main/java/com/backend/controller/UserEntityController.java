@@ -83,4 +83,9 @@ public class UserEntityController {
     public UserEntity saveUser(@RequestBody UserEntity userEntity){
         return userEntityService.save(userEntity);
     }
+
+    @RequestMapping(value = "/checkLogin", method = RequestMethod.GET)
+    public Boolean isLoginExist(@RequestParam(name = "login") String login) {
+        return userEntityService.isLoginExist(login);
+    }
 }

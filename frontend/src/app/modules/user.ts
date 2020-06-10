@@ -19,6 +19,8 @@ export class User {
   idGroup: string;
   groupName: string;
 
+  errors: Map<string, string>;
+
 
   constructor(name: string, surname: string, patronymic: string, idGroup: string, login: string, password: string, role: Role,
               balance: number, walletStatus: Status) {

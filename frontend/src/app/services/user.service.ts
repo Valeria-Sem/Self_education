@@ -20,7 +20,7 @@ export class UserService {
   }
 
   getUserInfo(login: string, password: string): Observable<User> {
-    return this.http.get<User>('/api/login/' + login + '/password/' + password + '/login').pipe(
+    return this.http.get<User>('/api/login?login=' + login + '&password=' + password).pipe(
       tap(user => {
         this.currentUser$.next(user);
         this.currentUser = user;
@@ -48,5 +48,9 @@ export class UserService {
 
   getStudentById(idStudent: string): Observable<User> {
     return this.http.get<User>('/api/registration/student/'+ idStudent);
+  }
+
+  getStudentsBySearch(searchWord: string): Observable<User[]> {
+    return this.http.get<User[]>('/api/student/search?request=' + searchWord);
   }
 }

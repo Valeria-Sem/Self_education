@@ -7,6 +7,7 @@
       <h1 class="display-4" style="margin-top: 110px; margin-left: -150px">{{product.productName}}</h1>
       <div *ngIf="isVisibleButton">
         <button class="btn btn-outline-info" id="{{product.productName}}"
+                [class.btn-hide]="!(user$ | async) || (user$ | async).role === 'ADMIN'"
                 (click)="payAndSub(template)" action="type script:document.location.reload()">Subscribe</button>
       </div>
       <div *ngIf="!isVisibleButton">
