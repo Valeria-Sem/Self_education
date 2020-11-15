@@ -94,11 +94,11 @@ export class LecturesComponent implements OnInit{
     });
   }
 
-  finishEducation(){
-    this.subscription = new Subscription( this.subscription.idSubscription ,this.subscription.idStudent,
-      SubStatus.FINISHED, this.subscription.idProduct);
-    this.subService.finishSub(this.subscription, this.user.idStudent, this.id.substr(1, 2)).subscribe();
-  }
+  // finishEducation(){
+  //   this.subscription = new Subscription( this.subscription.idSubscription ,this.subscription.idStudent,
+  //     SubStatus.FINISHED, this.subscription.idProduct);
+  //   this.subService.finishSub(this.subscription, this.user.idStudent, this.id.substr(1, 2)).subscribe();
+  // }
 }
 
 

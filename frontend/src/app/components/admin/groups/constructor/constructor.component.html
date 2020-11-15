@@ -5,7 +5,7 @@
 
     <label for="inputGroup" class="sr-only">Group's name</label>
     <input id="inputGroup" class="form-control" placeholder="Name" #groupField="ngModel" required autofocus
-           [(ngModel)]="groupName" name="groupName" minlength="3" maxlength="16">
+           [(ngModel)]="groupName" name="groupName"  minlength="3" maxlength="16">
     <div [hidden]="groupField.valid || groupField.untouched || !groupField?.value?.trim().length" class="alert alert-danger">
       Missing Name
     </div>
@@ -13,7 +13,7 @@
     <button
       [disabled]="!groupField.valid"
       class="btn btn-lg btn-primary btn-block"
-      type="submit"
+      type="reset"
       (click)="saveGroup(information); openModal(template)">
       Save
     </button>

@@ -37,12 +37,10 @@ public class RegistrationServiceImpl implements RegistrationService {
     public AbstractRegistrationModel registerUser(AbstractRegistrationModel abstractRegistrationModel) {
         UserEntity user = saveNewUser(abstractRegistrationModel);
         WalletEntity wallet = saveNewWallet((StudentRegistrationModel) abstractRegistrationModel);
-//        GroupEntity group = saveStudGroup(abstractRegistrationModel);
 
         saveNewStudent((StudentRegistrationModel) abstractRegistrationModel, user, wallet );
 
         abstractRegistrationModel.setIdUser(user.getIdUser());
-//        abstractRegistrationModel.setIdWallet(wallet.getIdWallet());
         return abstractRegistrationModel;
     }
 

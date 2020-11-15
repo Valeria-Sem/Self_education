@@ -128,8 +128,8 @@ export class StudentPageComponent implements OnInit{
 
   deleteProfile(){
     this.userService.deleteUser(+this.user.idUser, this.user.idWallet).subscribe(() => {
-      this.userService.setUser(null);
-      localStorage.removeItem("user");
+     // this.userService.setUser(null);
+    //  localStorage.removeItem("user");
       this.router.navigate(['/groups']);
     });
   }

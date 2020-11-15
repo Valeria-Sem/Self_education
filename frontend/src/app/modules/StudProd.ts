@@ -12,7 +12,7 @@ export class StudProd {
 
 
   constructor(idStudent: string,
-              productId: string,subscriptionStatus: SubStatus) {
+              productId: string, subscriptionStatus: SubStatus) {
     // this.idSubscription = idSubscription;
     this.productId = productId;
     this.idStudent = idStudent;

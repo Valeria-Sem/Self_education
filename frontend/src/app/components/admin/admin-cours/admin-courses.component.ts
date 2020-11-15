@@ -107,5 +107,7 @@ export class AdminCoursesComponent implements OnInit{
     }
 
     document.body.removeChild(downloadLink);
+
   }
+
 }

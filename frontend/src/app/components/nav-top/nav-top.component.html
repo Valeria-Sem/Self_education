@@ -44,7 +44,7 @@
                 [class.hide]="!(user$ | async)  || (user$ | async).role === 'USER'"
                 (click)="loadSearchResults(templateNested)">Search</button>
 
-        <button *ngIf="!(user$ | async)"
+        <button *ngIf="!(user$ | async)" type="reset"
                 class="btn btn-outline-primary my-2 my-sn-0 myBtn"
                 (click)="openModal(template)">
           Log in

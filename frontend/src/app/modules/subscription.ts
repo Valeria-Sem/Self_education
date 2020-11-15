@@ -5,8 +5,7 @@ export class Subscription {
   idProduct: string;
 
   constructor(idSubscription: string,idStudent: number,
-              status: SubStatus,
-              idProduct: string) {
+              idProduct: string, status: SubStatus) {
     this.idSubscription = idSubscription;
     this.idProduct = idProduct;
     this.idStudent = idStudent;
@@ -16,7 +15,7 @@ export class Subscription {
 }
 
 export enum SubStatus {
-  ACTIVE,
+  ACTIVE = 1,
   FINISHED
 }
 

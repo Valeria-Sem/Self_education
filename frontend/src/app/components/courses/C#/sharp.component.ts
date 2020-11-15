@@ -1,15 +1,13 @@
-import {ChangeDetectorRef, OnInit, Component, TemplateRef, ViewChild} from "@angular/core";
-import {Status, Wallet} from "../../../modules/wallet";
+import {ChangeDetectorRef, Component, OnInit, TemplateRef, ViewChild} from "@angular/core";
+import {Wallet} from "../../../modules/wallet";
 import {BsModalRef, BsModalService, ModalDirective} from "ngx-bootstrap";
 import {User} from "../../../modules/user";
 import {UserService} from "../../../services/user.service";
 import {Product} from "../../../modules/product";
 import {ProductService} from "../../../services/product.service";
-import {Group} from "../../../modules/group";
 import {SubService} from "../../../services/subscription.service";
 import {StudProd} from "../../../modules/StudProd";
-import {Page} from "../../../modules/page";
-import {Subscription, SubStatus} from "../../../modules/subscription";
+import {SubStatus} from "../../../modules/subscription";
 import {WalletService} from "../../../services/wallet.service";
 
 
@@ -28,7 +26,7 @@ export class SharpComponent implements OnInit {
   modalRef: BsModalRef;
   studProd: StudProd[];
   subscription: StudProd;
-  public status: SubStatus = 0;
+  public status: SubStatus = SubStatus.ACTIVE;
   bsModalRef: BsModalRef;
   isVisibleButton: boolean = true;
 
@@ -78,10 +76,11 @@ export class SharpComponent implements OnInit {
         localStorage.setItem("user", JSON.stringify(this.userService.currentUser));
       });
 
-      this.subscription = new StudProd( this.user.idStudent.toString(), this.product.idProduct, this.status);
+      this.subscription = new StudProd( this.user.idStudent.toString(), this.product.idProduct, SubStatus.ACTIVE );
       this.subService.subscribeStudent(this.subscription, this.user.idStudent, this.product.idProduct).subscribe();
       this.getStudentSubs();
       this.isVisibleButton = false;
+      console.log(this.subscription)
     }
   }
 }

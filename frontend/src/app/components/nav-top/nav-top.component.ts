@@ -150,6 +150,8 @@ export class NavTopComponent implements OnInit{
 
   public showUserPage(user: User) : void {
     this.modalRef.hide();
-    this.router.navigate(['/groups/studentPage/:' + user.idStudent], {});
+  //  this.router.navigate(['/groups/studentPage/:' + user.idStudent], {});
+  //  location.reload()
+    location.assign('/groups/studentPage/:' + user.idStudent)
   }
 }
